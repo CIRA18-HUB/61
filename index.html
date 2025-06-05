@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Trolli口力销售部六一促销活动超萌漂浮相册">
+    <title>🍭 Trolli六一超萌嘉年华 | 立体漂浮相册</title>
+    
+    <!-- 微信分享优化 -->
+    <meta property="og:title" content="🍭 Trolli六一超萌嘉年华">
+    <meta property="og:description" content="17个超甜蜜瞬间全记录，每一张照片都是珍贵回忆">
+    <meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqNJRktLzZiaPGic4sMDHiangKhbwObQ1Oq9uScIiaRdPubVHcPW9hq8D1fw/640?wx_fmt=jpeg&from=appmsg">
+    
+    <!-- 世界级字体系统 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* 世界级糖果色彩系统 */
+            --candy-red: #FF1744;
+            --candy-pink: #FF6EC7;
+            --candy-orange: #FF6D00;
+            --candy-yellow: #FFD600;
+            --candy-lime: #76FF03;
+            --candy-green: #00E676;
+            --candy-cyan: #00E5FF;
+            --candy-blue: #2979FF;
+            --candy-purple: #7C4DFF;
+            --candy-magenta: #E91E63;
+            --candy-violet: #9C27B0;
+            --candy-amber: #FFC107;
+            
+            /* MANA专业色彩 */
+            --mana-dark: #0e0e0e;
+            --mana-cream: #fef7e6;
+            --mana-blue: #2b3d73;
+            --mana-gold: #ffd372;
+            --mana-green: #195e1c;
+            --mana-orange: #f15b40;
+            --mana-white: #ffffff;
+            
+            /* 顶级阴影系统 */
+            --shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            --shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            --shadow-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            --shadow-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+            
+            /* 世界级字体系统 */
+            --font-display: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-chinese: 'Noto Sans SC', sans-serif;
+            
+            /* 完美缓动函数 */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            background: #000;
+            position: relative;
+        }
+
+        /* 世界级动态背景系统 */
+        .cosmic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -10;
+            background: linear-gradient(45deg,
+                #FF1744 0%,
+                #FF6EC7 12.5%,
+                #FF6D00 25%,
+                #FFD600 37.5%,
+                #76FF03 50%,
+                #00E676 62.5%,
+                #00E5FF 75%,
+                #2979FF 87.5%,
+                #7C4DFF 100%
+            );
+            background-size: 400% 400%;
+            animation: cosmic-shift 20s ease infinite;
+        }
+
+        .particle-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -9;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            animation: particle-float 12s linear infinite;
+        }
+
+        /* 增强：超密集糖果和气球漂浮系统 */
+        .floating-candies {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -7;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-candy {
+            position: absolute;
+            font-size: 3rem;
+            animation: candy-float 20s linear infinite;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        }
+
+        .floating-balloon {
+            position: absolute;
+            font-size: 3.5rem;
+            animation: balloon-float 25s linear infinite;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
+        }
+
+        .floating-star {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: star-float 18s linear infinite;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+        }
+
+        /* 棒棒糖Bling效果 */
+        .lollipop-sparkles {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(45deg, #FFD700, #FFF, #FFD700);
+            border-radius: 50%;
+            animation: sparkle-twinkle 2s ease-in-out infinite;
+        }
+
+        .morphing-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -8;
+            pointer-events: none;
+        }
+
+        .morph-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: blob-morph 25s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--candy-pink), transparent);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--candy-cyan), transparent);
+            top: 60%;
+            right: 15%;
+            animation-delay: 8s;
+        }
+
+        .blob-3 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--candy-yellow), transparent);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 16s;
+        }
+
+        /* 超级立体棒棒糖 - 增强版 */
+        .super-lollipop {
+            position: fixed;
+            left: 50%;
+            top: 25%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 280px;
+            z-index: 999999;
+            pointer-events: none;
+            filter: drop-shadow(0 25px 50px rgba(0,0,0,0.3));
+            transition: all 0.3s ease;
+        }
+
+        .lollipop-head {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--candy-red) 0deg 30deg,
+                var(--candy-orange) 30deg 60deg,
+                var(--candy-yellow) 60deg 90deg,
+                var(--candy-lime) 90deg 120deg,
+                var(--candy-green) 120deg 150deg,
+                var(--candy-cyan) 150deg 180deg,
+                var(--candy-blue) 180deg 210deg,
+                var(--candy-purple) 210deg 240deg,
+                var(--candy-magenta) 240deg 270deg,
+                var(--candy-violet) 270deg 300deg,
+                var(--candy-pink) 300deg 330deg,
+                var(--candy-red) 330deg 360deg
+            );
+            animation: mega-spin 12s linear infinite;
+            box-shadow: 
+                0 0 0 8px rgba(255,255,255,0.9),
+                0 0 0 12px var(--candy-yellow),
+                0 0 0 16px rgba(255,255,255,0.5),
+                var(--shadow-5),
+                inset 0 0 40px rgba(255,255,255,0.4);
+            border: 3px solid rgba(255,255,255,0.95);
+        }
+
+        .lollipop-stick {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 120px;
+            background: linear-gradient(180deg, 
+                #FFE0B2 0%, 
+                #FFCC80 30%,
+                #FFB74D 70%, 
+                #FF8F00 100%);
+            border-radius: 6px;
+            box-shadow: 
+                inset 2px 0 4px rgba(255,255,255,0.6),
+                inset -2px 0 4px rgba(0,0,0,0.3),
+                var(--shadow-2);
+        }
+
+        /* 漂浮相册容器 */
+        .floating-album {
+            position: relative;
+            z-index: 100;
+            min-height: 500vh;
+            padding: 2rem;
+        }
+
+        /* 英雄区域 - 修复字体溢出 */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+            line-height: 1;
+            text-shadow: 
+                4px 4px 0px var(--candy-red),
+                8px 8px 0px var(--candy-orange),
+                12px 12px 0px var(--candy-yellow),
+                16px 16px 40px rgba(0,0,0,0.6);
+            animation: title-bounce 4s ease-in-out infinite;
+            font-family: var(--font-display);
+            letter-spacing: -0.02em;
+            max-width: 90vw;
+            word-wrap: break-word;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 2rem;
+            text-shadow: 
+                3px 3px 0px var(--candy-purple),
+                6px 6px 20px rgba(0,0,0,0.4);
+            font-family: var(--font-display);
+            max-width: 90vw;
+            word-wrap: break-word;
+        }
+
+        .hero-description {
+            font-size: clamp(1.1rem, 4vw, 1.6rem);
+            color: var(--mana-dark);
+            line-height: 1.6;
+            max-width: min(600px, 85vw);
+            background: linear-gradient(135deg, 
+                var(--mana-cream), 
+                rgba(255,255,255,0.95));
+            padding: clamp(2rem, 5vw, 3rem);
+            border-radius: 30px;
+            box-shadow: var(--shadow-4);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            font-family: var(--font-chinese);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-button {
+            padding: clamp(1.5rem, 4vw, 2rem) clamp(3rem, 8vw, 4rem);
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            background: linear-gradient(45deg, 
+                var(--candy-red), 
+                var(--candy-orange), 
+                var(--candy-yellow),
+                var(--candy-lime));
+            background-size: 300% 300%;
+            animation: gradient-flow 3s ease infinite;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: var(--shadow-3);
+            transition: all 0.4s var(--ease-out-back);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--font-display);
+            max-width: 90vw;
+            text-align: center;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: var(--shadow-5);
+        }
+
+        /* 增强的照片容器设计 */
+        .floating-photos {
+            position: relative;
+            height: 400vh;
+            width: 100%;
+            padding: 3rem 0;
+        }
+
+        .floating-photo {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            cursor: pointer;
+            transition: all 1.2s var(--ease-out-expo);
+            filter: drop-shadow(0 15px 35px rgba(0,0,0,0.2));
+            z-index: 50;
+        }
+
+        /* 初始聚拢状态 */
+        .floating-photo.initial {
+            left: 50% !important;
+            top: 50% !important;
+            transform: translate(-50%, -50%) scale(0.2) rotate(0deg) !important;
+            opacity: 0.8;
+            z-index: 999 !important;
+        }
+
+        /* 散开状态 */
+        .floating-photo.spread {
+            opacity: 1;
+            transform: scale(1) !important;
+            animation: photo-float-enhanced 15s ease-in-out infinite;
+        }
+
+        /* 网格布局强制样式 */
+        .floating-photo.spread.grid-position {
+            transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* 增强的照片动画效果 */
+        .floating-photo.spread .photo-frame {
+            animation: frame-glow-pulse 8s ease-in-out infinite;
+        }
+
+        .floating-photo.spread img {
+            animation: image-gentle-sway 12s ease-in-out infinite;
+        }
+
+        /* 增强的相框设计 */
+        .photo-frame {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(145deg, 
+                rgba(255,255,255,0.98) 0%,
+                rgba(255,255,255,0.85) 50%,
+                rgba(255,255,255,0.98) 100%);
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 
+                0 20px 40px rgba(0,0,0,0.15),
+                0 5px 15px rgba(0,0,0,0.1),
+                inset 0 2px 0 rgba(255,255,255,0.8),
+                inset 0 -2px 0 rgba(0,0,0,0.05);
+            border: 3px solid rgba(255,255,255,0.6);
+            backdrop-filter: blur(25px);
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg,
+                var(--candy-red),
+                var(--candy-orange),
+                var(--candy-yellow),
+                var(--candy-green),
+                var(--candy-cyan),
+                var(--candy-blue),
+                var(--candy-purple),
+                var(--candy-pink)
+            );
+            background-size: 400% 400%;
+            border-radius: 28px;
+            z-index: -1;
+            animation: frame-rainbow 8s ease infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .floating-photo:hover .photo-frame::before {
+            opacity: 1;
+        }
+
+        .floating-photo:hover {
+            transform: translateY(-25px) rotateY(12deg) rotateX(8deg) scale(1.1) !important;
+            z-index: 1000;
+            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.3));
+            animation: hover-dance 0.6s ease-in-out infinite alternate;
+        }
+
+        .floating-photo:hover .photo-frame {
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.25),
+                0 0 80px rgba(0,255,255,0.4),
+                inset 0 2px 0 rgba(255,255,255,0.9),
+                inset 0 -2px 0 rgba(0,0,0,0.1);
+            transform: rotateX(2deg);
+            animation: frame-pulse-hover 1s ease-in-out infinite;
+        }
+
+        .floating-photo:hover img {
+            transform: scale(1.05) rotateZ(1deg) !important;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.3);
+            filter: contrast(1.2) saturate(1.3) brightness(1.1) !important;
+            animation: image-hover-shimmer 2s ease-in-out infinite;
+        }
+
+        .floating-photo img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            transition: all 0.6s var(--ease-out-expo);
+            box-shadow: 
+                0 10px 25px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            filter: contrast(1.1) saturate(1.2) brightness(1.05);
+        }
+
+        .photo-info {
+            padding: 15px 8px 5px;
+            text-align: center;
+        }
+
+        .photo-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--mana-blue);
+            margin-bottom: 8px;
+            font-family: var(--font-display);
+            line-height: 1.2;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .photo-desc {
+            font-size: 0.9rem;
+            color: var(--mana-dark);
+            line-height: 1.4;
+            font-weight: 500;
+            font-family: var(--font-chinese);
+            opacity: 0.85;
+        }
+
+        /* 增强交互效果 */
+        .interaction-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, var(--candy-cyan), var(--candy-purple));
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+            opacity: 0;
+        }
+
+        .interaction-cursor.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(2);
+        }
+
+        /* 结尾文案区域 - 透明背景，小字体，动态效果 */
+        .ending-section {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .ending-quote {
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            font-weight: 400;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-family: var(--font-chinese);
+            line-height: 1.4;
+            animation: float-text 6s ease-in-out infinite;
+            letter-spacing: 0.5px;
+        }
+
+        .ending-author {
+            font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+            font-weight: 300;
+            color: rgba(255,255,255,0.7);
+            font-family: var(--font-display);
+            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            animation: float-text 6s ease-in-out infinite 3s;
+        }
+
+        /* 世界级模态框 */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 100000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(20px);
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            transform: scale(0.8) rotateY(90deg);
+            transition: all 0.8s var(--ease-out-back);
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1) rotateY(0deg);
+        }
+
+        .modal-photo {
+            border-radius: 20px;
+            box-shadow: var(--shadow-5);
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--candy-red), var(--candy-orange));
+            color: #FFFFFF;
+            border: 4px solid #FFFFFF;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-3);
+            transition: all 0.3s var(--ease-out-back);
+            font-family: var(--font-display);
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2) rotate(180deg);
+            background: linear-gradient(135deg, var(--candy-orange), var(--candy-yellow));
+        }
+
+        /* 世界级动画系统 */
+        @keyframes cosmic-shift {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+
+        @keyframes particle-float {
+            0% { 
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(-100px) translateX(100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes candy-float {
+            0% { 
+                transform: translateY(100vh) translateX(-50px) rotate(0deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.8;
+            }
+            95% {
+                opacity: 0.8;
+            }
+            100% { 
+                transform: translateY(-100px) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes balloon-float {
+            0% { 
+                transform: translateY(100vh) translateX(-30px) rotate(-10deg) scale(0.8);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.7;
+            }
+            95% {
+                opacity: 0.7;
+            }
+            100% { 
+                transform: translateY(-100px) translateX(30px) rotate(10deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes star-float {
+            0% { 
+                transform: translateY(100vh) translateX(-20px) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.6;
+            }
+            95% {
+                opacity: 0.6;
+            }
+            100% { 
+                transform: translateY(-100px) translateX(20px) rotate(720deg) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sparkle-twinkle {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+        }
+
+        @keyframes blob-morph {
+            0%, 100% { 
+                transform: translateX(0px) translateY(0px) scale(1);
+                border-radius: 50%;
+            }
+            25% { 
+                transform: translateX(50px) translateY(-30px) scale(1.1);
+                border-radius: 60% 40% 30% 70%;
+            }
+            50% { 
+                transform: translateX(30px) translateY(50px) scale(0.9);
+                border-radius: 30% 60% 70% 40%;
+            }
+            75% { 
+                transform: translateX(-30px) translateY(20px) scale(1.05);
+                border-radius: 40% 50% 60% 50%;
+            }
+        }
+
+        @keyframes mega-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes title-bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes gradient-flow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes photo-float-enhanced {
+            0%, 100% { 
+                transform: translateY(0px) rotateZ(0deg) scale(1);
+            }
+            25% { 
+                transform: translateY(-20px) rotateZ(1deg) scale(1.02);
+            }
+            50% { 
+                transform: translateY(-10px) rotateZ(0deg) scale(1);
+            }
+            75% { 
+                transform: translateY(-15px) rotateZ(-0.5deg) scale(1.01);
+            }
+        }
+
+        @keyframes frame-glow-pulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 20px 40px rgba(0,0,0,0.15),
+                    0 5px 15px rgba(0,0,0,0.1),
+                    inset 0 2px 0 rgba(255,255,255,0.8),
+                    inset 0 -2px 0 rgba(0,0,0,0.05),
+                    0 0 0 rgba(255,255,255,0);
+            }
+            50% { 
+                box-shadow: 
+                    0 25px 50px rgba(0,0,0,0.2),
+                    0 8px 20px rgba(0,0,0,0.15),
+                    inset 0 2px 0 rgba(255,255,255,0.9),
+                    inset 0 -2px 0 rgba(0,0,0,0.05),
+                    0 0 20px rgba(255,255,255,0.3);
+            }
+        }
+
+        @keyframes image-gentle-sway {
+            0%, 100% { 
+                transform: scale(1) rotateZ(0deg);
+                filter: contrast(1.1) saturate(1.2) brightness(1.05);
+            }
+            33% { 
+                transform: scale(1.01) rotateZ(0.3deg);
+                filter: contrast(1.15) saturate(1.25) brightness(1.08);
+            }
+            66% { 
+                transform: scale(1) rotateZ(-0.2deg);
+                filter: contrast(1.12) saturate(1.22) brightness(1.06);
+            }
+        }
+
+        @keyframes frame-rainbow {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+
+        @keyframes float-text {
+            0%, 100% { 
+                transform: translateY(0px);
+                opacity: 0.9;
+            }
+            50% { 
+                transform: translateY(-5px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes hover-dance {
+            0% { transform: translateY(-25px) rotateY(12deg) rotateX(8deg) scale(1.1); }
+            100% { transform: translateY(-30px) rotateY(15deg) rotateX(10deg) scale(1.12); }
+        }
+
+        @keyframes frame-pulse-hover {
+            0%, 100% { 
+                box-shadow: 
+                    0 30px 60px rgba(0,0,0,0.25),
+                    0 0 80px rgba(0,255,255,0.4),
+                    inset 0 2px 0 rgba(255,255,255,0.9),
+                    inset 0 -2px 0 rgba(0,0,0,0.1);
+            }
+            50% { 
+                box-shadow: 
+                    0 35px 70px rgba(0,0,0,0.3),
+                    0 0 100px rgba(255,255,0,0.6),
+                    inset 0 3px 0 rgba(255,255,255,0.95),
+                    inset 0 -3px 0 rgba(0,0,0,0.15);
+            }
+        }
+
+        @keyframes image-hover-shimmer {
+            0%, 100% { 
+                filter: contrast(1.2) saturate(1.3) brightness(1.1) hue-rotate(0deg);
+            }
+            33% { 
+                filter: contrast(1.25) saturate(1.35) brightness(1.15) hue-rotate(5deg);
+            }
+            66% { 
+                filter: contrast(1.22) saturate(1.32) brightness(1.12) hue-rotate(-3deg);
+            }
+        }
+
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .floating-photo {
+                width: 260px;
+                height: 340px;
+            }
+            
+            .floating-photo img {
+                height: 220px;
+            }
+            
+            .hero-description {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-photo {
+                width: 220px;
+                height: 290px;
+            }
+            
+            .floating-photo img {
+                height: 180px;
+            }
+            
+            .hero-description {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 世界级背景系统 -->
+    <div class="cosmic-background"></div>
+    
+    <div class="particle-field" id="particleField"></div>
+    
+    <!-- 超密集糖果和气球漂浮系统 -->
+    <div class="floating-candies" id="floatingCandies"></div>
+    
+    <div class="morphing-shapes">
+        <div class="morph-blob blob-1"></div>
+        <div class="morph-blob blob-2"></div>
+        <div class="morph-blob blob-3"></div>
+    </div>
+
+    <!-- 超级立体棒棒糖 -->
+    <div class="super-lollipop" id="superLollipop">
+        <div class="lollipop-head">
+            <div class="lollipop-sparkles" id="lollipopSparkles"></div>
+        </div>
+        <div class="lollipop-stick"></div>
+    </div>
+
+    <!-- 交互光标 -->
+    <div class="interaction-cursor" id="cursor"></div>
+
+    <!-- 漂浮相册 -->
+    <div class="floating-album">
+        <!-- 英雄区域 -->
+        <section class="hero-section">
+            <h1 class="hero-title">甜蜜六一节</h1>
+            <p class="hero-subtitle">Trolli超萌嘉年华</p>
+            <div class="hero-description">
+                🎈 六一儿童节特别活动精彩回顾<br>
+                🍭 17个超甜蜜瞬间全记录<br>
+                🎪 每一张照片都是珍贵回忆<br>
+                🌈 让我们一起重温那些快乐时光！
+            </div>
+            <a href="#photos" class="cta-button">🎉 开始回忆之旅</a>
+        </section>
+
+        <!-- 漂浮照片区域 -->
+        <section class="floating-photos" id="photos">
+            <!-- 照片将通过JavaScript动态生成 -->
+        </section>
+
+        <!-- 结尾文案区域 -->
+        <section class="ending-section">
+            <div class="ending-quote">愿每一颗童心都能永远保持甜蜜</div>
+            <div class="ending-author">— Trolli口力销售部 —</div>
+        </section>
+    </div>
+
+    <!-- 模态框 -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <img class="modal-photo" id="modalPhoto" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        class WorldClassTrolliAlbum {
+            constructor() {
+                this.photos = [];
+                this.particles = [];
+                this.candies = [];
+                this.balloons = [];
+                this.sparkles = [];
+                this.mouse = { x: 0, y: 0 };
+                this.isSpread = false;
+                this.init();
+            }
+
+            async init() {
+                console.log('🍭 启动世界级Trolli相册...');
+                
+                this.createParticleSystem();
+                this.createSuperDenseCandyBalloonSystem();
+                this.createLollipopSparkles();
+                await this.loadPhotos();
+                console.log(`📚 已加载 ${this.photos.length} 张照片`);
+                this.initInteractionEffects();
+                this.bindEvents();
+                this.initScrollEffects();
+                
+                console.log('✅ 世界级相册已就绪！照片将在3秒后自动散开或等待用户交互');
+            }
+
+            createParticleSystem() {
+                const particleField = document.getElementById('particleField');
+                
+                for (let i = 0; i < 80; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 12 + 's';
+                    particle.style.animationDuration = (8 + Math.random() * 8) + 's';
+                    particleField.appendChild(particle);
+                }
+            }
+
+            createSuperDenseCandyBalloonSystem() {
+                const candiesContainer = document.getElementById('floatingCandies');
+                const candyEmojis = ['🍬', '🍭', '🧁', '🍰', '🎂', '🍩', '🍪', '🍫', '🍨', '🧊'];
+                const balloonEmojis = ['🎈', '🎀', '🎊', '🎉', '✨', '🎆', '💫', '⭐'];
+                const starEmojis = ['🌟', '💖', '💝', '🦄', '🌙', '☁️'];
+                
+                // 创建超密集漂浮糖果
+                for (let i = 0; i < 40; i++) {
+                    const candy = document.createElement('div');
+                    candy.className = 'floating-candy';
+                    candy.textContent = candyEmojis[Math.floor(Math.random() * candyEmojis.length)];
+                    candy.style.left = Math.random() * 100 + '%';
+                    candy.style.animationDelay = Math.random() * 20 + 's';
+                    candy.style.animationDuration = (15 + Math.random() * 10) + 's';
+                    candiesContainer.appendChild(candy);
+                }
+                
+                // 创建超密集漂浮气球
+                for (let i = 0; i < 30; i++) {
+                    const balloon = document.createElement('div');
+                    balloon.className = 'floating-balloon';
+                    balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
+                    balloon.style.left = Math.random() * 100 + '%';
+                    balloon.style.animationDelay = Math.random() * 25 + 's';
+                    balloon.style.animationDuration = (20 + Math.random() * 10) + 's';
+                    candiesContainer.appendChild(balloon);
+                }
+
+                // 创建星星漂浮
+                for (let i = 0; i < 20; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'floating-star';
+                    star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.animationDelay = Math.random() * 18 + 's';
+                    star.style.animationDuration = (15 + Math.random() * 8) + 's';
+                    candiesContainer.appendChild(star);
+                }
+            }
+
+            createLollipopSparkles() {
+                const sparklesContainer = document.getElementById('lollipopSparkles');
+                
+                for (let i = 0; i < 15; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+                    
+                    const angle = (i / 15) * 360;
+                    const radius = 80 + Math.random() * 50;
+                    const x = Math.cos(angle * Math.PI / 180) * radius;
+                    const y = Math.sin(angle * Math.PI / 180) * radius;
+                    
+                    sparkle.style.left = `calc(50% + ${x}px)`;
+                    sparkle.style.top = `calc(50% + ${y}px)`;
+                    sparkle.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    sparklesContainer.appendChild(sparkle);
+                    this.sparkles.push(sparkle);
+                }
+            }
+
+            initInteractionEffects() {
+                const cursor = document.getElementById('cursor');
+                
+                // 页面加载3秒后自动触发散开动画
+                setTimeout(() => {
+                    if (!this.isSpread) {
+                        console.log('🎯 自动触发照片散开...');
+                        this.triggerPhotoSpread();
+                    }
+                }, 3000);
+                
+                document.addEventListener('mousemove', (e) => {
+                    this.mouse.x = e.clientX;
+                    this.mouse.y = e.clientY;
+                    
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                    
+                    // 触发照片散开
+                    this.triggerPhotoSpread();
+                });
+
+                document.addEventListener('mouseenter', () => {
+                    cursor.classList.add('active');
+                });
+
+                document.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('active');
+                });
+
+                // 增强棒棒糖鼠标跟随
+                const lollipop = document.getElementById('superLollipop');
+                document.addEventListener('mousemove', (e) => {
+                    const mouseX = (e.clientX / window.innerWidth - 0.5) * 40;
+                    const mouseY = (e.clientY / window.innerHeight - 0.5) * 40;
+                    
+                    lollipop.style.transform = `
+                        translate(calc(-50% + ${mouseX}px), calc(-25% + ${mouseY}px))
+                        rotateY(${mouseX * 0.8}deg)
+                        rotateX(${mouseY * 0.5}deg)
+                    `;
+                });
+
+                // 滚动触发
+                window.addEventListener('scroll', () => {
+                    this.triggerPhotoSpread();
+                });
+
+                // 点击触发
+                document.addEventListener('click', () => {
+                    this.triggerPhotoSpread();
+                });
+
+                // 触摸触发（移动端）
+                document.addEventListener('touchstart', () => {
+                    this.triggerPhotoSpread();
+                });
+            }
+
+            triggerPhotoSpread() {
+                if (!this.isSpread && this.photos.length > 0) {
+                    this.isSpread = true;
+                    console.log('🎬 开始照片散开动画...');
+                    
+                    this.photos.forEach((photo, index) => {
+                        setTimeout(() => {
+                            photo.classList.remove('initial');
+                            photo.classList.add('spread', 'grid-position');
+                            
+                            // 设置最终位置
+                            const finalTop = photo.dataset.finalTop;
+                            const finalLeft = photo.dataset.finalLeft;
+                            
+                            photo.style.top = finalTop;
+                            photo.style.left = finalLeft;
+                            photo.style.transform = 'scale(1)';
+                            
+                            // 应用个性化动画参数
+                            const delay = photo.style.getPropertyValue('--animation-delay') || '0s';
+                            const duration = photo.style.getPropertyValue('--animation-duration') || '15s';
+                            photo.style.animationDelay = delay;
+                            photo.style.animationDuration = duration;
+                            
+                            console.log(`📸 照片 ${index + 1} 散开到位置: ${finalLeft}, ${finalTop} (延迟: ${delay}, 持续: ${duration})`);
+                        }, index * 100); // 更快的散开节奏
+                    });
+                }
+            }
+
+            async loadPhotos() {
+                const photoUrls = [
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqNJRktLzZiaPGic4sMDHiangKhbwObQ1Oq9uScIiaRdPubVHcPW9hq8D1fw/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqxGgkmQBBIDkQiaVHs0ksI9oPicPUvomZYkWIwFaf2yPiaicMGsibSicD4gIw/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqHu4nUPXHPkPZd7upuKJpcqDq7snu2SWgt531HycCoFOLU94kaYqD5Q/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqyPgjTibg4ymS1oubu0DVnBs0dvahuIWhLeGW8ia8DZznZDkofU2m7epg/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqmrUy0vkvMe1J7oykoQx1bXycm6lCeqSt3sQtibVZw9uEnGblgsrTFdw/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqBLdYVN1e9bSAlzu8yn2rmbjUOM670gv8bBPd2dyPxiaYndxfVqspN9Q/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqhWpRSalaoQI4T9c8PvyX3VxqjwlQWto4ygGY7lw0qIqK1LWbQUavvA/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqJaWmaVm5ibxuQNYbpzuGSWMrgd09Nk4sXP9icianVGqeyMbqhWEkeicQkA/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQq1PMvadCyxSJq6BwTUEBhZQQ5icO7qYR3pkhAJsr9pBjpR73NAbIlLmQ/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqJKQvibu3bI58C3YmnVUEMDcd8r3m1Rffv27GkTTkxJoj3LkDAibakHSA/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqhL9WdtJ2Xp3lvAvy6IqlgWzUKLuCub0q1Gh82OBh3ArZ5zgQAMia79g/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqic0FB7HoLyibM3S2MEnNlfmopgzibr5Qd7uGrE4sMKlibNSumjOiaZj50uw/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqCwPYNqkJ8uVFq7UyIEExmM03hic2RgurHCZnxyOAHjeILCdJE7icuMjw/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQq3liahxMV245aG9HFLNEbs5g4VQlZg5JC30sxcLNb8mehgaKW0SFXO3A/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqMfPzgAFz7o9ay4QUdZibib7I9yLVuV6o5LicsGq7cb8vjoCOEY1SCz1Og/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqOYJH9nAwyI6NFKCO8YtibrFvvSNBD4wzZVGxE1DpcKWic5JtjrLxGPVg/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqfDxuJwicsqxBk4YlON21VWicVib6ZHUJ4icbVLfF0kUW8SohFVl6t31vNw/640?wx_fmt=jpeg&from=appmsg'
+                ];
+
+                const photoData = [
+                    { title: '🎈 活动开场秀', desc: '六一节开始啦！工作人员准备就绪，欢迎小朋友们的到来' },
+                    { title: '🍭 糖果奇幻世界', desc: 'Trolli软糖展示区，五彩缤纷的甜蜜天堂让人流连忘返' },
+                    { title: '🎪 欢乐互动时光', desc: '现场游戏互动热火朝天，小朋友们积极参与各种趣味活动' },
+                    { title: '🌈 纯真笑容绽放', desc: '孩子们最灿烂的笑容，定格最美好的童年瞬间' },
+                    { title: '🎨 创意手工乐园', desc: '手工制作区域人气爆棚，小艺术家们尽情发挥创意' },
+                    { title: '🎵 音乐律动狂欢', desc: '跟着动感音乐节拍摇摆，释放无限童年活力' },
+                    { title: '🏆 胜利荣耀时刻', desc: '游戏胜利的喜悦表情，满满的成就感溢于言表' },
+                    { title: '🤝 友谊桥梁搭建', desc: '活动中结识新伙伴，美好友谊从这里萌芽生长' },
+                    { title: '🎯 专注投入瞬间', desc: '认真参与游戏的专注神情，展现孩子们的认真态度' },
+                    { title: '🌟 闪耀小明星', desc: '舞台表演的闪亮时刻，每个孩子都是独一无二的明星' },
+                    { title: '🎪 魔法奇幻之旅', desc: '走进Trolli的魔法糖果世界，体验前所未有的甜蜜冒险' },
+                    { title: '💝 惊喜礼品狂欢', desc: '收到心仪礼物时的惊喜表情，满满的开心溢出屏幕' },
+                    { title: '📸 珍贵记忆典藏', desc: '用镜头定格这些珍贵的童年时光，留下永恒的美好回忆' },
+                    { title: '🎭 角色扮演秀场', desc: '小朋友们变身成各种可爱角色，展现无限想象力' },
+                    { title: '🍬 甜蜜分享时刻', desc: '和小伙伴一起分享美味糖果，快乐加倍甜蜜加倍' },
+                    { title: '🎊 欢乐无限延续', desc: '活动现场处处充满了欢声笑语，快乐氛围感染每个人' },
+                    { title: '🚀 想象力无限爆棚', desc: '孩子们展现出天马行空的创造力，未来可期' }
+                ];
+
+                this.createMasterPhotos(photoData, photoUrls);
+            }
+
+            generateOptimizedLayout(count) {
+                const positions = [];
+                const containerWidth = window.innerWidth;
+                const columns = 3; // 固定每行3张
+                
+                for (let i = 0; i < count; i++) {
+                    const row = Math.floor(i / columns);
+                    const col = i % columns;
+                    
+                    // 规整网格布局，每行3张，完全无重叠
+                    const leftSpacing = 100 / columns;
+                    const left = leftSpacing * col + leftSpacing / 2 - 12;
+                    const top = row * 20 + 8; // 调整行间距
+                    
+                    positions.push({
+                        top: `${Math.min(top, 80)}%`,
+                        left: `${Math.max(8, Math.min(left, 85))}%`,
+                        zIndex: 50 + i
+                    });
+                }
+                
+                return positions;
+            }
+
+            createMasterPhotos(photoData, photoUrls) {
+                const photosContainer = document.querySelector('.floating-photos');
+                const positions = this.generateOptimizedLayout(photoData.length);
+                
+                photoData.forEach((photo, index) => {
+                    if (index >= photoUrls.length) return;
+                    
+                    const photoElement = document.createElement('div');
+                    photoElement.className = 'floating-photo initial';
+                    photoElement.dataset.finalTop = positions[index].top;
+                    photoElement.dataset.finalLeft = positions[index].left;
+                    photoElement.style.zIndex = positions[index].zIndex;
+                    
+                    photoElement.innerHTML = `
+                        <div class="photo-frame">
+                            <img src="${photoUrls[index]}" alt="${photo.title}" loading="lazy">
+                            <div class="photo-info">
+                                <div class="photo-title">${photo.title}</div>
+                                <div class="photo-desc">${photo.desc}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // 添加随机3D效果
+                    const randomDelay = Math.random() * 5;
+                    const randomDuration = 12 + Math.random() * 8;
+                    photoElement.style.setProperty('--animation-delay', `${randomDelay}s`);
+                    photoElement.style.setProperty('--animation-duration', `${randomDuration}s`);
+                    
+                    photoElement.addEventListener('click', () => {
+                        this.openModal(photoUrls[index], photo.title);
+                    });
+                    
+                    photosContainer.appendChild(photoElement);
+                    this.photos.push(photoElement);
+                });
+            }
+
+            initScrollEffects() {
+                let ticking = false;
+                
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        requestAnimationFrame(() => {
+                            const scrolled = window.pageYOffset;
+                            const lollipop = document.getElementById('superLollipop');
+                            
+                            // 增强棒棒糖滚动效果
+                            const rotation = scrolled * 0.8;
+                            const float = Math.sin(scrolled * 0.01) * 25;
+                            const scale = 1 + Math.sin(scrolled * 0.005) * 0.1;
+                            
+                            const baseTransform = lollipop.style.transform.split('rotateY')[0] || 'translate(-50%, -50%)';
+                            lollipop.style.transform = baseTransform + ` 
+                                rotate(${rotation}deg) 
+                                translateY(${float}px) 
+                                scale(${scale})
+                            `;
+                            
+                            // 更新闪烁效果
+                            this.sparkles.forEach((sparkle, index) => {
+                                const sparkleRotation = rotation * (1 + index * 0.1);
+                                sparkle.style.transform = `rotate(${sparkleRotation}deg)`;
+                            });
+                            
+                            // 增强照片视差效果
+                            if (this.isSpread) {
+                                this.photos.forEach((photo, index) => {
+                                    const speed = 0.02 + (index % 3) * 0.01;
+                                    const yPos = -(scrolled * speed);
+                                    const rotation = Math.sin(scrolled * 0.005 + index) * 2;
+                                    const scale = 1 + Math.sin(scrolled * 0.003 + index) * 0.05;
+                                    
+                                    // 获取现有transform或设置基础值
+                                    const baseTransform = photo.style.transform || 'scale(1)';
+                                    const newTransform = `${baseTransform} 
+                                        translateY(${yPos}px) 
+                                        rotateZ(${rotation}deg) 
+                                        scale(${scale})
+                                    `;
+                                    
+                                    photo.style.transform = newTransform;
+                                });
+                            }
+                            
+                            ticking = false;
+                        });
+                        
+                        ticking = true;
+                    }
+                });
+            }
+
+            openModal(photoUrl, title) {
+                const modal = document.getElementById('modal');
+                const modalPhoto = document.getElementById('modalPhoto');
+                
+                modalPhoto.src = photoUrl;
+                modalPhoto.alt = title;
+                
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.classList.add('show');
+                }, 10);
+                
+                document.body.style.overflow = 'hidden';
+            }
+
+            closeModal() {
+                const modal = document.getElementById('modal');
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }
+
+            bindEvents() {
+                const modalClose = document.getElementById('modalClose');
+                const modal = document.getElementById('modal');
+                
+                modalClose?.addEventListener('click', () => {
+                    this.closeModal();
+                });
+                
+                modal?.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        this.closeModal();
+                    }
+                });
+                
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeModal();
+                    }
+                });
+                
+                // 平滑滚动
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+            }
+        }
+
+        // 启动世界级相册
+        document.addEventListener('DOMContentLoaded', () => {
+            new WorldClassTrolliAlbum();
+        });
+    </script>
+</body>
+</html>
