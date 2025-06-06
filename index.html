@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Trolli口力销售部六一促销活动超萌漂浮相册2.0">
+    <meta name="description" content="Trolli口力销售部六一促销活动超萌漂浮相册2.0 - 终极优化版">
     <title>🍭 Trolli六一超萌嘉年华 2.0 | 终极糖果世界</title>
     
     <!-- 微信分享优化 -->
     <meta property="og:title" content="🍭 Trolli六一超萌嘉年华 2.0">
     <meta property="og:description" content="17个超甜蜜瞬间全记录，超炫酷交互体验">
-    <meta property="og:image" content="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_01.jpg">
+    <meta property="og:image" content="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.jpg">
     
-    <!-- DNS预解析优化 -->
-    <link rel="dns-prefetch" href="//raw.githubusercontent.com">
-    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+    <!-- 🚀 终极DNS和CDN预连接优化 -->
+    <link rel="preconnect" href="https://fastly.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="//fastly.jsdelivr.net">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="//gcore.jsdelivr.net">
+    
+    <!-- 🚀 关键图片预加载 - 前5张立即开始下载 -->
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_02.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_03.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_04.jpg">
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_05.jpg">
     
     <!-- 世界顶级字体系统 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800;900&family=Lora:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800;900&family=Merriweather:wght@300;400;700;900&family=Roboto+Slab:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -63,17 +73,13 @@
             --shadow-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
             --shadow-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
             
-            /* 世界顶级字体系统 - 全面升级 */
-            --font-display: 'Oswald', 'Noto Sans SC', sans-serif;              /* 展示标题 - 强力冲击 */
-            --font-title: 'Montserrat', 'Noto Sans SC', sans-serif;            /* 主标题 - 现代几何 */
-            --font-body: 'DM Sans', 'Noto Sans SC', sans-serif;                /* 正文 - 极致可读 */
-            --font-chinese: 'Noto Sans SC', 'PingFang SC', sans-serif;         /* 中文优化 */
-            --font-elegant: 'Lora', 'Noto Sans SC', serif;                     /* 优雅衬线 */
-            --font-modern: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;    /* 现代无衬线 */
-            --font-accent: 'Raleway', 'Noto Sans SC', sans-serif;              /* 装饰字体 */
-            --font-mono: 'JetBrains Mono', monospace;                          /* 等宽字体 */
-            --font-slab: 'Roboto Slab', 'Noto Sans SC', serif;                 /* 粗衬线 */
-            --font-work: 'Work Sans', 'Noto Sans SC', sans-serif;              /* 工作字体 */
+            /* 世界顶级字体系统 */
+            --font-display: 'Montserrat', 'Noto Sans SC', sans-serif;
+            --font-title: 'Montserrat', 'Noto Sans SC', sans-serif;
+            --font-body: 'DM Sans', 'Noto Sans SC', sans-serif;
+            --font-chinese: 'Noto Sans SC', 'PingFang SC', sans-serif;
+            --font-modern: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
+            --font-accent: 'Poppins', 'Noto Sans SC', sans-serif;
             
             /* 完美缓动函数 */
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -110,7 +116,7 @@
             cursor: pointer;
         }
 
-        /* 世界级动态背景系统 - 增强版 + 自动变色 */
+        /* 🚀 优化版动态背景系统 - 减少GPU负载 */
         .cosmic-background {
             position: fixed;
             top: 0;
@@ -130,30 +136,11 @@
                 var(--candy-purple) 100%
             );
             background-size: 400% 400%;
-            animation: cosmic-shift 20s ease infinite, auto-theme-cycle 120s linear infinite;
-            transition: all 2s ease;
+            animation: cosmic-shift 20s ease infinite;
+            will-change: background-position;
         }
 
-        /* 背景俄罗斯方块游戏 */
-        .background-tetris {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -5;
-            opacity: 0.1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .background-tetris canvas {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(2px);
-        }
-
+        /* 🚀 优化版粒子场 - 减少粒子数量提升性能 */
         .particle-field {
             position: fixed;
             top: 0;
@@ -166,11 +153,12 @@
 
         .particle {
             position: absolute;
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.9);
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            animation: particle-float 12s linear infinite;
+            animation: particle-float 10s linear infinite;
+            will-change: transform;
         }
 
         /* 糖果爆炸系统 */
@@ -187,7 +175,7 @@
             animation: explode-out 1.5s ease-out forwards;
         }
 
-        /* 增强：超密集糖果和气球漂浮系统 */
+        /* 🚀 优化版糖果漂浮系统 - 减少元素数量 */
         .floating-candies {
             position: fixed;
             top: 0;
@@ -201,79 +189,52 @@
 
         .floating-candy {
             position: absolute;
-            font-size: 3rem;
-            animation: candy-float 20s linear infinite;
-            opacity: 0.8;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
-            transition: transform 0.3s ease;
-        }
-
-        .floating-candy:hover {
-            transform: scale(1.2) rotate(15deg);
+            font-size: 2.5rem;
+            animation: candy-float 15s linear infinite;
+            opacity: 0.7;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+            will-change: transform;
         }
 
         .floating-balloon {
             position: absolute;
-            font-size: 3.5rem;
-            animation: balloon-float 25s linear infinite;
-            opacity: 0.7;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
-        }
-
-        .floating-star {
-            position: absolute;
-            font-size: 2.5rem;
-            animation: star-float 18s linear infinite;
+            font-size: 3rem;
+            animation: balloon-float 20s linear infinite;
             opacity: 0.6;
-            filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+            will-change: transform;
         }
 
-        /* 糖果雨效果 */
-        .candy-rain {
-            position: fixed;
-            top: -100px;
-            width: 100%;
-            height: 100vh;
-            z-index: 999995;
-            pointer-events: none;
-        }
-
-        .rain-drop {
-            position: absolute;
-            font-size: 2rem;
-            animation: rain-fall 3s linear forwards;
-        }
-
-        /* 超级立体棒棒糖 - 响应式优化版 */
+        /* 🚀 优化版超级立体棒棒糖 - 减少复杂度 */
         .super-lollipop {
             position: fixed;
             right: 20px;
             top: 20px;
             transform: none;
-            width: 120px;
-            height: 140px;
+            width: 100px;
+            height: 120px;
             z-index: 999999;
             pointer-events: auto;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .super-lollipop.scrolling {
-            opacity: 0.3;
-            transform: scale(0.8);
+            opacity: 0.4;
+            transform: scale(0.9);
         }
 
         .super-lollipop:hover {
-            transform: scale(1.1);
-            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+            transform: scale(1.05);
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.25));
         }
 
         .lollipop-head {
             position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 15px;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 10px;
             border-radius: 50%;
             background: conic-gradient(
                 var(--theme-primary) 0deg 30deg,
@@ -289,15 +250,13 @@
                 var(--theme-secondary) 300deg 330deg,
                 var(--theme-primary) 330deg 360deg
             );
-            animation: mega-spin 12s linear infinite;
+            animation: mega-spin 8s linear infinite;
             box-shadow: 
-                0 0 0 5px rgba(255,255,255,0.9),
-                0 0 0 8px var(--theme-accent),
-                0 0 0 10px rgba(255,255,255,0.5),
-                var(--shadow-3),
-                inset 0 0 20px rgba(255,255,255,0.4);
+                0 0 0 3px rgba(255,255,255,0.9),
+                0 0 0 5px var(--theme-accent),
+                var(--shadow-2);
             border: 2px solid rgba(255,255,255,0.95);
-            transition: all 0.3s ease;
+            will-change: transform;
         }
 
         .lollipop-stick {
@@ -305,238 +264,15 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 8px;
-            height: 60px;
+            width: 6px;
+            height: 40px;
             background: linear-gradient(180deg, 
                 #FFE0B2 0%, 
                 #FFCC80 30%,
                 #FFB74D 70%, 
                 #FF8F00 100%);
-            border-radius: 4px;
-            box-shadow: 
-                inset 1px 0 2px rgba(255,255,255,0.6),
-                inset -1px 0 2px rgba(0,0,0,0.3),
-                var(--shadow-1);
-        }
-
-        /* 棒棒糖彩虹轨迹系统 */
-        .lollipop-trail {
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 999998;
-            transition: all 0.5s ease;
-        }
-
-        /* 音效按钮 */
-        .audio-toggle {
-            position: fixed;
-            bottom: 120px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--candy-green), var(--candy-cyan));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow-3);
-            transition: all 0.3s var(--ease-out-back);
-            z-index: 10000;
-        }
-
-        .audio-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .audio-toggle.muted {
-            opacity: 0.5;
-        }
-
-        /* 成就系统 */
-        .achievement-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: linear-gradient(135deg, var(--candy-yellow), var(--candy-orange));
-            color: white;
-            padding: 20px 30px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-5);
-            z-index: 100002;
-            text-align: center;
-            font-family: var(--font-accent);
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.5s var(--ease-out-back);
-        }
-
-        .achievement-popup.show {
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        /* 收集计数器 */
-        .candy-counter {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px 15px;
-            border-radius: 25px;
-            font-family: var(--font-modern);
-            font-weight: 700;
-            color: var(--candy-purple);
-            box-shadow: var(--shadow-2);
-            z-index: 10000;
-            transform: scale(0);
-            transition: all 0.3s var(--ease-out-back);
-        }
-
-        .candy-counter.visible {
-            transform: scale(1);
-        }
-
-        /* 俄罗斯方块游戏系统 */
-        .tetris-trigger {
-            position: fixed;
-            bottom: 60px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--candy-purple), var(--candy-blue));
-            border-radius: 12px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow-3);
-            transition: all 0.3s var(--ease-out-back);
-            z-index: 10000;
-            animation: tetris-bounce 2s ease-in-out infinite;
-        }
-
-        .tetris-trigger.visible {
-            display: flex;
-        }
-
-        .tetris-trigger:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: var(--shadow-5);
-        }
-
-        .tetris-icon {
-            font-size: 1.3rem;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .tetris-game {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 65vw;
-            max-width: 400px;
-            height: 70vh;
-            max-height: 600px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            box-shadow: var(--shadow-5);
-            z-index: 100001;
-            opacity: 0;
-            transition: all 0.5s var(--ease-out-back);
-            border: 3px solid rgba(255,255,255,0.8);
-        }
-
-        .tetris-game.visible {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-
-        .tetris-header {
-            padding: 20px;
-            border-bottom: 2px solid rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, var(--candy-purple), var(--candy-blue));
-            color: white;
-            border-radius: 17px 17px 0 0;
-        }
-
-        .tetris-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            font-family: var(--font-title);
-        }
-
-        .tetris-close {
-            width: 30px;
-            height: 30px;
-            background: rgba(255,255,255,0.2);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tetris-close:hover {
-            background: rgba(255,255,255,0.3);
-            transform: rotate(90deg);
-        }
-
-        .tetris-content {
-            height: calc(100% - 80px);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tetris-board {
-            flex: 1;
-            margin: 20px;
-            background: rgba(0,0,0,0.8);
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tetris-controls {
-            padding: 20px;
-            display: flex;
-            justify-content: space-around;
-            background: rgba(0,0,0,0.05);
-            border-radius: 0 0 17px 17px;
-        }
-
-        .tetris-btn {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(45deg, var(--candy-pink), var(--candy-orange));
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: var(--shadow-2);
-            transition: all 0.2s ease;
-            font-weight: bold;
-            font-family: var(--font-mono);
-        }
-
-        .tetris-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-3);
-        }
-
-        .tetris-btn:active {
-            transform: translateY(0);
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
         }
 
         /* 漂浮相册容器 */
@@ -545,7 +281,7 @@
             z-index: 100;
         }
 
-        /* 英雄区域 - 升级字体系统 */
+        /* 英雄区域 - 优化版 */
         .hero-section {
             height: 100vh;
             display: flex;
@@ -560,17 +296,17 @@
         }
 
         .hero-title {
-            font-size: clamp(3rem, 12vw, 8rem);
+            font-size: clamp(3rem, 12vw, 7rem);
             font-weight: 800;
             color: #FFFFFF;
             margin-bottom: 1.5rem;
             line-height: 0.9;
             text-shadow: 
-                4px 4px 0px var(--theme-primary),
-                8px 8px 0px var(--candy-orange),
-                12px 12px 0px var(--theme-accent),
-                16px 16px 40px rgba(0,0,0,0.6);
-            animation: title-bounce 4s ease-in-out infinite;
+                3px 3px 0px var(--theme-primary),
+                6px 6px 0px var(--candy-orange),
+                9px 9px 0px var(--theme-accent),
+                12px 12px 30px rgba(0,0,0,0.5);
+            animation: title-bounce 3s ease-in-out infinite;
             font-family: var(--font-display);
             letter-spacing: -0.02em;
             max-width: 90vw;
@@ -584,42 +320,42 @@
         }
 
         .hero-subtitle {
-            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            font-size: clamp(1.5rem, 6vw, 2.8rem);
             font-weight: 600;
             color: #FFFFFF;
             margin-bottom: 2rem;
             text-shadow: 
-                3px 3px 0px var(--candy-purple),
-                6px 6px 20px rgba(0,0,0,0.4);
+                2px 2px 0px var(--candy-purple),
+                4px 4px 15px rgba(0,0,0,0.3);
             font-family: var(--font-title);
             max-width: 90vw;
             word-wrap: break-word;
             transition: all 0.8s ease;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.02em;
         }
 
         .hero-description {
-            font-size: clamp(1.1rem, 4vw, 1.6rem);
+            font-size: clamp(1rem, 3.5vw, 1.4rem);
             color: var(--mana-dark);
-            line-height: 1.7;
-            max-width: min(600px, 85vw);
+            line-height: 1.6;
+            max-width: min(550px, 85vw);
             background: linear-gradient(135deg, 
                 var(--mana-cream), 
                 rgba(255,255,255,0.95));
-            padding: clamp(2rem, 5vw, 3rem);
-            border-radius: 30px;
-            box-shadow: var(--shadow-4);
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            border-radius: 25px;
+            box-shadow: var(--shadow-3);
             margin-bottom: 2rem;
             font-weight: 500;
-            font-family: var(--font-elegant);
-            backdrop-filter: blur(10px);
+            font-family: var(--font-chinese);
+            backdrop-filter: blur(8px);
             border: 2px solid rgba(255,255,255,0.3);
             transition: all 0.8s ease;
         }
 
         .cta-button {
-            padding: clamp(1.5rem, 4vw, 2rem) clamp(3rem, 8vw, 4rem);
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            padding: clamp(1.2rem, 3.5vw, 1.8rem) clamp(2.5rem, 7vw, 3.5rem);
+            font-size: clamp(1.1rem, 2.8vw, 1.4rem);
             font-weight: 700;
             color: #FFFFFF;
             background: linear-gradient(45deg, 
@@ -628,16 +364,16 @@
                 var(--theme-accent),
                 var(--candy-lime));
             background-size: 300% 300%;
-            animation: gradient-flow 3s ease infinite;
+            animation: gradient-flow 2.5s ease infinite;
             border: none;
-            border-radius: 50px;
+            border-radius: 40px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            box-shadow: var(--shadow-3);
+            box-shadow: var(--shadow-2);
             transition: all 0.4s var(--ease-out-back);
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-family: var(--font-accent);
             max-width: 90vw;
             text-align: center;
@@ -645,49 +381,34 @@
             overflow: hidden;
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.8s ease;
-        }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
         .cta-button:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: var(--shadow-5);
-            letter-spacing: 4px;
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: var(--shadow-4);
+            letter-spacing: 3px;
         }
 
-        /* 照片预览聚拢系统 - 极速显示优化 */
+        /* 🚀 照片预览聚拢系统 - 优化版本 */
         .photo-preview-cluster {
             position: fixed;
             left: 50%;
             top: 25%;
             transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
+            width: 350px;
+            height: 350px;
             z-index: 999997;
             pointer-events: none;
         }
 
         .preview-photo {
             position: absolute;
-            width: 60px;
-            height: 75px;
-            border-radius: 8px;
+            width: 50px;
+            height: 65px;
+            border-radius: 6px;
             overflow: hidden;
-            box-shadow: var(--shadow-2);
-            opacity: 0.9; /* 立即显示，更高的可见度 */
-            transition: all 2s var(--ease-out-expo);
-            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            box-shadow: var(--shadow-1);
+            opacity: 0.9;
+            transition: all 1.5s var(--ease-out-expo);
+            background: linear-gradient(45deg, #f5f5f5, #e8e8e8);
         }
 
         .preview-photo.loaded {
@@ -700,29 +421,12 @@
             object-fit: cover;
         }
 
-        /* 预览图占位符 */
-        .preview-photo::before {
-            content: '🖼️';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            z-index: 1;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
-
-        .preview-photo.loaded::before {
-            opacity: 0;
-        }
-
-        /* 手机优化的照片容器设计 - 6D玻璃质感 + AR效果 + 延迟加载 */
+        /* 🚀 手机优化的照片容器设计 - 性能优化版 */
         .floating-photos {
             position: relative;
-            min-height: 200vh;
+            min-height: 150vh;
             width: 100%;
-            padding: 3rem 0;
+            padding: 2rem 0;
             display: none;
         }
 
@@ -732,19 +436,16 @@
 
         .floating-photo {
             position: relative;
-            width: 280px;
-            height: 350px;
-            margin: 0 auto 4rem;
+            width: 260px;
+            height: 320px;
+            margin: 0 auto 3rem;
             cursor: pointer;
-            filter: drop-shadow(0 15px 35px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.15));
             z-index: 50;
             opacity: 0;
-            transform: translateY(100px);
-            transition: all 1.2s var(--ease-out-expo);
-            
-            /* 6D动画基础设置 */
-            animation: photo6D 8s ease-in-out infinite;
-            transform-style: preserve-3d;
+            transform: translateY(80px);
+            transition: all 1s var(--ease-out-expo);
+            will-change: transform, opacity;
         }
 
         .floating-photo.visible {
@@ -753,211 +454,109 @@
         }
 
         .floating-photo.collected {
-            transform: scale(0.8) rotate(360deg);
-            opacity: 0.7;
-        }
-
-        .floating-photo:nth-child(2n) {
-            animation-delay: 0.8s;
-        }
-
-        .floating-photo:nth-child(3n) {
-            animation-delay: 1.6s;
-        }
-
-        .floating-photo:nth-child(4n) {
-            animation-delay: 2.4s;
+            transform: scale(0.9) rotate(180deg);
+            opacity: 0.8;
         }
 
         .floating-photo:hover {
-            transform: translateY(-25px) rotateY(15deg) rotateX(10deg) scale(1.15);
+            transform: translateY(-15px) scale(1.05);
             z-index: 1000;
-            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.4));
-            animation: photo6DHover 0.6s ease-in-out infinite alternate;
+            filter: drop-shadow(0 25px 50px rgba(0,0,0,0.3));
         }
 
-        /* AR式呼吸发光效果 */
-        .floating-photo::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, var(--candy-cyan), var(--candy-purple), var(--candy-pink));
-            border-radius: 30px;
-            z-index: -1;
-            opacity: 0;
-            animation: ar-breathe 3s ease-in-out infinite;
-        }
-
-        .floating-photo:hover::before {
-            opacity: 0.6;
-        }
-
-        /* 6D玻璃质感相框设计 */
+        /* 🚀 优化版玻璃质感相框设计 - 减少复杂效果 */
         .photo-frame {
             width: 100%;
             height: 100%;
             position: relative;
             background: linear-gradient(145deg, 
-                rgba(255,255,255,0.15) 0%,
-                rgba(255,255,255,0.05) 50%,
-                rgba(255,255,255,0.15) 100%);
-            border-radius: 25px;
-            padding: 20px;
-            backdrop-filter: blur(25px);
+                rgba(255,255,255,0.12) 0%,
+                rgba(255,255,255,0.04) 50%,
+                rgba(255,255,255,0.12) 100%);
+            border-radius: 20px;
+            padding: 15px;
+            backdrop-filter: blur(15px);
             overflow: hidden;
-            transform-style: preserve-3d;
-            
-            /* 玻璃边框效果 */
-            border: 2px solid;
-            border-image: linear-gradient(45deg, 
-                rgba(255,255,255,0.8), 
-                rgba(255,255,255,0.2), 
-                rgba(255,255,255,0.8)) 1;
-            
-            /* 多层阴影营造深度 */
+            border: 2px solid rgba(255,255,255,0.2);
             box-shadow: 
-                0 8px 32px rgba(0,0,0,0.12),
-                inset 0 2px 0 rgba(255,255,255,0.2),
-                inset 0 -2px 0 rgba(0,0,0,0.1),
-                0 0 0 1px rgba(255,255,255,0.05);
+                0 6px 20px rgba(0,0,0,0.1),
+                inset 0 1px 0 rgba(255,255,255,0.15);
         }
 
-        /* 玻璃反光效果 */
-        .photo-frame::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255,255,255,0.4), 
-                transparent);
-            transition: left 0.5s ease;
-            z-index: 1;
-        }
-
-        .floating-photo:hover .photo-frame::before {
-            left: 100%;
-        }
-
-        /* 彩虹边框动画 */
-        .photo-frame::after {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg,
-                var(--theme-primary),
-                var(--candy-orange),
-                var(--theme-accent),
-                var(--candy-green),
-                var(--candy-cyan),
-                var(--candy-blue),
-                var(--candy-purple),
-                var(--theme-secondary)
-            );
-            background-size: 400% 400%;
-            border-radius: 28px;
-            z-index: -1;
-            animation: frame-rainbow 8s ease infinite;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .floating-photo:hover .photo-frame::after {
-            opacity: 0.8;
-        }
-
-        /* 图片立即显示优化 */
+        /* 🚀 图片立即显示优化 - 关键优化 */
         .floating-photo img {
             width: 100%;
-            height: 240px;
+            height: 200px;
             object-fit: cover;
-            border-radius: 15px;
-            transition: all 0.6s var(--ease-out-expo);
-            filter: contrast(1.1) saturate(1.2) brightness(1.05);
-            
-            /* 玻璃内阴影 */
-            box-shadow: 
-                inset 0 1px 0 rgba(255,255,255,0.3),
-                inset 0 -1px 0 rgba(0,0,0,0.1),
-                0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            filter: contrast(1.05) saturate(1.1) brightness(1.02);
+            box-shadow: var(--shadow-1);
         }
 
         .floating-photo:hover img {
-            transform: scale(1.05) rotateZ(2deg);
-            filter: contrast(1.3) saturate(1.4) brightness(1.15);
-            box-shadow: 
-                inset 0 2px 0 rgba(255,255,255,0.4),
-                inset 0 -2px 0 rgba(0,0,0,0.15),
-                0 15px 35px rgba(0,0,0,0.25);
+            transform: scale(1.03);
+            filter: contrast(1.15) saturate(1.2) brightness(1.08);
+            box-shadow: var(--shadow-2);
         }
 
         .photo-info {
-            padding: 15px 8px 5px;
+            padding: 12px 6px 4px;
             text-align: center;
         }
 
         .photo-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--mana-blue);
-            margin-bottom: 8px;
-            font-family: var(--font-work);
-            line-height: 1.3;
+            margin-bottom: 6px;
+            font-family: var(--font-chinese);
+            line-height: 1.2;
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            letter-spacing: 0.01em;
         }
 
         .photo-desc {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--mana-dark);
-            line-height: 1.5;
+            line-height: 1.4;
             font-weight: 400;
-            font-family: var(--font-elegant);
-            opacity: 0.85;
+            font-family: var(--font-body);
+            opacity: 0.8;
         }
 
         /* 结尾文案区域 */
         .ending-section {
-            height: 60vh;
+            height: 50vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 1.5rem;
             position: relative;
         }
 
         .ending-quote {
-            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            font-size: clamp(0.9rem, 2.2vw, 1.3rem);
             font-weight: 400;
             color: rgba(255,255,255,0.9);
             margin-bottom: 1rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            font-family: var(--font-elegant);
-            line-height: 1.7;
-            animation: float-text 6s ease-in-out infinite;
-            letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            font-family: var(--font-chinese);
+            line-height: 1.6;
+            animation: float-text 5s ease-in-out infinite;
+            letter-spacing: 0.5px;
             font-style: italic;
         }
 
         .ending-author {
-            font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+            font-size: clamp(0.7rem, 1.6vw, 1rem);
             font-weight: 600;
             color: rgba(255,255,255,0.7);
-            font-family: var(--font-work);
-            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
-            letter-spacing: 2px;
-            animation: float-text 6s ease-in-out infinite 3s;
+            font-family: var(--font-modern);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+            letter-spacing: 1.5px;
+            animation: float-text 5s ease-in-out infinite 2s;
             text-transform: uppercase;
         }
 
@@ -968,29 +567,29 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.9);
             z-index: 100000;
             display: none;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(15px);
         }
 
         .modal-content {
             position: relative;
             max-width: 90vw;
             max-height: 90vh;
-            transform: scale(0.8) rotateY(90deg);
-            transition: all 0.8s var(--ease-out-back);
+            transform: scale(0.9);
+            transition: all 0.6s var(--ease-out-back);
         }
 
         .modal.show .modal-content {
-            transform: scale(1) rotateY(0deg);
+            transform: scale(1);
         }
 
         .modal-photo {
-            border-radius: 20px;
-            box-shadow: var(--shadow-5);
+            border-radius: 15px;
+            box-shadow: var(--shadow-4);
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
@@ -998,56 +597,33 @@
 
         .modal-close {
             position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 80px;
-            height: 80px;
+            top: -60px;
+            right: -60px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--candy-red), var(--candy-orange));
             color: #FFFFFF;
-            border: 4px solid #FFFFFF;
+            border: 3px solid #FFFFFF;
             border-radius: 50%;
-            font-size: 2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-3);
+            box-shadow: var(--shadow-2);
             transition: all 0.3s var(--ease-out-back);
             font-family: var(--font-title);
         }
 
         .modal-close:hover {
-            transform: scale(1.2) rotate(180deg);
+            transform: scale(1.1) rotate(90deg);
             background: linear-gradient(135deg, var(--candy-orange), var(--candy-yellow));
         }
 
-        /* 世界级动画系统 */
+        /* 🚀 优化版动画系统 - 减少GPU负载 */
         @keyframes cosmic-shift {
             0%, 100% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-        }
-
-        @keyframes auto-theme-cycle {
-            0% { 
-                filter: hue-rotate(0deg) saturate(1);
-            }
-            20% { 
-                filter: hue-rotate(72deg) saturate(1.2);
-            }
-            40% { 
-                filter: hue-rotate(144deg) saturate(0.8);
-            }
-            60% { 
-                filter: hue-rotate(216deg) saturate(1.1);
-            }
-            80% { 
-                filter: hue-rotate(288deg) saturate(0.9);
-            }
-            100% { 
-                filter: hue-rotate(360deg) saturate(1);
-            }
+            50% { background-position: 100% 50%; }
         }
 
         @keyframes particle-float {
@@ -1055,55 +631,38 @@
                 transform: translateY(100vh) translateX(0) scale(0);
                 opacity: 0;
             }
-            10% {
-                opacity: 1;
+            5% {
+                opacity: 0.8;
             }
-            90% {
-                opacity: 1;
+            95% {
+                opacity: 0.8;
             }
             100% { 
-                transform: translateY(-100px) translateX(100px) scale(1);
+                transform: translateY(-100px) translateX(50px) scale(1);
                 opacity: 0;
             }
         }
 
         @keyframes candy-float {
             0% { 
-                transform: translateY(100vh) translateX(-50px) rotate(0deg);
+                transform: translateY(100vh) translateX(-30px) rotate(0deg);
                 opacity: 0;
             }
             5% {
-                opacity: 0.8;
+                opacity: 0.7;
             }
             95% {
-                opacity: 0.8;
+                opacity: 0.7;
             }
             100% { 
-                transform: translateY(-100px) translateX(50px) rotate(360deg);
+                transform: translateY(-100px) translateX(30px) rotate(180deg);
                 opacity: 0;
             }
         }
 
         @keyframes balloon-float {
             0% { 
-                transform: translateY(100vh) translateX(-30px) rotate(-10deg) scale(0.8);
-                opacity: 0;
-            }
-            5% {
-                opacity: 0.7;
-            }
-            95% {
-                opacity: 0.7;
-            }
-            100% { 
-                transform: translateY(-100px) translateX(30px) rotate(10deg) scale(1);
-                opacity: 0;
-            }
-        }
-
-        @keyframes star-float {
-            0% { 
-                transform: translateY(100vh) translateX(-20px) rotate(0deg) scale(0.5);
+                transform: translateY(100vh) translateX(-20px) rotate(-5deg) scale(0.9);
                 opacity: 0;
             }
             5% {
@@ -1113,7 +672,7 @@
                 opacity: 0.6;
             }
             100% { 
-                transform: translateY(-100px) translateX(20px) rotate(720deg) scale(1);
+                transform: translateY(-100px) translateX(20px) rotate(5deg) scale(1);
                 opacity: 0;
             }
         }
@@ -1124,18 +683,7 @@
                 opacity: 1;
             }
             100% {
-                transform: scale(0.3) translate(var(--dx), var(--dy)) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes rain-fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: scale(0.4) translate(var(--dx), var(--dy)) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -1147,19 +695,12 @@
 
         @keyframes title-bounce {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
         @keyframes gradient-flow {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
-        }
-
-        @keyframes frame-rainbow {
-            0%, 100% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
         }
 
         @keyframes float-text {
@@ -1168,181 +709,183 @@
                 opacity: 0.9;
             }
             50% { 
-                transform: translateY(-5px);
+                transform: translateY(-3px);
                 opacity: 1;
             }
         }
 
-        @keyframes tetris-bounce {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% { 
-                transform: translateY(-5px) rotate(2deg);
-            }
-        }
-
-        @keyframes ar-breathe {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.3;
-            }
-        }
-
-        /* 6D照片动画系统 */
-        @keyframes photo6D {
-            0%, 100% { 
-                transform: translateY(0px) translateX(0px) translateZ(0px) 
-                          rotateX(0deg) rotateY(0deg) rotateZ(0deg) 
-                          scale(1);
-            }
-            16.66% { 
-                transform: translateY(-8px) translateX(3px) translateZ(5px) 
-                          rotateX(2deg) rotateY(1deg) rotateZ(0.5deg) 
-                          scale(1.02);
-            }
-            33.33% { 
-                transform: translateY(-5px) translateX(-2px) translateZ(8px) 
-                          rotateX(1deg) rotateY(-1deg) rotateZ(-0.5deg) 
-                          scale(1.01);
-            }
-            50% { 
-                transform: translateY(-12px) translateX(0px) translateZ(3px) 
-                          rotateX(-1deg) rotateY(2deg) rotateZ(1deg) 
-                          scale(1.03);
-            }
-            66.66% { 
-                transform: translateY(-6px) translateX(4px) translateZ(-2px) 
-                          rotateX(1.5deg) rotateY(-0.5deg) rotateZ(-0.8deg) 
-                          scale(1.015);
-            }
-            83.33% { 
-                transform: translateY(-3px) translateX(-1px) translateZ(6px) 
-                          rotateX(-0.5deg) rotateY(1.5deg) rotateZ(0.3deg) 
-                          scale(1.005);
-            }
-        }
-
-        @keyframes photo6DHover {
-            0% { 
-                transform: translateY(-25px) rotateY(15deg) rotateX(10deg) scale(1.15);
-                filter: brightness(1.1) contrast(1.2) saturate(1.3);
-            }
-            100% { 
-                transform: translateY(-30px) rotateY(18deg) rotateX(12deg) scale(1.18);
-                filter: brightness(1.15) contrast(1.25) saturate(1.35);
-            }
-        }
-
-        /* 响应式优化 */
+        /* 🚀 响应式优化 */
         @media (max-width: 768px) {
             .super-lollipop {
-                width: 80px;
-                height: 100px;
+                width: 70px;
+                height: 90px;
                 right: 15px;
                 top: 15px;
             }
             
             .lollipop-head {
-                width: 60px;
-                height: 60px;
-                margin-bottom: 10px;
-            }
-            
-            .lollipop-stick {
-                width: 6px;
-                height: 40px;
-            }
-            
-            .floating-photo {
-                width: 250px;
-                height: 320px;
-                margin-bottom: 3rem;
-            }
-            
-            .floating-photo img {
-                height: 200px;
-            }
-            
-            .hero-description {
-                padding: 1.5rem;
-                font-size: 1rem;
-            }
-            
-            .cta-button {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-
-            .modal-close {
-                top: -60px;
-                right: -60px;
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
-            .tetris-trigger {
-                bottom: 60px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-            }
-
-            .audio-toggle {
-                bottom: 120px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-            }
-
-            .tetris-icon, .theme-icon {
-                font-size: 1.2rem;
-            }
-
-            .tetris-game {
-                width: 90vw;
-                height: 80vh;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .super-lollipop {
-                width: 60px;
-                height: 80px;
-            }
-            
-            .lollipop-head {
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
+                margin-bottom: 8px;
             }
             
             .lollipop-stick {
                 width: 4px;
                 height: 30px;
             }
+            
+            .floating-photo {
+                width: 230px;
+                height: 290px;
+                margin-bottom: 2.5rem;
+            }
+            
+            .floating-photo img {
+                height: 180px;
+            }
+            
+            .hero-description {
+                padding: 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .cta-button {
+                padding: 0.9rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            .modal-close {
+                top: -45px;
+                right: -45px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .super-lollipop {
+                width: 55px;
+                height: 70px;
+            }
+            
+            .lollipop-head {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .lollipop-stick {
+                width: 3px;
+                height: 25px;
+            }
+
+            .floating-photo {
+                width: 200px;
+                height: 260px;
+            }
+            
+            .floating-photo img {
+                height: 160px;
+            }
+        }
+
+        /* 🚀 加载状态指示器 */
+        .loading-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000000;
+            background: rgba(255,255,255,0.95);
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-3);
+            text-align: center;
+            font-family: var(--font-modern);
+            transition: all 0.5s ease;
+        }
+
+        .loading-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--candy-purple);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 14px;
+            color: var(--mana-blue);
+            font-weight: 600;
+        }
+
+        /* 🚀 图片加载优化类 */
+        .photo-optimized {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent 70%
+            );
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
     </style>
 </head>
 <body class="locked">
+    <!-- 🚀 加载指示器 -->
+    <div class="loading-indicator" id="loadingIndicator">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">正在加载糖果世界...</div>
+    </div>
+
     <!-- 世界级背景系统 -->
     <div class="cosmic-background" id="cosmicBackground"></div>
     
-    <!-- 背景俄罗斯方块游戏 -->
-    <div class="background-tetris" id="backgroundTetris">
-        <canvas id="backgroundTetrisCanvas"></canvas>
-    </div>
-    
     <div class="particle-field" id="particleField"></div>
     
-    <!-- 超密集糖果和气球漂浮系统 -->
+    <!-- 优化版糖果漂浮系统 -->
     <div class="floating-candies" id="floatingCandies"></div>
 
-    <!-- 超级立体棒棒糖 - 优化版 -->
+    <!-- 优化版超级立体棒棒糖 -->
     <div class="super-lollipop" id="superLollipop">
         <div class="lollipop-head" id="lollipopHead"></div>
         <div class="lollipop-stick"></div>
@@ -1350,42 +893,6 @@
 
     <!-- 照片预览聚拢 -->
     <div class="photo-preview-cluster" id="photoPreviewCluster"></div>
-
-    <!-- 控制按钮区域 -->
-    <div class="audio-toggle" id="audioToggle">
-        <div class="audio-icon">🔊</div>
-    </div>
-
-    <div class="tetris-trigger" id="tetrisTrigger">
-        <div class="tetris-icon">🧩</div>
-    </div>
-
-    <!-- 成就系统 -->
-    <div class="achievement-popup" id="achievementPopup"></div>
-
-    <!-- 收集计数器 -->
-    <div class="candy-counter" id="candyCounter">
-        🍬 收集糖果: <span id="candyCount">0</span>
-    </div>
-
-    <!-- 俄罗斯方块游戏窗口 -->
-    <div class="tetris-game" id="tetrisGame">
-        <div class="tetris-header">
-            <div class="tetris-title">🍭 甜蜜方块</div>
-            <button class="tetris-close" id="tetrisClose">×</button>
-        </div>
-        <div class="tetris-content">
-            <div class="tetris-board">
-                <canvas id="tetrisCanvas" width="300" height="600"></canvas>
-            </div>
-            <div class="tetris-controls">
-                <button class="tetris-btn" id="tetrisLeft">←</button>
-                <button class="tetris-btn" id="tetrisRotate">↻</button>
-                <button class="tetris-btn" id="tetrisRight">→</button>
-                <button class="tetris-btn" id="tetrisDown">↓</button>
-            </div>
-        </div>
-    </div>
 
     <!-- 漂浮相册 -->
     <div class="floating-album">
@@ -1423,426 +930,23 @@
     </div>
 
     <script>
-        class BackgroundTetrisGame {
-            constructor(canvas) {
-                this.canvas = canvas;
-                this.ctx = canvas.getContext('2d');
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = window.innerHeight;
-                
-                this.BOARD_WIDTH = Math.floor(this.canvas.width / 30);
-                this.BOARD_HEIGHT = Math.floor(this.canvas.height / 30);
-                this.CELL_SIZE = 30;
-                
-                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
-                this.currentPiece = null;
-                this.currentX = 0;
-                this.currentY = 0;
-                this.gameRunning = true;
-                this.gameLoop = null;
-                this.dropSpeed = 2000; // 很慢的下落速度
-                
-                this.colors = [
-                    'transparent', 
-                    'rgba(255, 23, 68, 0.3)', 
-                    'rgba(255, 109, 0, 0.3)', 
-                    'rgba(255, 214, 0, 0.3)',
-                    'rgba(118, 255, 3, 0.3)', 
-                    'rgba(0, 229, 255, 0.3)', 
-                    'rgba(41, 121, 255, 0.3)', 
-                    'rgba(124, 77, 255, 0.3)'
-                ];
-                
-                this.pieces = [
-                    [[[1,1,1,1]]],
-                    [[[2,2],[2,2]]],
-                    [[[0,3,0],[3,3,3]]],
-                    [[[0,4,4],[4,4,0]]],
-                    [[[5,5,0],[0,5,5]]],
-                    [[[6,0,0],[6,6,6]]],
-                    [[[0,0,7],[7,7,7]]]
-                ];
-                
-                this.init();
-            }
-            
-            init() {
-                this.spawnPiece();
-                this.start();
-                
-                // 窗口大小变化时重新调整
-                window.addEventListener('resize', () => {
-                    this.canvas.width = window.innerWidth;
-                    this.canvas.height = window.innerHeight;
-                    this.BOARD_WIDTH = Math.floor(this.canvas.width / 30);
-                    this.BOARD_HEIGHT = Math.floor(this.canvas.height / 30);
-                    this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
-                });
-            }
-            
-            spawnPiece() {
-                const pieceIndex = Math.floor(Math.random() * this.pieces.length);
-                this.currentPiece = this.pieces[pieceIndex][0];
-                this.currentX = Math.floor(this.BOARD_WIDTH / 2) - Math.floor(this.currentPiece[0].length / 2);
-                this.currentY = 0;
-            }
-            
-            collision(piece, x, y) {
-                for (let py = 0; py < piece.length; py++) {
-                    for (let px = 0; px < piece[py].length; px++) {
-                        if (piece[py][px] !== 0) {
-                            const newX = x + px;
-                            const newY = y + py;
-                            
-                            if (newX < 0 || newX >= this.BOARD_WIDTH || newY >= this.BOARD_HEIGHT) {
-                                return true;
-                            }
-                            
-                            if (newY >= 0 && this.board[newY][newX] !== 0) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-            
-            placePiece() {
-                for (let py = 0; py < this.currentPiece.length; py++) {
-                    for (let px = 0; px < this.currentPiece[py].length; px++) {
-                        if (this.currentPiece[py][px] !== 0) {
-                            const y = this.currentY + py;
-                            const x = this.currentX + px;
-                            if (y >= 0 && y < this.BOARD_HEIGHT && x >= 0 && x < this.BOARD_WIDTH) {
-                                this.board[y][x] = this.currentPiece[py][px];
-                            }
-                        }
-                    }
-                }
-                
-                this.clearLines();
-                this.spawnPiece();
-            }
-            
-            clearLines() {
-                for (let y = this.BOARD_HEIGHT - 1; y >= 0; y--) {
-                    if (this.board[y].every(cell => cell !== 0)) {
-                        this.board.splice(y, 1);
-                        this.board.unshift(Array(this.BOARD_WIDTH).fill(0));
-                        y++;
-                    }
-                }
-            }
-            
-            dropPiece() {
-                if (!this.collision(this.currentPiece, this.currentX, this.currentY + 1)) {
-                    this.currentY++;
-                } else {
-                    this.placePiece();
-                }
-            }
-            
-            draw() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                // 绘制已放置的方块
-                for (let y = 0; y < this.BOARD_HEIGHT; y++) {
-                    for (let x = 0; x < this.BOARD_WIDTH; x++) {
-                        if (this.board[y][x] !== 0) {
-                            this.ctx.fillStyle = this.colors[this.board[y][x]];
-                            this.ctx.fillRect(
-                                x * this.CELL_SIZE,
-                                y * this.CELL_SIZE,
-                                this.CELL_SIZE - 1,
-                                this.CELL_SIZE - 1
-                            );
-                        }
-                    }
-                }
-                
-                // 绘制当前方块
-                if (this.currentPiece) {
-                    for (let py = 0; py < this.currentPiece.length; py++) {
-                        for (let px = 0; px < this.currentPiece[py].length; px++) {
-                            if (this.currentPiece[py][px] !== 0) {
-                                const x = this.currentX + px;
-                                const y = this.currentY + py;
-                                if (y >= 0 && x >= 0 && x < this.BOARD_WIDTH && y < this.BOARD_HEIGHT) {
-                                    this.ctx.fillStyle = this.colors[this.currentPiece[py][px]];
-                                    this.ctx.fillRect(
-                                        x * this.CELL_SIZE,
-                                        y * this.CELL_SIZE,
-                                        this.CELL_SIZE - 1,
-                                        this.CELL_SIZE - 1
-                                    );
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            start() {
-                if (this.gameRunning) {
-                    this.gameLoop = setInterval(() => {
-                        this.dropPiece();
-                        this.draw();
-                    }, this.dropSpeed);
-                }
-            }
-            
-            stop() {
-                this.gameRunning = false;
-                if (this.gameLoop) {
-                    clearInterval(this.gameLoop);
-                }
-            }
-        }
-
-        class TetrisGame {
-            constructor(canvas) {
-                this.canvas = canvas;
-                this.ctx = canvas.getContext('2d');
-                this.canvas.width = 300;
-                this.canvas.height = 600;
-                
-                this.BOARD_WIDTH = 10;
-                this.BOARD_HEIGHT = 20;
-                this.CELL_SIZE = this.canvas.width / this.BOARD_WIDTH;
-                
-                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
-                this.currentPiece = null;
-                this.currentX = 0;
-                this.currentY = 0;
-                this.gameRunning = false;
-                this.gameLoop = null;
-                
-                this.colors = [
-                    '#000000', '#FF1744', '#FF6D00', '#FFD600',
-                    '#76FF03', '#00E5FF', '#2979FF', '#7C4DFF'
-                ];
-                
-                this.pieces = [
-                    [[[1,1,1,1]]],
-                    [[[2,2],[2,2]]],
-                    [[[0,3,0],[3,3,3]], [[3,0],[3,3],[3,0]], [[3,3,3],[0,3,0]], [[0,3],[3,3],[0,3]]],
-                    [[[0,4,4],[4,4,0]], [[4,0],[4,4],[0,4]]],
-                    [[[5,5,0],[0,5,5]], [[0,5],[5,5],[5,0]]],
-                    [[[6,0,0],[6,6,6]], [[6,6],[6,0],[6,0]], [[6,6,6],[0,0,6]], [[0,6],[0,6],[6,6]]],
-                    [[[0,0,7],[7,7,7]], [[7,0],[7,0],[7,7]], [[7,7,7],[7,0,0]], [[7,7],[0,7],[0,7]]]
-                ];
-                
-                this.init();
-            }
-            
-            init() {
-                this.spawnPiece();
-                this.draw();
-            }
-            
-            spawnPiece() {
-                const pieceIndex = Math.floor(Math.random() * this.pieces.length);
-                const rotationIndex = Math.floor(Math.random() * this.pieces[pieceIndex].length);
-                this.currentPiece = this.pieces[pieceIndex][rotationIndex];
-                this.currentX = Math.floor(this.BOARD_WIDTH / 2) - Math.floor(this.currentPiece[0].length / 2);
-                this.currentY = 0;
-                
-                if (this.collision(this.currentPiece, this.currentX, this.currentY)) {
-                    this.gameOver();
-                }
-            }
-            
-            collision(piece, x, y) {
-                for (let py = 0; py < piece.length; py++) {
-                    for (let px = 0; px < piece[py].length; px++) {
-                        if (piece[py][px] !== 0) {
-                            const newX = x + px;
-                            const newY = y + py;
-                            
-                            if (newX < 0 || newX >= this.BOARD_WIDTH || newY >= this.BOARD_HEIGHT) {
-                                return true;
-                            }
-                            
-                            if (newY >= 0 && this.board[newY][newX] !== 0) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-            
-            placePiece() {
-                for (let py = 0; py < this.currentPiece.length; py++) {
-                    for (let px = 0; px < this.currentPiece[py].length; px++) {
-                        if (this.currentPiece[py][px] !== 0) {
-                            const y = this.currentY + py;
-                            const x = this.currentX + px;
-                            if (y >= 0) {
-                                this.board[y][x] = this.currentPiece[py][px];
-                            }
-                        }
-                    }
-                }
-                
-                this.clearLines();
-                this.spawnPiece();
-            }
-            
-            clearLines() {
-                for (let y = this.BOARD_HEIGHT - 1; y >= 0; y--) {
-                    if (this.board[y].every(cell => cell !== 0)) {
-                        this.board.splice(y, 1);
-                        this.board.unshift(Array(this.BOARD_WIDTH).fill(0));
-                        y++;
-                    }
-                }
-            }
-            
-            rotatePiece() {
-                const rotated = this.currentPiece[0].map((_, index) =>
-                    this.currentPiece.map(row => row[index]).reverse()
-                );
-                
-                if (!this.collision(rotated, this.currentX, this.currentY)) {
-                    this.currentPiece = rotated;
-                }
-            }
-            
-            movePiece(dx) {
-                if (!this.collision(this.currentPiece, this.currentX + dx, this.currentY)) {
-                    this.currentX += dx;
-                }
-            }
-            
-            dropPiece() {
-                if (!this.collision(this.currentPiece, this.currentX, this.currentY + 1)) {
-                    this.currentY++;
-                } else {
-                    this.placePiece();
-                }
-            }
-            
-            draw() {
-                this.ctx.fillStyle = '#000';
-                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                this.ctx.strokeStyle = '#333';
-                this.ctx.lineWidth = 1;
-                for (let x = 0; x <= this.BOARD_WIDTH; x++) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(x * this.CELL_SIZE, 0);
-                    this.ctx.lineTo(x * this.CELL_SIZE, this.canvas.height);
-                    this.ctx.stroke();
-                }
-                for (let y = 0; y <= this.BOARD_HEIGHT; y++) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(0, y * this.CELL_SIZE);
-                    this.ctx.lineTo(this.canvas.width, y * this.CELL_SIZE);
-                    this.ctx.stroke();
-                }
-                
-                for (let y = 0; y < this.BOARD_HEIGHT; y++) {
-                    for (let x = 0; x < this.BOARD_WIDTH; x++) {
-                        if (this.board[y][x] !== 0) {
-                            this.ctx.fillStyle = this.colors[this.board[y][x]];
-                            this.ctx.fillRect(
-                                x * this.CELL_SIZE + 1,
-                                y * this.CELL_SIZE + 1,
-                                this.CELL_SIZE - 2,
-                                this.CELL_SIZE - 2
-                            );
-                        }
-                    }
-                }
-                
-                if (this.currentPiece) {
-                    for (let py = 0; py < this.currentPiece.length; py++) {
-                        for (let px = 0; px < this.currentPiece[py].length; px++) {
-                            if (this.currentPiece[py][px] !== 0) {
-                                const x = this.currentX + px;
-                                const y = this.currentY + py;
-                                if (y >= 0) {
-                                    this.ctx.fillStyle = this.colors[this.currentPiece[py][px]];
-                                    this.ctx.fillRect(
-                                        x * this.CELL_SIZE + 1,
-                                        y * this.CELL_SIZE + 1,
-                                        this.CELL_SIZE - 2,
-                                        this.CELL_SIZE - 2
-                                    );
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            gameOver() {
-                this.gameRunning = false;
-                if (this.gameLoop) {
-                    clearInterval(this.gameLoop);
-                }
-                setTimeout(() => {
-                    alert('游戏结束！获得糖果奖励！🍬');
-                    window.trolliAlbum.addCandy(5);
-                }, 100);
-                this.reset();
-            }
-            
-            reset() {
-                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
-                this.spawnPiece();
-                this.draw();
-            }
-            
-            start() {
-                if (this.gameRunning) return;
-                
-                this.gameRunning = true;
-                this.gameLoop = setInterval(() => {
-                    this.dropPiece();
-                    this.draw();
-                }, 500);
-            }
-            
-            stop() {
-                this.gameRunning = false;
-                if (this.gameLoop) {
-                    clearInterval(this.gameLoop);
-                }
-            }
-        }
-
-        class WorldClassTrolliAlbum {
+        class UltraOptimizedTrolliAlbum {
             constructor() {
                 this.photos = [];
-                this.particles = [];
-                this.candies = [];
-                this.balloons = [];
-                this.trailPoints = [];
-                this.mouse = { x: 0, y: 0 };
-                this.lollipopPosition = { x: 0, y: 0 };
                 this.isJourneyStarted = false;
                 this.visiblePhotoIndex = 0;
-                this.lastScrollY = 0;
-                this.tetrisGame = null;
-                this.backgroundTetris = null;
-                this.candyCount = 0;
-                this.clickCombo = 0;
-                this.comboTimeout = null;
-                this.audioEnabled = true;
-                this.lollipopClickCount = 0;
-                this.collectedPhotos = new Set();
-                this.observer = null; // 移除延迟加载观察器
-                this.achievements = {
-                    firstClick: false,
-                    photoCollector: false,
-                    comboMaster: false,
-                    themeExplorer: false,
-                    gamePlayer: false,
-                    secretFinder: false
-                };
-                
+                this.observer = null;
+                this.loadedImageCount = 0;
+                this.totalImages = 15;
+                this.imageCache = new Map();
+                this.preloadQueue = [];
+                this.fastCDNs = [
+                    'https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/',
+                    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/',
+                    'https://gcore.jsdelivr.net/gh/CIRA18-HUB/61@main/'
+                ];
+                this.preferredCDN = this.fastCDNs[0]; // 默认使用最快的
+
                 // 绑定全局引用
                 window.trolliAlbum = this;
                 
@@ -1850,48 +954,138 @@
             }
 
             async init() {
-                console.log('🍭 启动世界级Trolli相册2.0...');
+                console.log('🚀 启动终极优化版Trolli相册...');
                 
-                this.createParticleSystem();
-                this.createSuperDenseCandyBalloonSystem();
-                this.createPhotoPreviewCluster(); // 立即创建聚拢预览
-                this.loadPhotos(); // 立即加载所有照片，不延迟
-                this.initTetrisGame();
-                this.initBackgroundTetris();
-                this.initSoundEffects();
+                // 🚀 立即开始加载关键资源
+                this.preloadCriticalImages();
+                
+                // 简化的系统初始化
+                this.createLightweightParticleSystem();
+                this.createOptimizedCandySystem();
+                this.createFastPhotoPreviewCluster();
+                this.preparePhotosStructure();
                 this.initInteractionEffects();
                 this.bindEvents();
                 
-                console.log('✅ 世界级相册2.0已就绪！');
+                // 🚀 检测最快CDN
+                this.detectFastestCDN();
+                
+                console.log('✅ 终极优化版相册已就绪！');
             }
 
-            createParticleSystem() {
+            // 🚀 预加载关键图片 - 立即开始
+            preloadCriticalImages() {
+                const criticalImages = [
+                    'photo_01.jpg', 'photo_02.jpg', 'photo_03.jpg', 
+                    'photo_04.jpg', 'photo_05.jpg'
+                ];
+
+                criticalImages.forEach((filename, index) => {
+                    const img = new Image();
+                    img.crossOrigin = 'anonymous';
+                    img.onload = () => {
+                        this.imageCache.set(filename, img);
+                        this.loadedImageCount++;
+                        console.log(`✅ 关键图片 ${index + 1}/5 预加载完成: ${filename}`);
+                        
+                        if (this.loadedImageCount >= 3) {
+                            this.hideLoadingIndicator();
+                        }
+                    };
+                    img.onerror = () => {
+                        console.warn(`❌ 关键图片预加载失败: ${filename}`);
+                        this.tryAlternateCDN(filename);
+                    };
+                    img.src = this.preferredCDN + filename;
+                });
+            }
+
+            // 🚀 CDN速度检测
+            async detectFastestCDN() {
+                const testImage = 'photo_01.jpg';
+                const promises = this.fastCDNs.map(cdn => {
+                    return new Promise((resolve) => {
+                        const startTime = performance.now();
+                        const img = new Image();
+                        img.onload = () => {
+                            const loadTime = performance.now() - startTime;
+                            resolve({ cdn, loadTime });
+                        };
+                        img.onerror = () => {
+                            resolve({ cdn, loadTime: Infinity });
+                        };
+                        img.src = cdn + testImage + '?t=' + Date.now();
+                    });
+                });
+
+                try {
+                    const results = await Promise.race([
+                        Promise.all(promises),
+                        new Promise(resolve => setTimeout(() => resolve([]), 2000))
+                    ]);
+
+                    if (results.length > 0) {
+                        const fastest = results.sort((a, b) => a.loadTime - b.loadTime)[0];
+                        if (fastest.loadTime < Infinity) {
+                            this.preferredCDN = fastest.cdn;
+                            console.log(`🚀 检测到最快CDN: ${fastest.cdn} (${fastest.loadTime.toFixed(0)}ms)`);
+                        }
+                    }
+                } catch (e) {
+                    console.log('CDN检测失败，使用默认CDN');
+                }
+            }
+
+            // 🚀 尝试备用CDN
+            tryAlternateCDN(filename) {
+                for (let i = 1; i < this.fastCDNs.length; i++) {
+                    const img = new Image();
+                    img.onload = () => {
+                        this.imageCache.set(filename, img);
+                        this.loadedImageCount++;
+                        console.log(`✅ 备用CDN加载成功: ${filename}`);
+                    };
+                    img.src = this.fastCDNs[i] + filename;
+                    break; // 只尝试第一个备用CDN
+                }
+            }
+
+            hideLoadingIndicator() {
+                const indicator = document.getElementById('loadingIndicator');
+                indicator.classList.add('hidden');
+                setTimeout(() => {
+                    indicator.style.display = 'none';
+                }, 500);
+            }
+
+            // 🚀 轻量级粒子系统
+            createLightweightParticleSystem() {
                 const particleField = document.getElementById('particleField');
                 
-                for (let i = 0; i < 80; i++) {
+                for (let i = 0; i < 30; i++) { // 减少到30个粒子
                     const particle = document.createElement('div');
                     particle.className = 'particle';
                     particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDelay = Math.random() * 12 + 's';
-                    particle.style.animationDuration = (8 + Math.random() * 8) + 's';
+                    particle.style.animationDelay = Math.random() * 10 + 's';
+                    particle.style.animationDuration = (6 + Math.random() * 4) + 's';
                     particleField.appendChild(particle);
                 }
             }
 
-            createSuperDenseCandyBalloonSystem() {
+            // 🚀 优化版糖果系统
+            createOptimizedCandySystem() {
                 const candiesContainer = document.getElementById('floatingCandies');
-                const candyEmojis = ['🍬', '🍭', '🧁', '🍰', '🎂', '🍩', '🍪', '🍫', '🍨', '🧊'];
-                const balloonEmojis = ['🎈', '🎀', '🎊', '🎉', '✨', '🎆', '💫', '⭐'];
-                const starEmojis = ['🌟', '💖', '💝', '🦄', '🌙', '☁️'];
+                const candyEmojis = ['🍬', '🍭', '🧁', '🎉', '✨'];
+                const balloonEmojis = ['🎈', '🎀', '🎊'];
                 
-                // 创建超密集漂浮糖果
-                for (let i = 0; i < 40; i++) {
+                // 减少糖果数量
+                for (let i = 0; i < 15; i++) { // 从40减少到15
                     const candy = document.createElement('div');
                     candy.className = 'floating-candy vibrate-support';
                     candy.textContent = candyEmojis[Math.floor(Math.random() * candyEmojis.length)];
                     candy.style.left = Math.random() * 100 + '%';
-                    candy.style.animationDelay = Math.random() * 20 + 's';
-                    candy.style.animationDuration = (15 + Math.random() * 10) + 's';
+                    candy.style.animationDelay = Math.random() * 15 + 's';
+                    candy.style.animationDuration = (12 + Math.random() * 6) + 's';
                     candy.addEventListener('click', (e) => {
                         e.stopPropagation();
                         this.collectCandy(e.target);
@@ -1900,217 +1094,129 @@
                     candiesContainer.appendChild(candy);
                 }
                 
-                // 创建超密集漂浮气球
-                for (let i = 0; i < 30; i++) {
+                // 减少气球数量
+                for (let i = 0; i < 10; i++) { // 从30减少到10
                     const balloon = document.createElement('div');
                     balloon.className = 'floating-balloon';
                     balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
                     balloon.style.left = Math.random() * 100 + '%';
-                    balloon.style.animationDelay = Math.random() * 25 + 's';
-                    balloon.style.animationDuration = (20 + Math.random() * 10) + 's';
+                    balloon.style.animationDelay = Math.random() * 20 + 's';
+                    balloon.style.animationDuration = (15 + Math.random() * 8) + 's';
                     candiesContainer.appendChild(balloon);
-                }
-
-                // 创建星星漂浮
-                for (let i = 0; i < 20; i++) {
-                    const star = document.createElement('div');
-                    star.className = 'floating-star';
-                    star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
-                    star.style.left = Math.random() * 100 + '%';
-                    star.style.animationDelay = Math.random() * 18 + 's';
-                    star.style.animationDuration = (15 + Math.random() * 8) + 's';
-                    candiesContainer.appendChild(star);
                 }
             }
 
-            // 🚀 极速聚拢预览系统 - 立即显示
-            createPhotoPreviewCluster() {
+            // 🚀 快速聚拢预览系统
+            createFastPhotoPreviewCluster() {
                 const cluster = document.getElementById('photoPreviewCluster');
-                const photoUrls = [
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_02.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_03.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_04.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_05.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_06.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_07.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_08.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_09.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_10.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_11.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_12.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_13.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_14.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_15.jpg'
-];
+                
+                console.log('🎯 创建快速聚拢预览...');
 
-                console.log('🎯 立即显示聚拢预览图片...');
-
-                // 围绕棒棒糖创建8个预览照片 - 立即可见策略
-                photoUrls.forEach((url, i) => {
+                // 创建6个预览照片（减少数量）
+                for (let i = 0; i < 6; i++) {
                     const preview = document.createElement('div');
                     preview.className = 'preview-photo';
                     
-                    const angle = (i / 8) * 360;
-                    const radius = 120;
+                    const angle = (i / 6) * 360;
+                    const radius = 100;
                     const x = Math.cos(angle * Math.PI / 180) * radius;
                     const y = Math.sin(angle * Math.PI / 180) * radius;
                     
                     preview.style.left = `calc(50% + ${x}px)`;
                     preview.style.top = `calc(50% + ${y}px)`;
-                    preview.style.transform = 'translate(-50%, -50%) rotate(' + (angle + 45) + 'deg)';
+                    preview.style.transform = 'translate(-50%, -50%) rotate(' + (angle + 30) + 'deg)';
                     
-                    // 先添加到DOM，立即可见
+                    // 先添加占位符
+                    preview.innerHTML = '<div class="image-placeholder">🖼️</div>';
                     cluster.appendChild(preview);
-                    console.log(`✨ 聚拢预览框 ${i + 1}/8 已显示`);
                     
-                    // 然后异步加载图片
-                    const img = new Image();
-                    img.onload = () => {
-                        preview.classList.add('loaded');
-                        preview.appendChild(img);
-                        console.log(`🎉 聚拢预览图 ${i + 1}/8 图片加载完成`);
-                    };
-                    img.onerror = () => {
-                        console.warn(`⚠️ 聚拢预览图 ${i + 1} 加载失败，保持占位符显示`);
-                        // 保持占位符显示，不影响用户体验
-                    };
-                    
-                    // 设置图片属性
-                    img.src = url;
-                    img.alt = `预览图 ${i + 1}`;
-                    img.loading = 'eager'; // 立即加载
-                    img.decoding = 'async'; // 异步解码
-                    img.style.position = 'absolute';
-                    img.style.top = '0';
-                    img.style.left = '0';
-                    img.style.width = '100%';
-                    img.style.height = '100%';
-                    img.style.objectFit = 'cover';
-                    img.style.zIndex = '2';
-                });
-
-                console.log('🎨 聚拢预览布局完成，现在应该可以看到8个框了！');
-            }
-
-            // 移除延迟加载观察器 - 改为立即加载所有图片
-
-            initTetrisGame() {
-                const canvas = document.getElementById('tetrisCanvas');
-                this.tetrisGame = new TetrisGame(canvas);
-            }
-
-            initBackgroundTetris() {
-                const canvas = document.getElementById('backgroundTetrisCanvas');
-                this.backgroundTetris = new BackgroundTetrisGame(canvas);
-            }
-
-            initSoundEffects() {
-                // 使用Web Audio API创建音效
-                this.audioContext = null;
-                try {
-                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                } catch (e) {
-                    console.log('音频上下文不支持');
+                    // 异步加载预览图片
+                    const filename = `photo_${String(i + 1).padStart(2, '0')}.jpg`;
+                    this.loadPreviewImage(preview, filename);
                 }
+
+                console.log('🎨 聚拢预览布局完成！');
             }
 
-            playSound(frequency, duration = 200, type = 'sine') {
-                if (!this.audioEnabled || !this.audioContext) return;
+            // 🚀 异步加载预览图片
+            loadPreviewImage(container, filename) {
+                // 检查缓存
+                if (this.imageCache.has(filename)) {
+                    const cachedImg = this.imageCache.get(filename);
+                    const img = cachedImg.cloneNode();
+                    container.innerHTML = '';
+                    container.appendChild(img);
+                    container.classList.add('loaded');
+                    return;
+                }
+
+                const img = new Image();
+                img.onload = () => {
+                    container.innerHTML = '';
+                    container.appendChild(img);
+                    container.classList.add('loaded');
+                    this.imageCache.set(filename, img);
+                };
+                img.onerror = () => {
+                    console.warn(`预览图片加载失败: ${filename}`);
+                    // 保持占位符显示
+                };
+                img.src = this.preferredCDN + filename;
+                img.alt = `预览图 ${filename}`;
+                img.loading = 'lazy';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+            }
+
+            collectCandy(candyElement) {
+                // 简化的糖果收集效果
+                candyElement.style.transform = 'scale(1.3) rotate(180deg)';
+                candyElement.style.opacity = '0';
                 
-                try {
-                    const oscillator = this.audioContext.createOscillator();
-                    const gainNode = this.audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(this.audioContext.destination);
-                    
-                    oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
-                    oscillator.type = type;
-                    
-                    gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration / 1000);
-                    
-                    oscillator.start(this.audioContext.currentTime);
-                    oscillator.stop(this.audioContext.currentTime + duration / 1000);
-                } catch (e) {
-                    console.log('音效播放失败');
-                }
+                setTimeout(() => {
+                    candyElement.style.transform = '';
+                    candyElement.style.opacity = '0.7';
+                }, 800);
             }
 
-            triggerVibration(pattern = [50]) {
+            triggerVibration(pattern = [30]) {
                 if (navigator.vibrate) {
                     navigator.vibrate(pattern);
                 }
             }
 
             initInteractionEffects() {
-                // 页面点击爆炸效果
+                // 简化的交互效果
                 document.addEventListener('click', (e) => {
-                    this.createCandyExplosion(e.clientX, e.clientY);
-                    this.playSound(800 + Math.random() * 400, 100);
-                    this.addCombo();
+                    this.createSimpleCandyExplosion(e.clientX, e.clientY);
                 });
 
-                // 棒棒糖鼠标跟随和轨迹
-                document.addEventListener('mousemove', (e) => {
-                    this.mouse.x = e.clientX;
-                    this.mouse.y = e.clientY;
-                    this.updateLollipopPosition(e.clientX, e.clientY);
-                });
-
-                // 触摸支持
-                document.addEventListener('touchmove', (e) => {
-                    if (e.touches.length > 0) {
-                        const touch = e.touches[0];
-                        this.updateLollipopPosition(touch.clientX, touch.clientY);
-                    }
-                });
-
-                // 滚动时的轨迹和照片显示
+                // 滚动效果
                 window.addEventListener('scroll', () => {
                     if (this.isJourneyStarted) {
                         this.updateScrollEffects();
                         this.checkPhotoVisibility();
                     }
                 });
-
-                // 设备方向变化支持
-                window.addEventListener('deviceorientation', (e) => {
-                    if (this.isJourneyStarted) {
-                        this.updateDeviceOrientationEffects(e);
-                    }
-                });
-
-                // 长按变色效果
-                let longPressTimer;
-                document.addEventListener('touchstart', (e) => {
-                    longPressTimer = setTimeout(() => {
-                        this.triggerVibration([100, 50, 100]);
-                    }, 1000);
-                });
-
-                document.addEventListener('touchend', () => {
-                    clearTimeout(longPressTimer);
-                });
             }
 
-            createCandyExplosion(x, y) {
+            createSimpleCandyExplosion(x, y) {
                 const explosion = document.createElement('div');
                 explosion.className = 'candy-explosion';
                 explosion.style.left = x + 'px';
                 explosion.style.top = y + 'px';
                 document.body.appendChild(explosion);
 
-                const candyTypes = ['🍬', '🍭', '🍰', '🎉', '✨', '💫', '⭐', '🌟'];
+                const candyTypes = ['🍬', '🍭', '✨', '🌟'];
                 
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i < 6; i++) { // 减少粒子数量
                     const particle = document.createElement('div');
                     particle.className = 'candy-particle';
                     particle.textContent = candyTypes[Math.floor(Math.random() * candyTypes.length)];
                     
-                    const angle = (i / 12) * 360 * Math.PI / 180;
-                    const velocity = 100 + Math.random() * 100;
+                    const angle = (i / 6) * 360 * Math.PI / 180;
+                    const velocity = 60 + Math.random() * 40;
                     const dx = Math.cos(angle) * velocity;
                     const dy = Math.sin(angle) * velocity;
                     
@@ -2122,182 +1228,24 @@
 
                 setTimeout(() => {
                     explosion.remove();
-                }, 1500);
-            }
-
-            collectCandy(candyElement) {
-                this.addCandy(1);
-                this.playSound(1200, 150);
-                
-                // 糖果收集动画
-                candyElement.style.transform = 'scale(1.5) rotate(360deg)';
-                candyElement.style.opacity = '0';
-                
-                setTimeout(() => {
-                    candyElement.style.transform = '';
-                    candyElement.style.opacity = '0.8';
-                }, 1000);
-
-                if (!this.achievements.firstClick) {
-                    this.unlockAchievement('firstClick', '🎉 初次体验！', '欢迎来到糖果世界！');
-                }
-            }
-
-            addCandy(amount) {
-                this.candyCount += amount;
-                document.getElementById('candyCount').textContent = this.candyCount;
-                
-                if (this.candyCount >= 10 && !this.achievements.photoCollector) {
-                    this.unlockAchievement('photoCollector', '🍬 糖果收集家！', '收集了10个糖果！');
-                }
-            }
-
-            addCombo() {
-                this.clickCombo++;
-                
-                if (this.comboTimeout) {
-                    clearTimeout(this.comboTimeout);
-                }
-                
-                this.comboTimeout = setTimeout(() => {
-                    if (this.clickCombo >= 10 && !this.achievements.comboMaster) {
-                        this.unlockAchievement('comboMaster', '🔥 连击大师！', '连击达到10次！');
-                    }
-                    this.clickCombo = 0;
-                }, 2000);
-            }
-
-            createCandyRain() {
-                const rainContainer = document.createElement('div');
-                rainContainer.className = 'candy-rain';
-                document.body.appendChild(rainContainer);
-
-                const candyTypes = ['🍬', '🍭', '🧁', '🍰', '🍩', '🍪', '🍫'];
-                
-                for (let i = 0; i < 50; i++) {
-                    const rainDrop = document.createElement('div');
-                    rainDrop.className = 'rain-drop';
-                    rainDrop.textContent = candyTypes[Math.floor(Math.random() * candyTypes.length)];
-                    rainDrop.style.left = Math.random() * 100 + '%';
-                    rainDrop.style.animationDelay = Math.random() * 2 + 's';
-                    rainContainer.appendChild(rainDrop);
-                }
-
-                setTimeout(() => {
-                    rainContainer.remove();
-                }, 5000);
-
-                if (!this.achievements.secretFinder) {
-                    this.unlockAchievement('secretFinder', '🎊 秘密发现者！', '找到了隐藏的糖果雨！');
-                }
-            }
-
-            unlockAchievement(key, title, description) {
-                this.achievements[key] = true;
-                
-                const popup = document.getElementById('achievementPopup');
-                popup.innerHTML = `
-                    <div style="font-size: 2rem; margin-bottom: 10px;">${title}</div>
-                    <div style="font-size: 1rem; opacity: 0.9;">${description}</div>
-                `;
-                popup.classList.add('show');
-                
-                this.playSound(800, 500);
-                this.triggerVibration([200, 100, 200]);
-                
-                setTimeout(() => {
-                    popup.classList.remove('show');
-                }, 3000);
-            }
-
-            updateLollipopPosition(x, y) {
-                const lollipop = document.getElementById('superLollipop');
-                const rect = lollipop.getBoundingClientRect();
-                const lollipopCenterX = rect.left + rect.width / 2;
-                const lollipopCenterY = rect.top + rect.height / 2;
-                
-                const deltaX = (x - lollipopCenterX) * 0.1;
-                const deltaY = (y - lollipopCenterY) * 0.1;
-                
-                lollipop.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${1 + Math.abs(deltaX + deltaY) * 0.001})`;
-                
-                // 更新棒棒糖实际位置用于轨迹
-                this.lollipopPosition.x = lollipopCenterX + deltaX;
-                this.lollipopPosition.y = lollipopCenterY + deltaY;
-
-                // 添加轨迹点
-                if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
-                    this.addTrailPoint(this.lollipopPosition.x, this.lollipopPosition.y);
-                }
-            }
-
-            addTrailPoint(x, y) {
-                const trail = document.createElement('div');
-                trail.className = 'lollipop-trail';
-                trail.style.left = x + 'px';
-                trail.style.top = y + 'px';
-                
-                const hue = (Date.now() / 10) % 360;
-                trail.style.background = `hsl(${hue}, 100%, 70%)`;
-                
-                document.body.appendChild(trail);
-                
-                this.trailPoints.push({
-                    element: trail,
-                    timestamp: Date.now()
-                });
-
-                if (this.trailPoints.length > 15) {
-                    const oldest = this.trailPoints.shift();
-                    oldest.element.remove();
-                }
-
-                setTimeout(() => {
-                    trail.style.opacity = '0.6';
-                    trail.style.transform = 'scale(0.6)';
-                }, 50);
-
-                setTimeout(() => {
-                    trail.style.opacity = '0.3';
-                    trail.style.transform = 'scale(0.3)';
-                }, 200);
-
-                setTimeout(() => {
-                    trail.style.opacity = '0';
-                    trail.style.transform = 'scale(0)';
-                }, 500);
+                }, 1200);
             }
 
             updateScrollEffects() {
                 const scrolled = window.pageYOffset;
                 const lollipop = document.getElementById('superLollipop');
                 
-                if (scrolled > 100) {
+                if (scrolled > 80) {
                     lollipop.classList.add('scrolling');
                 } else {
                     lollipop.classList.remove('scrolling');
                 }
             }
 
-            updateDeviceOrientationEffects(event) {
-                const { gamma, beta } = event; // gamma: 左右倾斜, beta: 前后倾斜
-                
-                if (gamma !== null && beta !== null) {
-                    const photos = document.querySelectorAll('.floating-photo.visible');
-                    photos.forEach((photo, index) => {
-                        const factor = (index % 2 === 0 ? 1 : -1);
-                        const translateX = gamma * 0.5 * factor;
-                        const translateY = beta * 0.3 * factor;
-                        
-                        photo.style.transform += ` translate(${translateX}px, ${translateY}px)`;
-                    });
-                }
-            }
-
             checkPhotoVisibility() {
                 const scrolled = window.pageYOffset;
                 const heroHeight = window.innerHeight;
-                const scrollTriggerDistance = 150;
+                const scrollTriggerDistance = 120;
                 
                 const shouldShowCount = Math.floor((scrolled - heroHeight) / scrollTriggerDistance) + 1;
                 const targetIndex = Math.min(shouldShowCount, this.photos.length);
@@ -2306,7 +1254,7 @@
                     if (this.photos[i]) {
                         setTimeout(() => {
                             this.photos[i].classList.add('visible');
-                        }, (i - this.visiblePhotoIndex) * 200);
+                        }, (i - this.visiblePhotoIndex) * 150);
                     }
                 }
                 
@@ -2319,88 +1267,31 @@
                 
                 document.body.classList.remove('locked');
                 
-                // 显示控制按钮
-                const tetrisTrigger = document.getElementById('tetrisTrigger');
-                const candyCounter = document.getElementById('candyCounter');
-                tetrisTrigger.classList.add('visible');
-                candyCounter.classList.add('visible');
-                
                 // 隐藏预览聚拢
                 const cluster = document.getElementById('photoPreviewCluster');
                 cluster.style.opacity = '0';
-                cluster.style.transform = 'translate(-50%, -50%) scale(0)';
+                cluster.style.transform = 'translate(-50%, -50%) scale(0.8)';
                 
                 // 显示相册区域
                 const photosSection = document.getElementById('photos');
                 photosSection.classList.add('visible');
                 
-                this.playSound(600, 800);
-                this.triggerVibration([100, 50, 100, 50, 100]);
+                this.triggerVibration([80, 40, 80]);
                 
                 setTimeout(() => {
                     photosSection.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
-                }, 500);
+                }, 400);
 
                 setTimeout(() => {
                     this.checkPhotoVisibility();
-                }, 1000);
+                }, 800);
             }
 
-            showTetrisGame() {
-                const tetrisGame = document.getElementById('tetrisGame');
-                tetrisGame.classList.add('visible');
-                this.tetrisGame.start();
-                
-                if (!this.achievements.gamePlayer) {
-                    this.unlockAchievement('gamePlayer', '🎮 游戏玩家！', '开始了俄罗斯方块游戏！');
-                }
-            }
-
-            hideTetrisGame() {
-                const tetrisGame = document.getElementById('tetrisGame');
-                tetrisGame.classList.remove('visible');
-                this.tetrisGame.stop();
-            }
-
-            toggleAudio() {
-                this.audioEnabled = !this.audioEnabled;
-                const audioToggle = document.getElementById('audioToggle');
-                const audioIcon = audioToggle.querySelector('.audio-icon');
-                
-                if (this.audioEnabled) {
-                    audioToggle.classList.remove('muted');
-                    audioIcon.textContent = '🔊';
-                } else {
-                    audioToggle.classList.add('muted');
-                    audioIcon.textContent = '🔇';
-                }
-            }
-
-            // 🚀 立即加载所有照片 - 不延迟，全量显示
-            async loadPhotos() {
-                console.log('📚 立即加载所有正式照片...');
-                
-                const photoUrls = [
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_02.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_03.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_04.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_05.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_06.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_07.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_08.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_09.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_10.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_11.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_12.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_13.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_14.jpg',
-    'https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_15.jpg'
-];
-
+            // 🚀 准备照片结构（不立即加载图片）
+            preparePhotosStructure() {
                 const photoData = [
                     { title: '🎈 活动开场秀', desc: '六一节开始啦！工作人员准备就绪，欢迎小朋友们的到来' },
                     { title: '🍭 糖果奇幻世界', desc: 'Trolli软糖展示区，五彩缤纷的甜蜜天堂让人流连忘返' },
@@ -2419,47 +1310,51 @@
                     { title: '🍬 甜蜜分享时刻', desc: '和小伙伴一起分享美味糖果，快乐加倍甜蜜加倍' }
                 ];
 
-                this.createMasterPhotos(photoData, photoUrls);
-                console.log(`🚀 已创建 ${photoData.length} 个照片，立即开始加载！`);
+                this.createPhotoStructures(photoData);
+                console.log(`🎉 已创建 ${photoData.length} 个照片结构！`);
             }
 
-            // 🚀 立即加载照片系统 - 全量显示，不延迟
-            createMasterPhotos(photoData, photoUrls) {
+            // 🚀 创建照片结构（延迟加载策略）
+            createPhotoStructures(photoData) {
                 const photosContainer = document.querySelector('.floating-photos');
                 
                 photoData.forEach((photo, index) => {
-                    if (index >= photoUrls.length) return;
-                    
                     const photoElement = document.createElement('div');
                     photoElement.className = 'floating-photo vibrate-support';
                     photoElement.dataset.index = index;
                     
-                    // 立即创建真实图片，不用占位符
-                    photoElement.innerHTML = `
-                        <div class="photo-frame">
-                            <img src="${photoUrls[index]}" 
-                                 alt="${photo.title}" 
-                                 loading="eager"
-                                 decoding="async">
-                            <div class="photo-info">
-                                <div class="photo-title">${photo.title}</div>
-                                <div class="photo-desc">${photo.desc}</div>
-                            </div>
-                        </div>
-                    `;
+                    const filename = `photo_${String(index + 1).padStart(2, '0')}.jpg`;
                     
-                    // 立即开始加载图片
-                    const img = photoElement.querySelector('img');
-                    img.onload = () => {
-                        console.log(`✅ 照片 ${index + 1}/${photoData.length} 加载完成: ${photo.title}`);
-                    };
-                    img.onerror = () => {
-                        console.warn(`❌ 照片 ${index + 1} 加载失败: ${photo.title}`);
-                    };
+                    // 前3张立即加载，其余延迟加载
+                    if (index < 3 && this.imageCache.has(filename)) {
+                        const cachedImg = this.imageCache.get(filename);
+                        photoElement.innerHTML = `
+                            <div class="photo-frame">
+                                ${cachedImg.outerHTML}
+                                <div class="photo-info">
+                                    <div class="photo-title">${photo.title}</div>
+                                    <div class="photo-desc">${photo.desc}</div>
+                                </div>
+                            </div>
+                        `;
+                        photoElement.classList.add('photo-optimized');
+                    } else {
+                        // 其他照片使用占位符
+                        photoElement.innerHTML = `
+                            <div class="photo-frame">
+                                <div class="image-placeholder" style="height: 200px; border-radius: 12px;">
+                                    📷
+                                </div>
+                                <div class="photo-info">
+                                    <div class="photo-title">${photo.title}</div>
+                                    <div class="photo-desc">${photo.desc}</div>
+                                </div>
+                            </div>
+                        `;
+                    }
                     
                     photoElement.addEventListener('click', () => {
-                        this.openModal(photoUrls[index], photo.title);
-                        this.collectPhoto(index);
+                        this.loadAndShowPhoto(filename, photo.title);
                         this.triggerVibration();
                     });
                     
@@ -2467,22 +1362,107 @@
                     this.photos.push(photoElement);
                 });
 
-                console.log(`🎉 所有 ${photoData.length} 张照片已开始并行加载！`);
+                // 设置Intersection Observer进行延迟加载
+                this.setupLazyLoading();
             }
 
-            collectPhoto(index) {
-                if (!this.collectedPhotos.has(index)) {
-                    this.collectedPhotos.add(index);
-                    this.addCandy(2);
-                    this.playSound(1000, 200);
-                    
-                    const photo = this.photos[index];
-                    photo.classList.add('collected');
-                    
-                    setTimeout(() => {
-                        photo.classList.remove('collected');
-                    }, 1000);
+            // 🚀 设置延迟加载
+            setupLazyLoading() {
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const photoElement = entry.target;
+                            const index = parseInt(photoElement.dataset.index);
+                            const filename = `photo_${String(index + 1).padStart(2, '0')}.jpg`;
+                            
+                            if (!photoElement.classList.contains('photo-optimized')) {
+                                this.loadPhotoIntoElement(photoElement, filename, index);
+                            }
+                            
+                            this.observer.unobserve(photoElement);
+                        }
+                    });
+                }, {
+                    rootMargin: '100px'
+                });
+
+                this.photos.forEach(photo => {
+                    if (!photo.classList.contains('photo-optimized')) {
+                        this.observer.observe(photo);
+                    }
+                });
+            }
+
+            // 🚀 加载图片到元素中
+            loadPhotoIntoElement(photoElement, filename, index) {
+                const placeholder = photoElement.querySelector('.image-placeholder');
+                if (!placeholder) return;
+
+                // 检查缓存
+                if (this.imageCache.has(filename)) {
+                    const cachedImg = this.imageCache.get(filename);
+                    placeholder.replaceWith(cachedImg.cloneNode());
+                    photoElement.classList.add('photo-optimized');
+                    return;
                 }
+
+                const img = new Image();
+                img.onload = () => {
+                    placeholder.replaceWith(img);
+                    photoElement.classList.add('photo-optimized');
+                    this.imageCache.set(filename, img);
+                    console.log(`✅ 延迟加载完成: ${filename}`);
+                };
+                img.onerror = () => {
+                    console.warn(`❌ 延迟加载失败: ${filename}`);
+                    this.tryAlternateCDNForElement(img, filename, placeholder);
+                };
+                
+                img.src = this.preferredCDN + filename;
+                img.alt = `照片 ${index + 1}`;
+                img.loading = 'lazy';
+                img.style.width = '100%';
+                img.style.height = '200px';
+                img.style.objectFit = 'cover';
+                img.style.borderRadius = '12px';
+                img.style.transition = 'all 0.4s ease';
+                img.style.filter = 'contrast(1.05) saturate(1.1) brightness(1.02)';
+                img.style.boxShadow = 'var(--shadow-1)';
+            }
+
+            tryAlternateCDNForElement(img, filename, placeholder) {
+                if (this.fastCDNs.length > 1) {
+                    img.src = this.fastCDNs[1] + filename;
+                    img.onload = () => {
+                        placeholder.replaceWith(img);
+                        this.imageCache.set(filename, img);
+                        console.log(`✅ 备用CDN加载成功: ${filename}`);
+                    };
+                }
+            }
+
+            loadAndShowPhoto(filename, title) {
+                // 检查缓存
+                if (this.imageCache.has(filename)) {
+                    this.openModal(this.imageCache.get(filename).src, title);
+                    return;
+                }
+
+                // 动态加载
+                const img = new Image();
+                img.onload = () => {
+                    this.imageCache.set(filename, img);
+                    this.openModal(img.src, title);
+                };
+                img.onerror = () => {
+                    // 尝试备用CDN
+                    const backupImg = new Image();
+                    backupImg.onload = () => {
+                        this.openModal(backupImg.src, title);
+                    };
+                    backupImg.src = this.fastCDNs[1] + filename;
+                };
+                img.src = this.preferredCDN + filename;
             }
 
             openModal(photoUrl, title) {
@@ -2498,7 +1478,6 @@
                 }, 10);
                 
                 document.body.style.overflow = 'hidden';
-                this.playSound(500, 300);
             }
 
             closeModal() {
@@ -2511,23 +1490,14 @@
                     } else {
                         document.body.style.overflow = 'hidden';
                     }
-                }, 500);
+                }, 400);
             }
 
             bindEvents() {
                 const startButton = document.getElementById('startJourney');
                 const modalClose = document.getElementById('modalClose');
                 const modal = document.getElementById('modal');
-                const tetrisTrigger = document.getElementById('tetrisTrigger');
-                const tetrisClose = document.getElementById('tetrisClose');
-                const audioToggle = document.getElementById('audioToggle');
                 const superLollipop = document.getElementById('superLollipop');
-                
-                // 俄罗斯方块控制按钮
-                const tetrisLeft = document.getElementById('tetrisLeft');
-                const tetrisRight = document.getElementById('tetrisRight');
-                const tetrisRotate = document.getElementById('tetrisRotate');
-                const tetrisDown = document.getElementById('tetrisDown');
                 
                 startButton?.addEventListener('click', () => {
                     this.startJourney();
@@ -2543,181 +1513,24 @@
                     }
                 });
                 
-                tetrisTrigger?.addEventListener('click', () => {
-                    this.showTetrisGame();
-                });
-                
-                tetrisClose?.addEventListener('click', () => {
-                    this.hideTetrisGame();
-                });
-                
-                audioToggle?.addEventListener('click', () => {
-                    this.toggleAudio();
-                });
-                
-                // 棒棒糖特殊点击事件
+                // 棒棒糖点击事件
                 superLollipop?.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    this.lollipopClickCount++;
-                    
-                    if (this.lollipopClickCount >= 5) {
-                        this.createCandyRain();
-                        this.lollipopClickCount = 0;
-                    }
-                    
-                    this.playSound(1500, 100);
-                    this.triggerVibration([50]);
-                });
-                
-                // 俄罗斯方块控制事件
-                tetrisLeft?.addEventListener('click', () => {
-                    this.tetrisGame.movePiece(-1);
-                    this.tetrisGame.draw();
-                    this.playSound(400, 50);
-                });
-                
-                tetrisRight?.addEventListener('click', () => {
-                    this.tetrisGame.movePiece(1);
-                    this.tetrisGame.draw();
-                    this.playSound(400, 50);
-                });
-                
-                tetrisRotate?.addEventListener('click', () => {
-                    this.tetrisGame.rotatePiece();
-                    this.tetrisGame.draw();
-                    this.playSound(600, 50);
-                });
-                
-                tetrisDown?.addEventListener('click', () => {
-                    this.tetrisGame.dropPiece();
-                    this.tetrisGame.draw();
-                    this.playSound(300, 50);
+                    this.triggerVibration([40]);
                 });
                 
                 // 键盘控制
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') {
                         this.closeModal();
-                        if (document.getElementById('tetrisGame').classList.contains('visible')) {
-                            this.hideTetrisGame();
-                        }
-                    }
-                    
-                    // 隐藏快捷键
-                    if (e.key === 'r' && e.ctrlKey) {
-                        e.preventDefault();
-                        this.createCandyRain();
-                    }
-                    
-                    // 俄罗斯方块键盘控制
-                    if (document.getElementById('tetrisGame').classList.contains('visible')) {
-                        switch(e.key) {
-                            case 'ArrowLeft':
-                                e.preventDefault();
-                                this.tetrisGame.movePiece(-1);
-                                this.tetrisGame.draw();
-                                this.playSound(400, 50);
-                                break;
-                            case 'ArrowRight':
-                                e.preventDefault();
-                                this.tetrisGame.movePiece(1);
-                                this.tetrisGame.draw();
-                                this.playSound(400, 50);
-                                break;
-                            case 'ArrowUp':
-                                e.preventDefault();
-                                this.tetrisGame.rotatePiece();
-                                this.tetrisGame.draw();
-                                this.playSound(600, 50);
-                                break;
-                            case 'ArrowDown':
-                                e.preventDefault();
-                                this.tetrisGame.dropPiece();
-                                this.tetrisGame.draw();
-                                this.playSound(300, 50);
-                                break;
-                        }
                     }
                 });
-                
-                // 手机摇一摇检测
-                let lastUpdate = 0;
-                let lastX = 0, lastY = 0, lastZ = 0;
-                
-                window.addEventListener('devicemotion', (e) => {
-                    const acceleration = e.accelerationIncludingGravity;
-                    const curTime = new Date().getTime();
-                    
-                    if ((curTime - lastUpdate) > 100) {
-                        const diffTime = curTime - lastUpdate;
-                        lastUpdate = curTime;
-                        
-                        const x = acceleration.x;
-                        const y = acceleration.y;
-                        const z = acceleration.z;
-                        
-                        const speed = Math.abs(x + y + z - lastX - lastY - lastZ) / diffTime * 10000;
-                        
-                        if (speed > 3000) {
-                            // 摇一摇触发糖果爆炸效果
-                            this.createCandyExplosion(window.innerWidth / 2, window.innerHeight / 2);
-                            this.triggerVibration([100, 50, 100]);
-                        }
-                        
-                        lastX = x;
-                        lastY = y;
-                        lastZ = z;
-                    }
-                });
-                
-                // 触摸滑动控制俄罗斯方块
-                let touchStartX = 0;
-                let touchStartY = 0;
-                const tetrisGame = document.getElementById('tetrisGame');
-                
-                tetrisGame?.addEventListener('touchstart', (e) => {
-                    touchStartX = e.touches[0].clientX;
-                    touchStartY = e.touches[0].clientY;
-                }, { passive: true });
-                
-                tetrisGame?.addEventListener('touchend', (e) => {
-                    if (!tetrisGame.classList.contains('visible')) return;
-                    
-                    const touchEndX = e.changedTouches[0].clientX;
-                    const touchEndY = e.changedTouches[0].clientY;
-                    const deltaX = touchEndX - touchStartX;
-                    const deltaY = touchEndY - touchStartY;
-                    
-                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                        if (Math.abs(deltaX) > 30) {
-                            if (deltaX > 0) {
-                                this.tetrisGame.movePiece(1);
-                                this.playSound(400, 50);
-                            } else {
-                                this.tetrisGame.movePiece(-1);
-                                this.playSound(400, 50);
-                            }
-                        }
-                    } else {
-                        if (Math.abs(deltaY) > 30) {
-                            if (deltaY > 0) {
-                                this.tetrisGame.dropPiece();
-                                this.playSound(300, 50);
-                            } else {
-                                this.tetrisGame.rotatePiece();
-                                this.playSound(600, 50);
-                            }
-                        }
-                    }
-                    
-                    this.tetrisGame.draw();
-                }, { passive: true });
             }
         }
 
-        // 启动世界级相册2.0
+        // 🚀 启动终极优化版相册
         document.addEventListener('DOMContentLoaded', () => {
-            new WorldClassTrolliAlbum();
+            new UltraOptimizedTrolliAlbum();
         });
     </script>
 </body>
