@@ -685,8 +685,9 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow-2);
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            opacity: 0.9; /* 立即显示，更高的可见度 */
+            transition: all 2s var(--ease-out-expo);
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
         }
 
         .preview-photo.loaded {
@@ -697,6 +698,23 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        /* 预览图占位符 */
+        .preview-photo::before {
+            content: '🖼️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            z-index: 1;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .preview-photo.loaded::before {
+            opacity: 0;
         }
 
         /* 手机优化的照片容器设计 - 6D玻璃质感 + AR效果 + 延迟加载 */
@@ -857,26 +875,7 @@
             opacity: 0.8;
         }
 
-        /* 图片占位符系统 */
-        .photo-placeholder {
-            width: 100%;
-            height: 240px;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading-shimmer 1.5s infinite;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 2rem;
-        }
-
-        @keyframes loading-shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
+        /* 图片立即显示优化 */
         .floating-photo img {
             width: 100%;
             height: 240px;
@@ -890,14 +889,6 @@
                 inset 0 1px 0 rgba(255,255,255,0.3),
                 inset 0 -1px 0 rgba(0,0,0,0.1),
                 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .floating-photo img.loading {
-            opacity: 0;
-        }
-
-        .floating-photo img.loaded {
-            opacity: 1;
         }
 
         .floating-photo:hover img {
@@ -1273,8 +1264,7 @@
                 margin-bottom: 3rem;
             }
             
-            .floating-photo img,
-            .photo-placeholder {
+            .floating-photo img {
                 height: 200px;
             }
             
@@ -1843,7 +1833,7 @@
                 this.audioEnabled = true;
                 this.lollipopClickCount = 0;
                 this.collectedPhotos = new Set();
-                this.observer = null; // Intersection Observer for lazy loading
+                this.observer = null; // 移除延迟加载观察器
                 this.achievements = {
                     firstClick: false,
                     photoCollector: false,
@@ -1865,8 +1855,7 @@
                 this.createParticleSystem();
                 this.createSuperDenseCandyBalloonSystem();
                 this.createPhotoPreviewCluster(); // 立即创建聚拢预览
-                this.initIntersectionObserver(); // 初始化延迟加载观察器
-                this.loadPhotos(); // 异步加载正式照片
+                this.loadPhotos(); // 立即加载所有照片，不延迟
                 this.initTetrisGame();
                 this.initBackgroundTetris();
                 this.initSoundEffects();
@@ -1948,9 +1937,9 @@
                     'https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_08.jpg'
                 ];
 
-                console.log('🎯 开始加载聚拢预览图片...');
+                console.log('🎯 立即显示聚拢预览图片...');
 
-                // 围绕棒棒糖创建8个预览照片 - 优先加载策略
+                // 围绕棒棒糖创建8个预览照片 - 立即可见策略
                 photoUrls.forEach((url, i) => {
                     const preview = document.createElement('div');
                     preview.className = 'preview-photo';
@@ -1964,73 +1953,40 @@
                     preview.style.top = `calc(50% + ${y}px)`;
                     preview.style.transform = 'translate(-50%, -50%) rotate(' + (angle + 45) + 'deg)';
                     
-                    // 极速图片加载 - 不延迟，立即开始
+                    // 先添加到DOM，立即可见
+                    cluster.appendChild(preview);
+                    console.log(`✨ 聚拢预览框 ${i + 1}/8 已显示`);
+                    
+                    // 然后异步加载图片
                     const img = new Image();
                     img.onload = () => {
                         preview.classList.add('loaded');
-                        console.log(`🎉 聚拢预览图 ${i + 1}/8 加载完成`);
+                        preview.appendChild(img);
+                        console.log(`🎉 聚拢预览图 ${i + 1}/8 图片加载完成`);
                     };
                     img.onerror = () => {
-                        console.warn(`⚠️ 聚拢预览图 ${i + 1} 加载失败`);
-                        // 失败时显示占位符
-                        img.src = 'data:image/svg+xml;base64,' + btoa(`
-                            <svg width="60" height="75" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="60" height="75" fill="#f0f0f0"/>
-                                <text x="30" y="40" text-anchor="middle" fill="#999" font-size="20">🖼️</text>
-                            </svg>
-                        `);
-                        preview.classList.add('loaded');
+                        console.warn(`⚠️ 聚拢预览图 ${i + 1} 加载失败，保持占位符显示`);
+                        // 保持占位符显示，不影响用户体验
                     };
                     
-                    // 立即加载，高优先级
+                    // 设置图片属性
                     img.src = url;
                     img.alt = `预览图 ${i + 1}`;
                     img.loading = 'eager'; // 立即加载
                     img.decoding = 'async'; // 异步解码
-                    
-                    preview.appendChild(img);
-                    cluster.appendChild(preview);
+                    img.style.position = 'absolute';
+                    img.style.top = '0';
+                    img.style.left = '0';
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+                    img.style.zIndex = '2';
                 });
+
+                console.log('🎨 聚拢预览布局完成，现在应该可以看到8个框了！');
             }
 
-            // 🚀 延迟加载观察器 - 只有进入视窗才加载
-            initIntersectionObserver() {
-                this.observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            const placeholder = img.parentElement.querySelector('.photo-placeholder');
-                            
-                            if (img.dataset.src && !img.classList.contains('loaded')) {
-                                console.log(`📸 开始延迟加载: ${img.dataset.index}`);
-                                img.src = img.dataset.src;
-                                img.classList.add('loading');
-                                
-                                img.onload = () => {
-                                    img.classList.remove('loading');
-                                    img.classList.add('loaded');
-                                    if (placeholder) {
-                                        placeholder.remove();
-                                    }
-                                    console.log(`✅ 延迟加载完成: ${img.dataset.index}`);
-                                };
-                                
-                                img.onerror = () => {
-                                    console.warn(`❌ 延迟加载失败: ${img.dataset.src}`);
-                                    if (placeholder) {
-                                        placeholder.innerHTML = '❌';
-                                    }
-                                };
-                                
-                                this.observer.unobserve(img);
-                            }
-                        }
-                    });
-                }, {
-                    rootMargin: '200px 0px', // 提前200px开始加载
-                    threshold: 0.1
-                });
-            }
+            // 移除延迟加载观察器 - 改为立即加载所有图片
 
             initTetrisGame() {
                 const canvas = document.getElementById('tetrisCanvas');
@@ -2416,9 +2372,9 @@
                 }
             }
 
-            // 🚀 异步加载正式照片 - 延迟加载策略
+            // 🚀 立即加载所有照片 - 不延迟，全量显示
             async loadPhotos() {
-                console.log('📚 开始异步加载正式照片...');
+                console.log('📚 立即加载所有正式照片...');
                 
                 const photoUrls = [
                     'https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_01.jpg',
@@ -2457,10 +2413,10 @@
                 ];
 
                 this.createMasterPhotos(photoData, photoUrls);
-                console.log(`📝 已创建 ${photoData.length} 个照片容器，等待延迟加载`);
+                console.log(`🚀 已创建 ${photoData.length} 个照片，立即开始加载！`);
             }
 
-            // 🚀 优化的照片创建系统 - 先占位符后延迟加载
+            // 🚀 立即加载照片系统 - 全量显示，不延迟
             createMasterPhotos(photoData, photoUrls) {
                 const photosContainer = document.querySelector('.floating-photos');
                 
@@ -2471,14 +2427,13 @@
                     photoElement.className = 'floating-photo vibrate-support';
                     photoElement.dataset.index = index;
                     
-                    // 创建占位符 + 延迟加载图片
+                    // 立即创建真实图片，不用占位符
                     photoElement.innerHTML = `
                         <div class="photo-frame">
-                            <div class="photo-placeholder">🖼️</div>
-                            <img data-src="${photoUrls[index]}" 
-                                 data-index="${index + 1}" 
+                            <img src="${photoUrls[index]}" 
                                  alt="${photo.title}" 
-                                 class="loading">
+                                 loading="eager"
+                                 decoding="async">
                             <div class="photo-info">
                                 <div class="photo-title">${photo.title}</div>
                                 <div class="photo-desc">${photo.desc}</div>
@@ -2486,24 +2441,26 @@
                         </div>
                     `;
                     
-                    // 为延迟加载设置观察器
+                    // 立即开始加载图片
                     const img = photoElement.querySelector('img');
-                    this.observer.observe(img);
+                    img.onload = () => {
+                        console.log(`✅ 照片 ${index + 1}/${photoData.length} 加载完成: ${photo.title}`);
+                    };
+                    img.onerror = () => {
+                        console.warn(`❌ 照片 ${index + 1} 加载失败: ${photo.title}`);
+                    };
                     
                     photoElement.addEventListener('click', () => {
-                        // 如果图片已加载，显示模态框；否则提示加载中
-                        if (img.classList.contains('loaded')) {
-                            this.openModal(img.src, photo.title);
-                            this.collectPhoto(index);
-                            this.triggerVibration();
-                        } else {
-                            console.log('图片加载中，请稍候...');
-                        }
+                        this.openModal(photoUrls[index], photo.title);
+                        this.collectPhoto(index);
+                        this.triggerVibration();
                     });
                     
                     photosContainer.appendChild(photoElement);
                     this.photos.push(photoElement);
                 });
+
+                console.log(`🎉 所有 ${photoData.length} 张照片已开始并行加载！`);
             }
 
             collectPhoto(index) {
