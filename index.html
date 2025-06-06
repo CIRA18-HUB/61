@@ -11,6 +11,27 @@
     <meta property="og:description" content="17个超甜蜜瞬间全记录，超炫酷交互体验">
     <meta property="og:image" content="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_01.jpg">
     
+    <!-- 超级图片预加载优化 -->
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_01.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_02.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_03.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_04.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_05.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_06.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_07.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_08.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_09.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_10.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_11.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_12.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_13.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_14.jpg" as="image" type="image/jpeg" importance="high">
+    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_16.jpg" as="image" type="image/jpeg" importance="high">
+    
+    <!-- DNS预解析优化 -->
+    <link rel="dns-prefetch" href="//raw.githubusercontent.com">
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+    
     <!-- 世界顶级字体系统 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2355,7 +2376,74 @@
                     { title: '🍬 甜蜜分享时刻', desc: '和小伙伴一起分享美味糖果，快乐加倍甜蜜加倍' }
                 ];
 
+                // 超级加速图片预加载系统
+                console.log('🚀 启动超级图片加速加载...');
+                await this.preloadAllImages(photoUrls);
+                console.log('✅ 所有图片预加载完成！');
+
                 this.createMasterPhotos(photoData, photoUrls);
+            }
+
+            // 超级图片预加载器 - 并行加载 + 缓存优化
+            async preloadAllImages(urls) {
+                return new Promise((resolve) => {
+                    let loadedCount = 0;
+                    const totalCount = urls.length;
+                    const preloadedImages = [];
+                    
+                    // 批量并行预加载
+                    const loadPromises = urls.map((url, index) => {
+                        return new Promise((resolveImg) => {
+                            const img = new Image();
+                            
+                            // 设置缓存优化
+                            img.crossOrigin = 'anonymous';
+                            
+                            img.onload = () => {
+                                loadedCount++;
+                                preloadedImages[index] = img;
+                                console.log(`📸 图片 ${index + 1}/${totalCount} 加载完成`);
+                                
+                                // 添加到缓存
+                                this.imageCache = this.imageCache || new Map();
+                                this.imageCache.set(url, img);
+                                
+                                resolveImg(img);
+                                
+                                // 所有图片加载完成
+                                if (loadedCount === totalCount) {
+                                    console.log('🎉 所有图片预加载完成！');
+                                    resolve(preloadedImages);
+                                }
+                            };
+                            
+                            img.onerror = () => {
+                                console.warn(`⚠️ 图片 ${url} 加载失败`);
+                                loadedCount++;
+                                resolveImg(null);
+                                
+                                if (loadedCount === totalCount) {
+                                    resolve(preloadedImages);
+                                }
+                            };
+                            
+                            // 关键优化：设置图片加载优先级
+                            img.loading = 'eager';
+                            img.decoding = 'async';
+                            
+                            // 开始加载
+                            img.src = url;
+                        });
+                    });
+                    
+                    // 防止无限等待
+                    setTimeout(() => {
+                        if (loadedCount < totalCount) {
+                            console.log('⏰ 预加载超时，继续执行...');
+                            resolve(preloadedImages);
+                        }
+                    }, 10000); // 10秒超时
+                });
             }
 
             createMasterPhotos(photoData, photoUrls) {
@@ -2368,9 +2456,24 @@
                     photoElement.className = 'floating-photo vibrate-support';
                     photoElement.dataset.index = index;
                     
+                    // 优化：使用预加载的图片或快速加载设置
+                    const imgElement = document.createElement('img');
+                    
+                    // 检查是否有缓存的图片
+                    if (this.imageCache && this.imageCache.has(photoUrls[index])) {
+                        const cachedImg = this.imageCache.get(photoUrls[index]);
+                        imgElement.src = cachedImg.src;
+                        imgElement.alt = photo.title;
+                    } else {
+                        imgElement.src = photoUrls[index];
+                        imgElement.alt = photo.title;
+                        imgElement.loading = 'eager'; // 急切加载
+                        imgElement.decoding = 'async'; // 异步解码
+                    }
+                    
                     photoElement.innerHTML = `
                         <div class="photo-frame">
-                            <img src="${photoUrls[index]}" alt="${photo.title}" loading="lazy">
+                            ${imgElement.outerHTML}
                             <div class="photo-info">
                                 <div class="photo-title">${photo.title}</div>
                                 <div class="photo-desc">${photo.desc}</div>
