@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Trolli口力销售部六一促销活动超萌漂浮相册">
-    <title>🍭 Trolli六一超萌嘉年华 | 立体漂浮相册</title>
+    <meta name="description" content="Trolli口力销售部六一促销活动超萌漂浮相册2.0">
+    <title>🍭 Trolli六一超萌嘉年华 2.0 | 终极糖果世界</title>
     
     <!-- 微信分享优化 -->
-    <meta property="og:title" content="🍭 Trolli六一超萌嘉年华">
-    <meta property="og:description" content="17个超甜蜜瞬间全记录，每一张照片都是珍贵回忆">
+    <meta property="og:title" content="🍭 Trolli六一超萌嘉年华 2.0">
+    <meta property="og:description" content="17个超甜蜜瞬间全记录，超炫酷交互体验">
     <meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqNJRktLzZiaPGic4sMDHiangKhbwObQ1Oq9uScIiaRdPubVHcPW9hq8D1fw/640?wx_fmt=jpeg&from=appmsg">
+    
+    <!-- 世界级高端字体系统 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&family=Source+Serif+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -33,6 +38,11 @@
             --candy-violet: #9C27B0;
             --candy-amber: #FFC107;
             
+            /* 动态主题色彩 */
+            --theme-primary: var(--candy-red);
+            --theme-secondary: var(--candy-pink);
+            --theme-accent: var(--candy-yellow);
+            
             /* MANA专业色彩 */
             --mana-dark: #0e0e0e;
             --mana-cream: #fef7e6;
@@ -48,21 +58,48 @@
             --shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             --shadow-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
             --shadow-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+            
+            /* 世界级高端字体系统 */
+            --font-display: 'Playfair Display', serif;
+            --font-title: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-chinese: 'Noto Sans SC', sans-serif;
+            --font-elegant: 'Crimson Text', serif;
+            --font-modern: 'Source Serif Pro', serif;
+            
+            /* 完美缓动函数 */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         html {
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            font-family: var(--font-body);
             overflow-x: hidden;
             background: #000;
             position: relative;
+            transition: all 0.8s ease;
         }
 
-        /* 世界级动态背景系统 */
+        /* 页面锁定状态 */
+        body.locked {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* 震动支持 */
+        .vibrate-support {
+            cursor: pointer;
+        }
+
+        /* 世界级动态背景系统 - 增强版 + 自动变色 */
         .cosmic-background {
             position: fixed;
             top: 0;
@@ -71,21 +108,43 @@
             height: 100%;
             z-index: -10;
             background: linear-gradient(45deg,
-                #FF1744 0%,
-                #FF6EC7 12.5%,
-                #FF6D00 25%,
-                #FFD600 37.5%,
-                #76FF03 50%,
-                #00E676 62.5%,
-                #00E5FF 75%,
-                #2979FF 87.5%,
-                #7C4DFF 100%
+                var(--theme-primary) 0%,
+                var(--theme-secondary) 12.5%,
+                var(--candy-orange) 25%,
+                var(--candy-yellow) 37.5%,
+                var(--candy-lime) 50%,
+                var(--candy-green) 62.5%,
+                var(--candy-cyan) 75%,
+                var(--candy-blue) 87.5%,
+                var(--candy-purple) 100%
             );
             background-size: 400% 400%;
-            animation: cosmic-shift 20s ease infinite;
+            animation: cosmic-shift 20s ease infinite, auto-theme-cycle 120s linear infinite;
+            transition: all 2s ease;
         }
 
-        /* 粒子场系统 - 纯CSS实现 */
+        /* 背景俄罗斯方块游戏 */
+        .background-tetris {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -5;
+            opacity: 0.1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .background-tetris canvas {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(2px);
+        }
+
+
+
         .particle-field {
             position: fixed;
             top: 0;
@@ -105,7 +164,21 @@
             animation: particle-float 12s linear infinite;
         }
 
-        /* 超密集糖果和气球漂浮系统 */
+        /* 糖果爆炸系统 */
+        .candy-explosion {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999998;
+        }
+
+        .candy-particle {
+            position: absolute;
+            font-size: 1.2rem;
+            pointer-events: none;
+            animation: explode-out 1.5s ease-out forwards;
+        }
+
+        /* 增强：超密集糖果和气球漂浮系统 */
         .floating-candies {
             position: fixed;
             top: 0;
@@ -117,76 +190,86 @@
             overflow: hidden;
         }
 
-        .floating-candy, .floating-balloon, .floating-star {
+        .floating-candy {
             position: absolute;
             font-size: 3rem;
+            animation: candy-float 20s linear infinite;
             opacity: 0.8;
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
-            cursor: pointer;
-            pointer-events: auto;
             transition: transform 0.3s ease;
         }
 
-        .floating-candy {
-            animation: candy-float 20s linear infinite;
+        .floating-candy:hover {
+            transform: scale(1.2) rotate(15deg);
         }
 
         .floating-balloon {
+            position: absolute;
             font-size: 3.5rem;
             animation: balloon-float 25s linear infinite;
             opacity: 0.7;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
         }
 
         .floating-star {
+            position: absolute;
             font-size: 2.5rem;
             animation: star-float 18s linear infinite;
             opacity: 0.6;
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
         }
 
-        .floating-candy:hover, .floating-balloon:hover, .floating-star:hover {
-            transform: scale(1.2);
-        }
-
-        /* 烟花爆炸效果 */
-        .firework {
+        /* 糖果雨效果 */
+        .candy-rain {
             position: fixed;
+            top: -100px;
+            width: 100%;
+            height: 100vh;
+            z-index: 999995;
             pointer-events: none;
-            z-index: 1000;
         }
 
-        .firework-particle {
+        .rain-drop {
             position: absolute;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            animation: firework-explode 1.5s ease-out forwards;
+            font-size: 2rem;
+            animation: rain-fall 3s linear forwards;
         }
 
-        /* 超级立体棒棒糖 - 增强版 */
+        /* 超级立体棒棒糖 - 响应式优化版 */
         .super-lollipop {
             position: fixed;
-            left: 50%;
-            top: 25%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 280px;
+            right: 20px;
+            top: 20px;
+            transform: none;
+            width: 120px;
+            height: 140px;
             z-index: 999999;
-            pointer-events: none;
-            filter: drop-shadow(0 25px 50px rgba(0,0,0,0.3));
-            /* 添加预设的移动轨迹 */
-            animation: lollipop-dance 8s ease-in-out infinite;
+            pointer-events: auto;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .super-lollipop.scrolling {
+            opacity: 0.3;
+            transform: scale(0.8);
+        }
+
+        .super-lollipop:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
         }
 
         .lollipop-head {
             position: relative;
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 25px;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
             border-radius: 50%;
             background: conic-gradient(
-                var(--candy-red) 0deg 30deg,
+                var(--theme-primary) 0deg 30deg,
                 var(--candy-orange) 30deg 60deg,
-                var(--candy-yellow) 60deg 90deg,
+                var(--theme-accent) 60deg 90deg,
                 var(--candy-lime) 90deg 120deg,
                 var(--candy-green) 120deg 150deg,
                 var(--candy-cyan) 150deg 180deg,
@@ -194,17 +277,18 @@
                 var(--candy-purple) 210deg 240deg,
                 var(--candy-magenta) 240deg 270deg,
                 var(--candy-violet) 270deg 300deg,
-                var(--candy-pink) 300deg 330deg,
-                var(--candy-red) 330deg 360deg
+                var(--theme-secondary) 300deg 330deg,
+                var(--theme-primary) 330deg 360deg
             );
             animation: mega-spin 12s linear infinite;
             box-shadow: 
-                0 0 0 8px rgba(255,255,255,0.9),
-                0 0 0 12px var(--candy-yellow),
-                0 0 0 16px rgba(255,255,255,0.5),
-                var(--shadow-5),
-                inset 0 0 40px rgba(255,255,255,0.4);
-            border: 3px solid rgba(255,255,255,0.95);
+                0 0 0 5px rgba(255,255,255,0.9),
+                0 0 0 8px var(--theme-accent),
+                0 0 0 10px rgba(255,255,255,0.5),
+                var(--shadow-3),
+                inset 0 0 20px rgba(255,255,255,0.4);
+            border: 2px solid rgba(255,255,255,0.95);
+            transition: all 0.3s ease;
         }
 
         .lollipop-stick {
@@ -212,41 +296,251 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 12px;
-            height: 120px;
+            width: 8px;
+            height: 60px;
             background: linear-gradient(180deg, 
                 #FFE0B2 0%, 
                 #FFCC80 30%,
                 #FFB74D 70%, 
                 #FF8F00 100%);
-            border-radius: 6px;
+            border-radius: 4px;
             box-shadow: 
-                inset 2px 0 4px rgba(255,255,255,0.6),
-                inset -2px 0 4px rgba(0,0,0,0.3),
-                var(--shadow-2);
+                inset 1px 0 2px rgba(255,255,255,0.6),
+                inset -1px 0 2px rgba(0,0,0,0.3),
+                var(--shadow-1);
         }
 
-        /* 棒棒糖彩虹轨迹 - 预设路径动画 */
+        /* 棒棒糖彩虹轨迹系统 */
         .lollipop-trail {
             position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
             pointer-events: none;
             z-index: 999998;
+            transition: all 0.5s ease;
         }
 
-        .trail-segment {
-            position: absolute;
-            width: 20px;
-            height: 20px;
+        /* 魔法变色按钮 - 隐藏 */
+        .theme-switcher {
+            display: none;
+        }
+
+        /* 音效按钮 */
+        .audio-toggle {
+            position: fixed;
+            bottom: 120px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--candy-green), var(--candy-cyan));
             border-radius: 50%;
-            opacity: 0;
-            animation: trail-rainbow 2s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-3);
+            transition: all 0.3s var(--ease-out-back);
+            z-index: 10000;
         }
 
-        /* 英雄区域 */
+        .audio-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-toggle.muted {
+            opacity: 0.5;
+        }
+
+        /* 成就系统 */
+        .achievement-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(135deg, var(--candy-yellow), var(--candy-orange));
+            color: white;
+            padding: 20px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-5);
+            z-index: 100002;
+            text-align: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.5s var(--ease-out-back);
+        }
+
+        .achievement-popup.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* 收集计数器 */
+        .candy-counter {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--candy-purple);
+            box-shadow: var(--shadow-2);
+            z-index: 10000;
+            transform: scale(0);
+            transition: all 0.3s var(--ease-out-back);
+        }
+
+        .candy-counter.visible {
+            transform: scale(1);
+        }
+
+        /* 俄罗斯方块游戏系统 */
+        .tetris-trigger {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--candy-purple), var(--candy-blue));
+            border-radius: 12px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-3);
+            transition: all 0.3s var(--ease-out-back);
+            z-index: 10000;
+            animation: tetris-bounce 2s ease-in-out infinite;
+        }
+
+        .tetris-trigger.visible {
+            display: flex;
+        }
+
+        .tetris-trigger:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-5);
+        }
+
+        .tetris-icon {
+            font-size: 1.3rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tetris-game {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 65vw;
+            max-width: 400px;
+            height: 70vh;
+            max-height: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: var(--shadow-5);
+            z-index: 100001;
+            opacity: 0;
+            transition: all 0.5s var(--ease-out-back);
+            border: 3px solid rgba(255,255,255,0.8);
+        }
+
+        .tetris-game.visible {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .tetris-header {
+            padding: 20px;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, var(--candy-purple), var(--candy-blue));
+            color: white;
+            border-radius: 17px 17px 0 0;
+        }
+
+        .tetris-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+        }
+
+        .tetris-close {
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tetris-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: rotate(90deg);
+        }
+
+        .tetris-content {
+            height: calc(100% - 80px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tetris-board {
+            flex: 1;
+            margin: 20px;
+            background: rgba(0,0,0,0.8);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tetris-controls {
+            padding: 20px;
+            display: flex;
+            justify-content: space-around;
+            background: rgba(0,0,0,0.05);
+            border-radius: 0 0 17px 17px;
+        }
+
+        .tetris-btn {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(45deg, var(--candy-pink), var(--candy-orange));
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: var(--shadow-2);
+            transition: all 0.2s ease;
+            font-weight: bold;
+        }
+
+        .tetris-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-3);
+        }
+
+        .tetris-btn:active {
+            transform: translateY(0);
+        }
+
+        /* 漂浮相册容器 */
+        .floating-album {
+            position: relative;
+            z-index: 100;
+        }
+
+        /* 英雄区域 - 修复字体溢出 */
         .hero-section {
             height: 100vh;
             display: flex;
@@ -262,19 +556,25 @@
 
         .hero-title {
             font-size: clamp(3rem, 12vw, 8rem);
-            font-weight: 800;
+            font-weight: 900;
             color: #FFFFFF;
             margin-bottom: 1.5rem;
-            line-height: 1;
+            line-height: 0.9;
             text-shadow: 
-                4px 4px 0px var(--candy-red),
+                4px 4px 0px var(--theme-primary),
                 8px 8px 0px var(--candy-orange),
-                12px 12px 0px var(--candy-yellow),
+                12px 12px 0px var(--theme-accent),
                 16px 16px 40px rgba(0,0,0,0.6);
             animation: title-bounce 4s ease-in-out infinite;
-            letter-spacing: -0.02em;
+            font-family: var(--font-display);
+            letter-spacing: -0.05em;
             max-width: 90vw;
             word-wrap: break-word;
+            transition: all 0.8s ease;
+            background: linear-gradient(45deg, #FFFFFF, #FFE4E1, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-subtitle {
@@ -285,8 +585,11 @@
             text-shadow: 
                 3px 3px 0px var(--candy-purple),
                 6px 6px 20px rgba(0,0,0,0.4);
+            font-family: var(--font-title);
             max-width: 90vw;
             word-wrap: break-word;
+            transition: all 0.8s ease;
+            letter-spacing: 0.02em;
         }
 
         .hero-description {
@@ -302,7 +605,10 @@
             box-shadow: var(--shadow-4);
             margin-bottom: 2rem;
             font-weight: 500;
+            font-family: var(--font-chinese);
+            backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.8s ease;
         }
 
         .cta-button {
@@ -311,9 +617,9 @@
             font-weight: 700;
             color: #FFFFFF;
             background: linear-gradient(45deg, 
-                var(--candy-red), 
+                var(--theme-primary), 
                 var(--candy-orange), 
-                var(--candy-yellow),
+                var(--theme-accent),
                 var(--candy-lime));
             background-size: 300% 300%;
             animation: gradient-flow 3s ease infinite;
@@ -323,19 +629,67 @@
             text-decoration: none;
             display: inline-block;
             box-shadow: var(--shadow-3);
-            transition: all 0.4s ease;
+            transition: all 0.4s var(--ease-out-back);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-family: var(--font-title);
             max-width: 90vw;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
             transform: translateY(-8px) scale(1.05);
             box-shadow: var(--shadow-5);
+            letter-spacing: 4px;
         }
 
-        /* 手机优化的照片容器设计 - 6D玻璃质感 */
+        /* 照片预览聚拢系统 */
+        .photo-preview-cluster {
+            position: fixed;
+            left: 50%;
+            top: 25%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            z-index: 999997;
+            pointer-events: none;
+        }
+
+        .preview-photo {
+            position: absolute;
+            width: 60px;
+            height: 75px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-2);
+            opacity: 0.8;
+            transition: all 2s var(--ease-out-expo);
+        }
+
+        .preview-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 手机优化的照片容器设计 - 6D玻璃质感 + AR效果 */
         .floating-photos {
             position: relative;
             min-height: 200vh;
@@ -358,7 +712,9 @@
             z-index: 50;
             opacity: 0;
             transform: translateY(100px);
-            transition: all 1.2s ease;
+            transition: all 1.2s var(--ease-out-expo);
+            
+            /* 6D动画基础设置 */
             animation: photo6D 8s ease-in-out infinite;
             transform-style: preserve-3d;
         }
@@ -366,6 +722,11 @@
         .floating-photo.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .floating-photo.collected {
+            transform: scale(0.8) rotate(360deg);
+            opacity: 0.7;
         }
 
         .floating-photo:nth-child(2n) {
@@ -381,9 +742,29 @@
         }
 
         .floating-photo:hover {
-            transform: translateY(-25px) scale(1.15);
+            transform: translateY(-25px) rotateY(15deg) rotateX(10deg) scale(1.15);
             z-index: 1000;
             filter: drop-shadow(0 40px 80px rgba(0,0,0,0.4));
+            animation: photo6DHover 0.6s ease-in-out infinite alternate;
+        }
+
+        /* AR式呼吸发光效果 */
+        .floating-photo::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, var(--candy-cyan), var(--candy-purple), var(--candy-pink));
+            border-radius: 30px;
+            z-index: -1;
+            opacity: 0;
+            animation: ar-breathe 3s ease-in-out infinite;
+        }
+
+        .floating-photo:hover::before {
+            opacity: 0.6;
         }
 
         /* 6D玻璃质感相框设计 */
@@ -397,9 +778,18 @@
                 rgba(255,255,255,0.15) 100%);
             border-radius: 25px;
             padding: 20px;
+            backdrop-filter: blur(25px);
             overflow: hidden;
             transform-style: preserve-3d;
-            border: 2px solid rgba(255,255,255,0.3);
+            
+            /* 玻璃边框效果 */
+            border: 2px solid;
+            border-image: linear-gradient(45deg, 
+                rgba(255,255,255,0.8), 
+                rgba(255,255,255,0.2), 
+                rgba(255,255,255,0.8)) 1;
+            
+            /* 多层阴影营造深度 */
             box-shadow: 
                 0 8px 32px rgba(0,0,0,0.12),
                 inset 0 2px 0 rgba(255,255,255,0.2),
@@ -407,6 +797,7 @@
                 0 0 0 1px rgba(255,255,255,0.05);
         }
 
+        /* 玻璃反光效果 */
         .photo-frame::before {
             content: '';
             position: absolute;
@@ -426,6 +817,7 @@
             left: 100%;
         }
 
+        /* 彩虹边框动画 */
         .photo-frame::after {
             content: '';
             position: absolute;
@@ -434,14 +826,14 @@
             right: -3px;
             bottom: -3px;
             background: linear-gradient(45deg,
-                var(--candy-red),
+                var(--theme-primary),
                 var(--candy-orange),
-                var(--candy-yellow),
+                var(--theme-accent),
                 var(--candy-green),
                 var(--candy-cyan),
                 var(--candy-blue),
                 var(--candy-purple),
-                var(--candy-pink)
+                var(--theme-secondary)
             );
             background-size: 400% 400%;
             border-radius: 28px;
@@ -460,8 +852,10 @@
             height: 240px;
             object-fit: cover;
             border-radius: 15px;
-            transition: all 0.6s ease;
+            transition: all 0.6s var(--ease-out-expo);
             filter: contrast(1.1) saturate(1.2) brightness(1.05);
+            
+            /* 玻璃内阴影 */
             box-shadow: 
                 inset 0 1px 0 rgba(255,255,255,0.3),
                 inset 0 -1px 0 rgba(0,0,0,0.1),
@@ -469,7 +863,7 @@
         }
 
         .floating-photo:hover img {
-            transform: scale(1.05);
+            transform: scale(1.05) rotateZ(2deg);
             filter: contrast(1.3) saturate(1.4) brightness(1.15);
             box-shadow: 
                 inset 0 2px 0 rgba(255,255,255,0.4),
@@ -487,8 +881,10 @@
             font-weight: 700;
             color: var(--mana-blue);
             margin-bottom: 8px;
+            font-family: var(--font-title);
             line-height: 1.2;
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            letter-spacing: 0.01em;
         }
 
         .photo-desc {
@@ -496,6 +892,7 @@
             color: var(--mana-dark);
             line-height: 1.4;
             font-weight: 500;
+            font-family: var(--font-chinese);
             opacity: 0.85;
         }
 
@@ -517,18 +914,22 @@
             color: rgba(255,255,255,0.9);
             margin-bottom: 1rem;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            line-height: 1.4;
+            font-family: var(--font-elegant);
+            line-height: 1.6;
             animation: float-text 6s ease-in-out infinite;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-style: italic;
         }
 
         .ending-author {
             font-size: clamp(0.6rem, 1.5vw, 0.9rem);
-            font-weight: 300;
+            font-weight: 600;
             color: rgba(255,255,255,0.7);
+            font-family: var(--font-title);
             text-shadow: 0 1px 5px rgba(0,0,0,0.2);
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             animation: float-text 6s ease-in-out infinite 3s;
+            text-transform: uppercase;
         }
 
         /* 世界级模态框 */
@@ -543,18 +944,19 @@
             display: none;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(20px);
         }
 
         .modal-content {
             position: relative;
             max-width: 90vw;
             max-height: 90vh;
-            transform: scale(0.8);
-            transition: all 0.8s ease;
+            transform: scale(0.8) rotateY(90deg);
+            transition: all 0.8s var(--ease-out-back);
         }
 
         .modal.show .modal-content {
-            transform: scale(1);
+            transform: scale(1) rotateY(0deg);
         }
 
         .modal-photo {
@@ -581,7 +983,8 @@
             align-items: center;
             justify-content: center;
             box-shadow: var(--shadow-3);
-            transition: all 0.3s ease;
+            transition: all 0.3s var(--ease-out-back);
+            font-family: var(--font-display);
         }
 
         .modal-close:hover {
@@ -595,6 +998,27 @@
             25% { background-position: 100% 50%; }
             50% { background-position: 100% 100%; }
             75% { background-position: 0% 100%; }
+        }
+
+        @keyframes auto-theme-cycle {
+            0% { 
+                filter: hue-rotate(0deg) saturate(1);
+            }
+            20% { 
+                filter: hue-rotate(72deg) saturate(1.2);
+            }
+            40% { 
+                filter: hue-rotate(144deg) saturate(0.8);
+            }
+            60% { 
+                filter: hue-rotate(216deg) saturate(1.1);
+            }
+            80% { 
+                filter: hue-rotate(288deg) saturate(0.9);
+            }
+            100% { 
+                filter: hue-rotate(360deg) saturate(1);
+            }
         }
 
         @keyframes particle-float {
@@ -665,52 +1089,31 @@
             }
         }
 
+        @keyframes explode-out {
+            0% {
+                transform: scale(1) translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.3) translate(var(--dx), var(--dy)) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes rain-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         @keyframes mega-spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
-        }
-
-        @keyframes lollipop-dance {
-            0%, 100% { 
-                transform: translate(-50%, -50%) translateX(0px) translateY(0px);
-            }
-            25% { 
-                transform: translate(-50%, -50%) translateX(30px) translateY(-15px);
-            }
-            50% { 
-                transform: translate(-50%, -50%) translateX(0px) translateY(-30px);
-            }
-            75% { 
-                transform: translate(-50%, -50%) translateX(-30px) translateY(-15px);
-            }
-        }
-
-        @keyframes trail-rainbow {
-            0% {
-                opacity: 0;
-                transform: scale(0);
-                background: var(--candy-red);
-            }
-            20% {
-                opacity: 0.8;
-                transform: scale(1);
-                background: var(--candy-orange);
-            }
-            40% {
-                background: var(--candy-yellow);
-            }
-            60% {
-                background: var(--candy-green);
-            }
-            80% {
-                background: var(--candy-blue);
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0);
-                background: var(--candy-purple);
-            }
         }
 
         @keyframes title-bounce {
@@ -741,43 +1144,93 @@
             }
         }
 
-        @keyframes photo6D {
+        @keyframes tetris-bounce {
             0%, 100% { 
-                transform: translateY(0px) translateX(0px) scale(1);
-            }
-            16.66% { 
-                transform: translateY(-8px) translateX(3px) scale(1.02);
-            }
-            33.33% { 
-                transform: translateY(-5px) translateX(-2px) scale(1.01);
+                transform: translateY(0px) rotate(0deg);
             }
             50% { 
-                transform: translateY(-12px) translateX(0px) scale(1.03);
-            }
-            66.66% { 
-                transform: translateY(-6px) translateX(4px) scale(1.015);
-            }
-            83.33% { 
-                transform: translateY(-3px) translateX(-1px) scale(1.005);
+                transform: translateY(-5px) rotate(2deg);
             }
         }
 
-        @keyframes firework-explode {
-            0% {
-                opacity: 1;
-                transform: scale(0);
-            }
-            15% {
+
+
+        @keyframes ar-breathe {
+            0%, 100% {
                 transform: scale(1);
-            }
-            100% {
                 opacity: 0;
-                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.3;
+            }
+        }
+
+        /* 6D照片动画系统 */
+        @keyframes photo6D {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px) translateZ(0px) 
+                          rotateX(0deg) rotateY(0deg) rotateZ(0deg) 
+                          scale(1);
+            }
+            16.66% { 
+                transform: translateY(-8px) translateX(3px) translateZ(5px) 
+                          rotateX(2deg) rotateY(1deg) rotateZ(0.5deg) 
+                          scale(1.02);
+            }
+            33.33% { 
+                transform: translateY(-5px) translateX(-2px) translateZ(8px) 
+                          rotateX(1deg) rotateY(-1deg) rotateZ(-0.5deg) 
+                          scale(1.01);
+            }
+            50% { 
+                transform: translateY(-12px) translateX(0px) translateZ(3px) 
+                          rotateX(-1deg) rotateY(2deg) rotateZ(1deg) 
+                          scale(1.03);
+            }
+            66.66% { 
+                transform: translateY(-6px) translateX(4px) translateZ(-2px) 
+                          rotateX(1.5deg) rotateY(-0.5deg) rotateZ(-0.8deg) 
+                          scale(1.015);
+            }
+            83.33% { 
+                transform: translateY(-3px) translateX(-1px) translateZ(6px) 
+                          rotateX(-0.5deg) rotateY(1.5deg) rotateZ(0.3deg) 
+                          scale(1.005);
+            }
+        }
+
+        @keyframes photo6DHover {
+            0% { 
+                transform: translateY(-25px) rotateY(15deg) rotateX(10deg) scale(1.15);
+                filter: brightness(1.1) contrast(1.2) saturate(1.3);
+            }
+            100% { 
+                transform: translateY(-30px) rotateY(18deg) rotateX(12deg) scale(1.18);
+                filter: brightness(1.15) contrast(1.25) saturate(1.35);
             }
         }
 
         /* 响应式优化 */
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            .super-lollipop {
+                width: 80px;
+                height: 100px;
+                right: 15px;
+                top: 15px;
+            }
+            
+            .lollipop-head {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 10px;
+            }
+            
+            .lollipop-stick {
+                width: 6px;
+                height: 40px;
+            }
+            
             .floating-photo {
                 width: 250px;
                 height: 320px;
@@ -805,40 +1258,121 @@
                 height: 60px;
                 font-size: 1.5rem;
             }
+
+            .tetris-trigger {
+                bottom: 60px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .audio-toggle {
+                bottom: 120px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .tetris-icon, .theme-icon {
+                font-size: 1.2rem;
+            }
+
+            .tetris-game {
+                width: 90vw;
+                height: 80vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .super-lollipop {
+                width: 60px;
+                height: 80px;
+            }
+            
+            .lollipop-head {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .lollipop-stick {
+                width: 4px;
+                height: 30px;
+            }
         }
     </style>
 </head>
-<body>
+<body class="locked">
     <!-- 世界级背景系统 -->
-    <div class="cosmic-background"></div>
+    <div class="cosmic-background" id="cosmicBackground"></div>
+    
+    <!-- 背景俄罗斯方块游戏 -->
+    <div class="background-tetris" id="backgroundTetris">
+        <canvas id="backgroundTetrisCanvas"></canvas>
+    </div>
     
     <div class="particle-field" id="particleField"></div>
     
     <!-- 超密集糖果和气球漂浮系统 -->
     <div class="floating-candies" id="floatingCandies"></div>
 
-    <!-- 超级立体棒棒糖 -->
+    <!-- 超级立体棒棒糖 - 优化版 -->
     <div class="super-lollipop" id="superLollipop">
-        <div class="lollipop-head"></div>
+        <div class="lollipop-head" id="lollipopHead"></div>
         <div class="lollipop-stick"></div>
     </div>
 
-    <!-- 棒棒糖彩虹轨迹 -->
-    <div class="lollipop-trail" id="lollipopTrail"></div>
+    <!-- 照片预览聚拢 -->
+    <div class="photo-preview-cluster" id="photoPreviewCluster"></div>
+
+    <!-- 控制按钮区域 -->
+    <div class="audio-toggle" id="audioToggle">
+        <div class="audio-icon">🔊</div>
+    </div>
+
+    <div class="tetris-trigger" id="tetrisTrigger">
+        <div class="tetris-icon">🧩</div>
+    </div>
+
+    <!-- 成就系统 -->
+    <div class="achievement-popup" id="achievementPopup"></div>
+
+    <!-- 收集计数器 -->
+    <div class="candy-counter" id="candyCounter">
+        🍬 收集糖果: <span id="candyCount">0</span>
+    </div>
+
+    <!-- 俄罗斯方块游戏窗口 -->
+    <div class="tetris-game" id="tetrisGame">
+        <div class="tetris-header">
+            <div class="tetris-title">🍭 甜蜜方块</div>
+            <button class="tetris-close" id="tetrisClose">×</button>
+        </div>
+        <div class="tetris-content">
+            <div class="tetris-board">
+                <canvas id="tetrisCanvas" width="300" height="600"></canvas>
+            </div>
+            <div class="tetris-controls">
+                <button class="tetris-btn" id="tetrisLeft">←</button>
+                <button class="tetris-btn" id="tetrisRotate">↻</button>
+                <button class="tetris-btn" id="tetrisRight">→</button>
+                <button class="tetris-btn" id="tetrisDown">↓</button>
+            </div>
+        </div>
+    </div>
 
     <!-- 漂浮相册 -->
     <div class="floating-album">
         <!-- 英雄区域 -->
         <section class="hero-section">
             <h1 class="hero-title">甜蜜六一节</h1>
-            <p class="hero-subtitle">Trolli超萌嘉年华</p>
+            <p class="hero-subtitle">Trolli超萌嘉年华 2.0</p>
             <div class="hero-description">
                 🎈 六一儿童节特别活动精彩回顾<br>
                 🍭 17个超甜蜜瞬间全记录<br>
                 🎪 每一张照片都是珍贵回忆<br>
-                🌈 让我们一起重温那些快乐时光！
+                🌈 体验全新的糖果世界交互魔法！
             </div>
-            <button class="cta-button" id="startJourney">🎉 开始回忆之旅</button>
+            <button class="cta-button vibrate-support" id="startJourney">🎉 开始魔法之旅</button>
         </section>
 
         <!-- 漂浮照片区域 -->
@@ -856,36 +1390,458 @@
     <!-- 模态框 -->
     <div class="modal" id="modal">
         <div class="modal-content">
-            <button class="modal-close" id="modalClose">×</button>
+            <button class="modal-close vibrate-support" id="modalClose">×</button>
             <img class="modal-photo" id="modalPhoto" src="" alt="">
         </div>
     </div>
 
     <script>
-        class WeChatTrolliAlbum {
+        class BackgroundTetrisGame {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                
+                this.BOARD_WIDTH = Math.floor(this.canvas.width / 30);
+                this.BOARD_HEIGHT = Math.floor(this.canvas.height / 30);
+                this.CELL_SIZE = 30;
+                
+                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
+                this.currentPiece = null;
+                this.currentX = 0;
+                this.currentY = 0;
+                this.gameRunning = true;
+                this.gameLoop = null;
+                this.dropSpeed = 2000; // 很慢的下落速度
+                
+                this.colors = [
+                    'transparent', 
+                    'rgba(255, 23, 68, 0.3)', 
+                    'rgba(255, 109, 0, 0.3)', 
+                    'rgba(255, 214, 0, 0.3)',
+                    'rgba(118, 255, 3, 0.3)', 
+                    'rgba(0, 229, 255, 0.3)', 
+                    'rgba(41, 121, 255, 0.3)', 
+                    'rgba(124, 77, 255, 0.3)'
+                ];
+                
+                this.pieces = [
+                    [[[1,1,1,1]]],
+                    [[[2,2],[2,2]]],
+                    [[[0,3,0],[3,3,3]]],
+                    [[[0,4,4],[4,4,0]]],
+                    [[[5,5,0],[0,5,5]]],
+                    [[[6,0,0],[6,6,6]]],
+                    [[[0,0,7],[7,7,7]]]
+                ];
+                
+                this.init();
+            }
+            
+            init() {
+                this.spawnPiece();
+                this.start();
+                
+                // 窗口大小变化时重新调整
+                window.addEventListener('resize', () => {
+                    this.canvas.width = window.innerWidth;
+                    this.canvas.height = window.innerHeight;
+                    this.BOARD_WIDTH = Math.floor(this.canvas.width / 30);
+                    this.BOARD_HEIGHT = Math.floor(this.canvas.height / 30);
+                    this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
+                });
+            }
+            
+            spawnPiece() {
+                const pieceIndex = Math.floor(Math.random() * this.pieces.length);
+                this.currentPiece = this.pieces[pieceIndex][0];
+                this.currentX = Math.floor(this.BOARD_WIDTH / 2) - Math.floor(this.currentPiece[0].length / 2);
+                this.currentY = 0;
+            }
+            
+            collision(piece, x, y) {
+                for (let py = 0; py < piece.length; py++) {
+                    for (let px = 0; px < piece[py].length; px++) {
+                        if (piece[py][px] !== 0) {
+                            const newX = x + px;
+                            const newY = y + py;
+                            
+                            if (newX < 0 || newX >= this.BOARD_WIDTH || newY >= this.BOARD_HEIGHT) {
+                                return true;
+                            }
+                            
+                            if (newY >= 0 && this.board[newY][newX] !== 0) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+            
+            placePiece() {
+                for (let py = 0; py < this.currentPiece.length; py++) {
+                    for (let px = 0; px < this.currentPiece[py].length; px++) {
+                        if (this.currentPiece[py][px] !== 0) {
+                            const y = this.currentY + py;
+                            const x = this.currentX + px;
+                            if (y >= 0 && y < this.BOARD_HEIGHT && x >= 0 && x < this.BOARD_WIDTH) {
+                                this.board[y][x] = this.currentPiece[py][px];
+                            }
+                        }
+                    }
+                }
+                
+                this.clearLines();
+                this.spawnPiece();
+            }
+            
+            clearLines() {
+                for (let y = this.BOARD_HEIGHT - 1; y >= 0; y--) {
+                    if (this.board[y].every(cell => cell !== 0)) {
+                        this.board.splice(y, 1);
+                        this.board.unshift(Array(this.BOARD_WIDTH).fill(0));
+                        y++;
+                    }
+                }
+            }
+            
+            dropPiece() {
+                if (!this.collision(this.currentPiece, this.currentX, this.currentY + 1)) {
+                    this.currentY++;
+                } else {
+                    this.placePiece();
+                }
+            }
+            
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // 绘制已放置的方块
+                for (let y = 0; y < this.BOARD_HEIGHT; y++) {
+                    for (let x = 0; x < this.BOARD_WIDTH; x++) {
+                        if (this.board[y][x] !== 0) {
+                            this.ctx.fillStyle = this.colors[this.board[y][x]];
+                            this.ctx.fillRect(
+                                x * this.CELL_SIZE,
+                                y * this.CELL_SIZE,
+                                this.CELL_SIZE - 1,
+                                this.CELL_SIZE - 1
+                            );
+                        }
+                    }
+                }
+                
+                // 绘制当前方块
+                if (this.currentPiece) {
+                    for (let py = 0; py < this.currentPiece.length; py++) {
+                        for (let px = 0; px < this.currentPiece[py].length; px++) {
+                            if (this.currentPiece[py][px] !== 0) {
+                                const x = this.currentX + px;
+                                const y = this.currentY + py;
+                                if (y >= 0 && x >= 0 && x < this.BOARD_WIDTH && y < this.BOARD_HEIGHT) {
+                                    this.ctx.fillStyle = this.colors[this.currentPiece[py][px]];
+                                    this.ctx.fillRect(
+                                        x * this.CELL_SIZE,
+                                        y * this.CELL_SIZE,
+                                        this.CELL_SIZE - 1,
+                                        this.CELL_SIZE - 1
+                                    );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            start() {
+                if (this.gameRunning) {
+                    this.gameLoop = setInterval(() => {
+                        this.dropPiece();
+                        this.draw();
+                    }, this.dropSpeed);
+                }
+            }
+            
+            stop() {
+                this.gameRunning = false;
+                if (this.gameLoop) {
+                    clearInterval(this.gameLoop);
+                }
+            }
+        }
+
+        class TetrisGame {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.canvas.width = 300;
+                this.canvas.height = 600;
+                
+                this.BOARD_WIDTH = 10;
+                this.BOARD_HEIGHT = 20;
+                this.CELL_SIZE = this.canvas.width / this.BOARD_WIDTH;
+                
+                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
+                this.currentPiece = null;
+                this.currentX = 0;
+                this.currentY = 0;
+                this.gameRunning = false;
+                this.gameLoop = null;
+                
+                this.colors = [
+                    '#000000', '#FF1744', '#FF6D00', '#FFD600',
+                    '#76FF03', '#00E5FF', '#2979FF', '#7C4DFF'
+                ];
+                
+                this.pieces = [
+                    [[[1,1,1,1]]],
+                    [[[2,2],[2,2]]],
+                    [[[0,3,0],[3,3,3]], [[3,0],[3,3],[3,0]], [[3,3,3],[0,3,0]], [[0,3],[3,3],[0,3]]],
+                    [[[0,4,4],[4,4,0]], [[4,0],[4,4],[0,4]]],
+                    [[[5,5,0],[0,5,5]], [[0,5],[5,5],[5,0]]],
+                    [[[6,0,0],[6,6,6]], [[6,6],[6,0],[6,0]], [[6,6,6],[0,0,6]], [[0,6],[0,6],[6,6]]],
+                    [[[0,0,7],[7,7,7]], [[7,0],[7,0],[7,7]], [[7,7,7],[7,0,0]], [[7,7],[0,7],[0,7]]]
+                ];
+                
+                this.init();
+            }
+            
+            init() {
+                this.spawnPiece();
+                this.draw();
+            }
+            
+            spawnPiece() {
+                const pieceIndex = Math.floor(Math.random() * this.pieces.length);
+                const rotationIndex = Math.floor(Math.random() * this.pieces[pieceIndex].length);
+                this.currentPiece = this.pieces[pieceIndex][rotationIndex];
+                this.currentX = Math.floor(this.BOARD_WIDTH / 2) - Math.floor(this.currentPiece[0].length / 2);
+                this.currentY = 0;
+                
+                if (this.collision(this.currentPiece, this.currentX, this.currentY)) {
+                    this.gameOver();
+                }
+            }
+            
+            collision(piece, x, y) {
+                for (let py = 0; py < piece.length; py++) {
+                    for (let px = 0; px < piece[py].length; px++) {
+                        if (piece[py][px] !== 0) {
+                            const newX = x + px;
+                            const newY = y + py;
+                            
+                            if (newX < 0 || newX >= this.BOARD_WIDTH || newY >= this.BOARD_HEIGHT) {
+                                return true;
+                            }
+                            
+                            if (newY >= 0 && this.board[newY][newX] !== 0) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+            
+            placePiece() {
+                for (let py = 0; py < this.currentPiece.length; py++) {
+                    for (let px = 0; px < this.currentPiece[py].length; px++) {
+                        if (this.currentPiece[py][px] !== 0) {
+                            const y = this.currentY + py;
+                            const x = this.currentX + px;
+                            if (y >= 0) {
+                                this.board[y][x] = this.currentPiece[py][px];
+                            }
+                        }
+                    }
+                }
+                
+                this.clearLines();
+                this.spawnPiece();
+            }
+            
+            clearLines() {
+                for (let y = this.BOARD_HEIGHT - 1; y >= 0; y--) {
+                    if (this.board[y].every(cell => cell !== 0)) {
+                        this.board.splice(y, 1);
+                        this.board.unshift(Array(this.BOARD_WIDTH).fill(0));
+                        y++;
+                    }
+                }
+            }
+            
+            rotatePiece() {
+                const rotated = this.currentPiece[0].map((_, index) =>
+                    this.currentPiece.map(row => row[index]).reverse()
+                );
+                
+                if (!this.collision(rotated, this.currentX, this.currentY)) {
+                    this.currentPiece = rotated;
+                }
+            }
+            
+            movePiece(dx) {
+                if (!this.collision(this.currentPiece, this.currentX + dx, this.currentY)) {
+                    this.currentX += dx;
+                }
+            }
+            
+            dropPiece() {
+                if (!this.collision(this.currentPiece, this.currentX, this.currentY + 1)) {
+                    this.currentY++;
+                } else {
+                    this.placePiece();
+                }
+            }
+            
+            draw() {
+                this.ctx.fillStyle = '#000';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                this.ctx.strokeStyle = '#333';
+                this.ctx.lineWidth = 1;
+                for (let x = 0; x <= this.BOARD_WIDTH; x++) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(x * this.CELL_SIZE, 0);
+                    this.ctx.lineTo(x * this.CELL_SIZE, this.canvas.height);
+                    this.ctx.stroke();
+                }
+                for (let y = 0; y <= this.BOARD_HEIGHT; y++) {
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(0, y * this.CELL_SIZE);
+                    this.ctx.lineTo(this.canvas.width, y * this.CELL_SIZE);
+                    this.ctx.stroke();
+                }
+                
+                for (let y = 0; y < this.BOARD_HEIGHT; y++) {
+                    for (let x = 0; x < this.BOARD_WIDTH; x++) {
+                        if (this.board[y][x] !== 0) {
+                            this.ctx.fillStyle = this.colors[this.board[y][x]];
+                            this.ctx.fillRect(
+                                x * this.CELL_SIZE + 1,
+                                y * this.CELL_SIZE + 1,
+                                this.CELL_SIZE - 2,
+                                this.CELL_SIZE - 2
+                            );
+                        }
+                    }
+                }
+                
+                if (this.currentPiece) {
+                    for (let py = 0; py < this.currentPiece.length; py++) {
+                        for (let px = 0; px < this.currentPiece[py].length; px++) {
+                            if (this.currentPiece[py][px] !== 0) {
+                                const x = this.currentX + px;
+                                const y = this.currentY + py;
+                                if (y >= 0) {
+                                    this.ctx.fillStyle = this.colors[this.currentPiece[py][px]];
+                                    this.ctx.fillRect(
+                                        x * this.CELL_SIZE + 1,
+                                        y * this.CELL_SIZE + 1,
+                                        this.CELL_SIZE - 2,
+                                        this.CELL_SIZE - 2
+                                    );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            gameOver() {
+                this.gameRunning = false;
+                if (this.gameLoop) {
+                    clearInterval(this.gameLoop);
+                }
+                setTimeout(() => {
+                    alert('游戏结束！获得糖果奖励！🍬');
+                    window.trolliAlbum.addCandy(5);
+                }, 100);
+                this.reset();
+            }
+            
+            reset() {
+                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
+                this.spawnPiece();
+                this.draw();
+            }
+            
+            start() {
+                if (this.gameRunning) return;
+                
+                this.gameRunning = true;
+                this.gameLoop = setInterval(() => {
+                    this.dropPiece();
+                    this.draw();
+                }, 500);
+            }
+            
+            stop() {
+                this.gameRunning = false;
+                if (this.gameLoop) {
+                    clearInterval(this.gameLoop);
+                }
+            }
+        }
+
+        class WorldClassTrolliAlbum {
             constructor() {
                 this.photos = [];
+                this.particles = [];
+                this.candies = [];
+                this.balloons = [];
+                this.trailPoints = [];
+                this.mouse = { x: 0, y: 0 };
+                this.lollipopPosition = { x: 0, y: 0 };
                 this.isJourneyStarted = false;
                 this.visiblePhotoIndex = 0;
+                this.lastScrollY = 0;
+                this.tetrisGame = null;
+                this.backgroundTetris = null;
+                this.candyCount = 0;
+                this.clickCombo = 0;
+                this.comboTimeout = null;
+                this.audioEnabled = true;
+                this.lollipopClickCount = 0;
+                this.collectedPhotos = new Set();
+                this.achievements = {
+                    firstClick: false,
+                    photoCollector: false,
+                    comboMaster: false,
+                    themeExplorer: false,
+                    gamePlayer: false,
+                    secretFinder: false
+                };
+                
+                // 绑定全局引用
+                window.trolliAlbum = this;
+                
                 this.init();
             }
 
-            init() {
-                console.log('🍭 启动微信版Trolli相册...');
+            async init() {
+                console.log('🍭 启动世界级Trolli相册2.0...');
                 
                 this.createParticleSystem();
-                this.createCandyBalloonSystem();
-                this.createTrailSystem();
-                this.loadPhotos();
+                this.createSuperDenseCandyBalloonSystem();
+                await this.loadPhotos();
+                this.createPhotoPreviewCluster();
+                this.initTetrisGame();
+                this.initBackgroundTetris();
+                this.initSoundEffects();
+                console.log(`📚 已加载 ${this.photos.length} 张照片`);
+                this.initInteractionEffects();
                 this.bindEvents();
                 
-                console.log('✅ 微信版相册已就绪！');
+                console.log('✅ 世界级相册2.0已就绪！');
             }
 
             createParticleSystem() {
                 const particleField = document.getElementById('particleField');
                 
-                for (let i = 0; i < 60; i++) {
+                for (let i = 0; i < 80; i++) {
                     const particle = document.createElement('div');
                     particle.className = 'particle';
                     particle.style.left = Math.random() * 100 + '%';
@@ -895,120 +1851,425 @@
                 }
             }
 
-            createCandyBalloonSystem() {
+            createSuperDenseCandyBalloonSystem() {
                 const candiesContainer = document.getElementById('floatingCandies');
-                const candyEmojis = ['🍬', '🍭', '🧁', '🍰', '🎂', '🍩', '🍪', '🍫'];
+                const candyEmojis = ['🍬', '🍭', '🧁', '🍰', '🎂', '🍩', '🍪', '🍫', '🍨', '🧊'];
                 const balloonEmojis = ['🎈', '🎀', '🎊', '🎉', '✨', '🎆', '💫', '⭐'];
                 const starEmojis = ['🌟', '💖', '💝', '🦄', '🌙', '☁️'];
                 
-                // 创建糖果
-                for (let i = 0; i < 25; i++) {
+                // 创建超密集漂浮糖果
+                for (let i = 0; i < 40; i++) {
                     const candy = document.createElement('div');
-                    candy.className = 'floating-candy';
+                    candy.className = 'floating-candy vibrate-support';
                     candy.textContent = candyEmojis[Math.floor(Math.random() * candyEmojis.length)];
                     candy.style.left = Math.random() * 100 + '%';
                     candy.style.animationDelay = Math.random() * 20 + 's';
                     candy.style.animationDuration = (15 + Math.random() * 10) + 's';
-                    candy.addEventListener('click', (e) => this.createFirework(e.pageX, e.pageY));
+                    candy.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.collectCandy(e.target);
+                        this.triggerVibration();
+                    });
                     candiesContainer.appendChild(candy);
                 }
                 
-                // 创建气球
-                for (let i = 0; i < 20; i++) {
+                // 创建超密集漂浮气球
+                for (let i = 0; i < 30; i++) {
                     const balloon = document.createElement('div');
                     balloon.className = 'floating-balloon';
                     balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
                     balloon.style.left = Math.random() * 100 + '%';
                     balloon.style.animationDelay = Math.random() * 25 + 's';
                     balloon.style.animationDuration = (20 + Math.random() * 10) + 's';
-                    balloon.addEventListener('click', (e) => this.createFirework(e.pageX, e.pageY));
                     candiesContainer.appendChild(balloon);
                 }
 
-                // 创建星星
-                for (let i = 0; i < 15; i++) {
+                // 创建星星漂浮
+                for (let i = 0; i < 20; i++) {
                     const star = document.createElement('div');
                     star.className = 'floating-star';
                     star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
                     star.style.left = Math.random() * 100 + '%';
                     star.style.animationDelay = Math.random() * 18 + 's';
                     star.style.animationDuration = (15 + Math.random() * 8) + 's';
-                    star.addEventListener('click', (e) => this.createFirework(e.pageX, e.pageY));
                     candiesContainer.appendChild(star);
                 }
             }
 
-            createTrailSystem() {
-                const trailContainer = document.getElementById('lollipopTrail');
-                
-                // 创建20个轨迹点，分布在棒棒糖运动路径上
-                for (let i = 0; i < 20; i++) {
-                    const segment = document.createElement('div');
-                    segment.className = 'trail-segment';
+            createPhotoPreviewCluster() {
+                const cluster = document.getElementById('photoPreviewCluster');
+                const photoUrls = [
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqNJRktLzZiaPGic4sMDHiangKhbwObQ1Oq9uScIiaRdPubVHcPW9hq8D1fw/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqxGgkmQBBIDkQiaVHs0ksI9oPicPUvomZYkWIwFaf2yPiaicMGsibSicD4gIw/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqHu4nUPXHPkPZd7upuKJpcqDq7snu2SWgt531HycCoFOLU94kaYqD5Q/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqyPgjTibg4ymS1oubu0DVnBs0dvahuIWhLeGW8ia8DZznZDkofU2m7epg/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqmrUy0vkvMe1J7oykoQx1bXycm6lCeqSt3sQtibVZw9uEnGblgsrTFdw/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqBLdYVN1e9bSAlzu8yn2rmbjUOM670gv8bBPd2dyPxiaYndxfVqspN9Q/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqhWpRSalaoQI4T9c8PvyX3VxqjwlQWto4ygGY7lw0qIqK1LWbQUavvA/640?wx_fmt=jpeg&from=appmsg',
+                    'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqJaWmaVm5ibxuQNYbpzuGSWMrgd09Nk4sXP9icianVGqeyMbqhWEkeicQkA/640?wx_fmt=jpeg&from=appmsg'
+                ];
+
+                // 围绕棒棒糖创建8个预览照片
+                for (let i = 0; i < 8; i++) {
+                    const preview = document.createElement('div');
+                    preview.className = 'preview-photo';
                     
-                    // 计算轨迹点位置（跟随棒棒糖舞蹈路径）
-                    const angle = (i / 20) * 360;
-                    const radius = 40;
-                    const x = 50 + Math.cos(angle * Math.PI / 180) * radius / window.innerWidth * 100;
-                    const y = 25 + Math.sin(angle * Math.PI / 180) * radius / window.innerHeight * 100;
+                    const angle = (i / 8) * 360;
+                    const radius = 120;
+                    const x = Math.cos(angle * Math.PI / 180) * radius;
+                    const y = Math.sin(angle * Math.PI / 180) * radius;
                     
-                    segment.style.left = x + '%';
-                    segment.style.top = y + '%';
-                    segment.style.animationDelay = (i * 0.1) + 's';
+                    preview.style.left = `calc(50% + ${x}px)`;
+                    preview.style.top = `calc(50% + ${y}px)`;
+                    preview.style.transform = 'translate(-50%, -50%) rotate(' + (angle + 45) + 'deg)';
                     
-                    trailContainer.appendChild(segment);
+                    preview.innerHTML = `<img src="${photoUrls[i]}" alt="预览图 ${i + 1}" loading="lazy">`;
+                    
+                    cluster.appendChild(preview);
                 }
             }
 
-            createFirework(x, y) {
-                const firework = document.createElement('div');
-                firework.className = 'firework';
-                firework.style.left = x + 'px';
-                firework.style.top = y + 'px';
-                
-                const colors = [
-                    '#FF1744', '#FF6EC7', '#FF6D00', '#FFD600', 
-                    '#76FF03', '#00E676', '#00E5FF', '#2979FF', 
-                    '#7C4DFF', '#E91E63', '#9C27B0', '#FFC107'
-                ];
-                
-                // 创建30个烟花粒子
-                for (let i = 0; i < 30; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'firework-particle';
-                    
-                    const angle = (i / 30) * 360;
-                    const velocity = 80 + Math.random() * 60;
-                    const endX = Math.cos(angle * Math.PI / 180) * velocity;
-                    const endY = Math.sin(angle * Math.PI / 180) * velocity;
-                    
-                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    particle.style.left = '0px';
-                    particle.style.top = '0px';
-                    particle.style.setProperty('--end-x', endX + 'px');
-                    particle.style.setProperty('--end-y', endY + 'px');
-                    
-                    // 添加粒子运动
-                    particle.style.animation = `firework-explode 1.5s ease-out forwards`;
-                    particle.style.transform = `translate(${endX}px, ${endY}px)`;
-                    
-                    firework.appendChild(particle);
+            initTetrisGame() {
+                const canvas = document.getElementById('tetrisCanvas');
+                this.tetrisGame = new TetrisGame(canvas);
+            }
+
+            initBackgroundTetris() {
+                const canvas = document.getElementById('backgroundTetrisCanvas');
+                this.backgroundTetris = new BackgroundTetrisGame(canvas);
+            }
+
+            initSoundEffects() {
+                // 使用Web Audio API创建音效
+                this.audioContext = null;
+                try {
+                    this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                } catch (e) {
+                    console.log('音频上下文不支持');
                 }
+            }
+
+            playSound(frequency, duration = 200, type = 'sine') {
+                if (!this.audioEnabled || !this.audioContext) return;
                 
-                document.body.appendChild(firework);
+                try {
+                    const oscillator = this.audioContext.createOscillator();
+                    const gainNode = this.audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(this.audioContext.destination);
+                    
+                    oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
+                    oscillator.type = type;
+                    
+                    gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration / 1000);
+                    
+                    oscillator.start(this.audioContext.currentTime);
+                    oscillator.stop(this.audioContext.currentTime + duration / 1000);
+                } catch (e) {
+                    console.log('音效播放失败');
+                }
+            }
+
+            triggerVibration(pattern = [50]) {
+                if (navigator.vibrate) {
+                    navigator.vibrate(pattern);
+                }
+            }
+
+            initInteractionEffects() {
+                // 页面点击爆炸效果
+                document.addEventListener('click', (e) => {
+                    this.createCandyExplosion(e.clientX, e.clientY);
+                    this.playSound(800 + Math.random() * 400, 100);
+                    this.addCombo();
+                });
+
+                // 棒棒糖鼠标跟随和轨迹
+                document.addEventListener('mousemove', (e) => {
+                    this.mouse.x = e.clientX;
+                    this.mouse.y = e.clientY;
+                    this.updateLollipopPosition(e.clientX, e.clientY);
+                });
+
+                // 触摸支持
+                document.addEventListener('touchmove', (e) => {
+                    if (e.touches.length > 0) {
+                        const touch = e.touches[0];
+                        this.updateLollipopPosition(touch.clientX, touch.clientY);
+                    }
+                });
+
+                // 滚动时的轨迹和照片显示
+                window.addEventListener('scroll', () => {
+                    if (this.isJourneyStarted) {
+                        this.updateScrollEffects();
+                        this.checkPhotoVisibility();
+                    }
+                });
+
+                // 设备方向变化支持
+                window.addEventListener('deviceorientation', (e) => {
+                    if (this.isJourneyStarted) {
+                        this.updateDeviceOrientationEffects(e);
+                    }
+                });
+
+                // 长按变色效果 - 移除自动主题切换
+                let longPressTimer;
+                document.addEventListener('touchstart', (e) => {
+                    longPressTimer = setTimeout(() => {
+                        this.triggerVibration([100, 50, 100]);
+                    }, 1000);
+                });
+
+                document.addEventListener('touchend', () => {
+                    clearTimeout(longPressTimer);
+                });
+            }
+
+            createCandyExplosion(x, y) {
+                const explosion = document.createElement('div');
+                explosion.className = 'candy-explosion';
+                explosion.style.left = x + 'px';
+                explosion.style.top = y + 'px';
+                document.body.appendChild(explosion);
+
+                const candyTypes = ['🍬', '🍭', '🍰', '🎉', '✨', '💫', '⭐', '🌟'];
                 
-                // 1.5秒后清除烟花
+                for (let i = 0; i < 12; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'candy-particle';
+                    particle.textContent = candyTypes[Math.floor(Math.random() * candyTypes.length)];
+                    
+                    const angle = (i / 12) * 360 * Math.PI / 180;
+                    const velocity = 100 + Math.random() * 100;
+                    const dx = Math.cos(angle) * velocity;
+                    const dy = Math.sin(angle) * velocity;
+                    
+                    particle.style.setProperty('--dx', dx + 'px');
+                    particle.style.setProperty('--dy', dy + 'px');
+                    
+                    explosion.appendChild(particle);
+                }
+
                 setTimeout(() => {
-                    document.body.removeChild(firework);
+                    explosion.remove();
                 }, 1500);
             }
 
+            collectCandy(candyElement) {
+                this.addCandy(1);
+                this.playSound(1200, 150);
+                
+                // 糖果收集动画
+                candyElement.style.transform = 'scale(1.5) rotate(360deg)';
+                candyElement.style.opacity = '0';
+                
+                setTimeout(() => {
+                    candyElement.style.transform = '';
+                    candyElement.style.opacity = '0.8';
+                }, 1000);
+
+                if (!this.achievements.firstClick) {
+                    this.unlockAchievement('firstClick', '🎉 初次体验！', '欢迎来到糖果世界！');
+                }
+            }
+
+            addCandy(amount) {
+                this.candyCount += amount;
+                document.getElementById('candyCount').textContent = this.candyCount;
+                
+                if (this.candyCount >= 10 && !this.achievements.photoCollector) {
+                    this.unlockAchievement('photoCollector', '🍬 糖果收集家！', '收集了10个糖果！');
+                }
+            }
+
+            addCombo() {
+                this.clickCombo++;
+                
+                if (this.comboTimeout) {
+                    clearTimeout(this.comboTimeout);
+                }
+                
+                this.comboTimeout = setTimeout(() => {
+                    if (this.clickCombo >= 10 && !this.achievements.comboMaster) {
+                        this.unlockAchievement('comboMaster', '🔥 连击大师！', '连击达到10次！');
+                    }
+                    this.clickCombo = 0;
+                }, 2000);
+            }
+
+            createCandyRain() {
+                const rainContainer = document.createElement('div');
+                rainContainer.className = 'candy-rain';
+                document.body.appendChild(rainContainer);
+
+                const candyTypes = ['🍬', '🍭', '🧁', '🍰', '🍩', '🍪', '🍫'];
+                
+                for (let i = 0; i < 50; i++) {
+                    const rainDrop = document.createElement('div');
+                    rainDrop.className = 'rain-drop';
+                    rainDrop.textContent = candyTypes[Math.floor(Math.random() * candyTypes.length)];
+                    rainDrop.style.left = Math.random() * 100 + '%';
+                    rainDrop.style.animationDelay = Math.random() * 2 + 's';
+                    rainContainer.appendChild(rainDrop);
+                }
+
+                setTimeout(() => {
+                    rainContainer.remove();
+                }, 5000);
+
+                if (!this.achievements.secretFinder) {
+                    this.unlockAchievement('secretFinder', '🎊 秘密发现者！', '找到了隐藏的糖果雨！');
+                }
+            }
+
+            unlockAchievement(key, title, description) {
+                this.achievements[key] = true;
+                
+                const popup = document.getElementById('achievementPopup');
+                popup.innerHTML = `
+                    <div style="font-size: 2rem; margin-bottom: 10px;">${title}</div>
+                    <div style="font-size: 1rem; opacity: 0.9;">${description}</div>
+                `;
+                popup.classList.add('show');
+                
+                this.playSound(800, 500);
+                this.triggerVibration([200, 100, 200]);
+                
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 3000);
+            }
+
+            updateLollipopPosition(x, y) {
+                const lollipop = document.getElementById('superLollipop');
+                const rect = lollipop.getBoundingClientRect();
+                const lollipopCenterX = rect.left + rect.width / 2;
+                const lollipopCenterY = rect.top + rect.height / 2;
+                
+                const deltaX = (x - lollipopCenterX) * 0.1;
+                const deltaY = (y - lollipopCenterY) * 0.1;
+                
+                lollipop.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${1 + Math.abs(deltaX + deltaY) * 0.001})`;
+                
+                // 更新棒棒糖实际位置用于轨迹
+                this.lollipopPosition.x = lollipopCenterX + deltaX;
+                this.lollipopPosition.y = lollipopCenterY + deltaY;
+
+                // 添加轨迹点
+                if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+                    this.addTrailPoint(this.lollipopPosition.x, this.lollipopPosition.y);
+                }
+            }
+
+            addTrailPoint(x, y) {
+                const trail = document.createElement('div');
+                trail.className = 'lollipop-trail';
+                trail.style.left = x + 'px';
+                trail.style.top = y + 'px';
+                
+                const hue = (Date.now() / 10) % 360;
+                trail.style.background = `hsl(${hue}, 100%, 70%)`;
+                
+                document.body.appendChild(trail);
+                
+                this.trailPoints.push({
+                    element: trail,
+                    timestamp: Date.now()
+                });
+
+                if (this.trailPoints.length > 15) {
+                    const oldest = this.trailPoints.shift();
+                    oldest.element.remove();
+                }
+
+                setTimeout(() => {
+                    trail.style.opacity = '0.6';
+                    trail.style.transform = 'scale(0.6)';
+                }, 50);
+
+                setTimeout(() => {
+                    trail.style.opacity = '0.3';
+                    trail.style.transform = 'scale(0.3)';
+                }, 200);
+
+                setTimeout(() => {
+                    trail.style.opacity = '0';
+                    trail.style.transform = 'scale(0)';
+                }, 500);
+            }
+
+            updateScrollEffects() {
+                const scrolled = window.pageYOffset;
+                const lollipop = document.getElementById('superLollipop');
+                
+                if (scrolled > 100) {
+                    lollipop.classList.add('scrolling');
+                } else {
+                    lollipop.classList.remove('scrolling');
+                }
+            }
+
+            updateDeviceOrientationEffects(event) {
+                const { gamma, beta } = event; // gamma: 左右倾斜, beta: 前后倾斜
+                
+                if (gamma !== null && beta !== null) {
+                    const photos = document.querySelectorAll('.floating-photo.visible');
+                    photos.forEach((photo, index) => {
+                        const factor = (index % 2 === 0 ? 1 : -1);
+                        const translateX = gamma * 0.5 * factor;
+                        const translateY = beta * 0.3 * factor;
+                        
+                        photo.style.transform += ` translate(${translateX}px, ${translateY}px)`;
+                    });
+                }
+            }
+
+            checkPhotoVisibility() {
+                const scrolled = window.pageYOffset;
+                const heroHeight = window.innerHeight;
+                const scrollTriggerDistance = 150;
+                
+                const shouldShowCount = Math.floor((scrolled - heroHeight) / scrollTriggerDistance) + 1;
+                const targetIndex = Math.min(shouldShowCount, this.photos.length);
+                
+                for (let i = this.visiblePhotoIndex; i < targetIndex; i++) {
+                    if (this.photos[i]) {
+                        setTimeout(() => {
+                            this.photos[i].classList.add('visible');
+                        }, (i - this.visiblePhotoIndex) * 200);
+                    }
+                }
+                
+                this.visiblePhotoIndex = Math.max(this.visiblePhotoIndex, targetIndex);
+            }
+
             startJourney() {
-                console.log('🎬 开始回忆之旅...');
+                console.log('🎬 开始魔法之旅...');
                 this.isJourneyStarted = true;
                 
+                document.body.classList.remove('locked');
+                
+                // 显示控制按钮
+                const tetrisTrigger = document.getElementById('tetrisTrigger');
+                const candyCounter = document.getElementById('candyCounter');
+                tetrisTrigger.classList.add('visible');
+                candyCounter.classList.add('visible');
+                
+                // 隐藏预览聚拢
+                const cluster = document.getElementById('photoPreviewCluster');
+                cluster.style.opacity = '0';
+                cluster.style.transform = 'translate(-50%, -50%) scale(0)';
+                
+                // 显示相册区域
                 const photosSection = document.getElementById('photos');
                 photosSection.classList.add('visible');
+                
+                this.playSound(600, 800);
+                this.triggerVibration([100, 50, 100, 50, 100]);
                 
                 setTimeout(() => {
                     photosSection.scrollIntoView({
@@ -1018,19 +2279,41 @@
                 }, 500);
 
                 setTimeout(() => {
-                    this.showPhotosSequentially();
+                    this.checkPhotoVisibility();
                 }, 1000);
             }
 
-            showPhotosSequentially() {
-                this.photos.forEach((photo, index) => {
-                    setTimeout(() => {
-                        photo.classList.add('visible');
-                    }, index * 400);
-                });
+            showTetrisGame() {
+                const tetrisGame = document.getElementById('tetrisGame');
+                tetrisGame.classList.add('visible');
+                this.tetrisGame.start();
+                
+                if (!this.achievements.gamePlayer) {
+                    this.unlockAchievement('gamePlayer', '🎮 游戏玩家！', '开始了俄罗斯方块游戏！');
+                }
             }
 
-            loadPhotos() {
+            hideTetrisGame() {
+                const tetrisGame = document.getElementById('tetrisGame');
+                tetrisGame.classList.remove('visible');
+                this.tetrisGame.stop();
+            }
+
+            toggleAudio() {
+                this.audioEnabled = !this.audioEnabled;
+                const audioToggle = document.getElementById('audioToggle');
+                const audioIcon = audioToggle.querySelector('.audio-icon');
+                
+                if (this.audioEnabled) {
+                    audioToggle.classList.remove('muted');
+                    audioIcon.textContent = '🔊';
+                } else {
+                    audioToggle.classList.add('muted');
+                    audioIcon.textContent = '🔇';
+                }
+            }
+
+            async loadPhotos() {
                 const photoUrls = [
                     'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqNJRktLzZiaPGic4sMDHiangKhbwObQ1Oq9uScIiaRdPubVHcPW9hq8D1fw/640?wx_fmt=jpeg&from=appmsg',
                     'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqxGgkmQBBIDkQiaVHs0ksI9oPicPUvomZYkWIwFaf2yPiaicMGsibSicD4gIw/640?wx_fmt=jpeg&from=appmsg',
@@ -1071,17 +2354,18 @@
                     { title: '🚀 想象力无限爆棚', desc: '孩子们展现出天马行空的创造力，未来可期' }
                 ];
 
-                this.createPhotos(photoData, photoUrls);
+                this.createMasterPhotos(photoData, photoUrls);
             }
 
-            createPhotos(photoData, photoUrls) {
+            createMasterPhotos(photoData, photoUrls) {
                 const photosContainer = document.querySelector('.floating-photos');
                 
                 photoData.forEach((photo, index) => {
                     if (index >= photoUrls.length) return;
                     
                     const photoElement = document.createElement('div');
-                    photoElement.className = 'floating-photo';
+                    photoElement.className = 'floating-photo vibrate-support';
+                    photoElement.dataset.index = index;
                     
                     photoElement.innerHTML = `
                         <div class="photo-frame">
@@ -1095,11 +2379,28 @@
                     
                     photoElement.addEventListener('click', () => {
                         this.openModal(photoUrls[index], photo.title);
+                        this.collectPhoto(index);
+                        this.triggerVibration();
                     });
                     
                     photosContainer.appendChild(photoElement);
                     this.photos.push(photoElement);
                 });
+            }
+
+            collectPhoto(index) {
+                if (!this.collectedPhotos.has(index)) {
+                    this.collectedPhotos.add(index);
+                    this.addCandy(2);
+                    this.playSound(1000, 200);
+                    
+                    const photo = this.photos[index];
+                    photo.classList.add('collected');
+                    
+                    setTimeout(() => {
+                        photo.classList.remove('collected');
+                    }, 1000);
+                }
             }
 
             openModal(photoUrl, title) {
@@ -1115,6 +2416,7 @@
                 }, 10);
                 
                 document.body.style.overflow = 'hidden';
+                this.playSound(500, 300);
             }
 
             closeModal() {
@@ -1122,7 +2424,11 @@
                 modal.classList.remove('show');
                 setTimeout(() => {
                     modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
+                    if (this.isJourneyStarted) {
+                        document.body.style.overflow = 'auto';
+                    } else {
+                        document.body.style.overflow = 'hidden';
+                    }
                 }, 500);
             }
 
@@ -1130,6 +2436,16 @@
                 const startButton = document.getElementById('startJourney');
                 const modalClose = document.getElementById('modalClose');
                 const modal = document.getElementById('modal');
+                const tetrisTrigger = document.getElementById('tetrisTrigger');
+                const tetrisClose = document.getElementById('tetrisClose');
+                const audioToggle = document.getElementById('audioToggle');
+                const superLollipop = document.getElementById('superLollipop');
+                
+                // 俄罗斯方块控制按钮
+                const tetrisLeft = document.getElementById('tetrisLeft');
+                const tetrisRight = document.getElementById('tetrisRight');
+                const tetrisRotate = document.getElementById('tetrisRotate');
+                const tetrisDown = document.getElementById('tetrisDown');
                 
                 startButton?.addEventListener('click', () => {
                     this.startJourney();
@@ -1145,17 +2461,181 @@
                     }
                 });
                 
+                tetrisTrigger?.addEventListener('click', () => {
+                    this.showTetrisGame();
+                });
+                
+                tetrisClose?.addEventListener('click', () => {
+                    this.hideTetrisGame();
+                });
+                
+                audioToggle?.addEventListener('click', () => {
+                    this.toggleAudio();
+                });
+                
+                // 棒棒糖特殊点击事件
+                superLollipop?.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.lollipopClickCount++;
+                    
+                    if (this.lollipopClickCount >= 5) {
+                        this.createCandyRain();
+                        this.lollipopClickCount = 0;
+                    }
+                    
+                    this.playSound(1500, 100);
+                    this.triggerVibration([50]);
+                });
+                
+                // 俄罗斯方块控制事件
+                tetrisLeft?.addEventListener('click', () => {
+                    this.tetrisGame.movePiece(-1);
+                    this.tetrisGame.draw();
+                    this.playSound(400, 50);
+                });
+                
+                tetrisRight?.addEventListener('click', () => {
+                    this.tetrisGame.movePiece(1);
+                    this.tetrisGame.draw();
+                    this.playSound(400, 50);
+                });
+                
+                tetrisRotate?.addEventListener('click', () => {
+                    this.tetrisGame.rotatePiece();
+                    this.tetrisGame.draw();
+                    this.playSound(600, 50);
+                });
+                
+                tetrisDown?.addEventListener('click', () => {
+                    this.tetrisGame.dropPiece();
+                    this.tetrisGame.draw();
+                    this.playSound(300, 50);
+                });
+                
+                // 键盘控制
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') {
                         this.closeModal();
+                        if (document.getElementById('tetrisGame').classList.contains('visible')) {
+                            this.hideTetrisGame();
+                        }
+                    }
+                    
+                    // 隐藏快捷键
+                    if (e.key === 'r' && e.ctrlKey) {
+                        e.preventDefault();
+                        this.createCandyRain();
+                    }
+                    
+                    // 俄罗斯方块键盘控制
+                    if (document.getElementById('tetrisGame').classList.contains('visible')) {
+                        switch(e.key) {
+                            case 'ArrowLeft':
+                                e.preventDefault();
+                                this.tetrisGame.movePiece(-1);
+                                this.tetrisGame.draw();
+                                this.playSound(400, 50);
+                                break;
+                            case 'ArrowRight':
+                                e.preventDefault();
+                                this.tetrisGame.movePiece(1);
+                                this.tetrisGame.draw();
+                                this.playSound(400, 50);
+                                break;
+                            case 'ArrowUp':
+                                e.preventDefault();
+                                this.tetrisGame.rotatePiece();
+                                this.tetrisGame.draw();
+                                this.playSound(600, 50);
+                                break;
+                            case 'ArrowDown':
+                                e.preventDefault();
+                                this.tetrisGame.dropPiece();
+                                this.tetrisGame.draw();
+                                this.playSound(300, 50);
+                                break;
+                        }
                     }
                 });
+                
+                // 手机摇一摇检测
+                let lastUpdate = 0;
+                let lastX = 0, lastY = 0, lastZ = 0;
+                
+                window.addEventListener('devicemotion', (e) => {
+                    const acceleration = e.accelerationIncludingGravity;
+                    const curTime = new Date().getTime();
+                    
+                    if ((curTime - lastUpdate) > 100) {
+                        const diffTime = curTime - lastUpdate;
+                        lastUpdate = curTime;
+                        
+                        const x = acceleration.x;
+                        const y = acceleration.y;
+                        const z = acceleration.z;
+                        
+                        const speed = Math.abs(x + y + z - lastX - lastY - lastZ) / diffTime * 10000;
+                        
+                        if (speed > 3000) {
+                            // 摇一摇触发糖果爆炸效果
+                            this.createCandyExplosion(window.innerWidth / 2, window.innerHeight / 2);
+                            this.triggerVibration([100, 50, 100]);
+                        }
+                        
+                        lastX = x;
+                        lastY = y;
+                        lastZ = z;
+                    }
+                });
+                
+                // 触摸滑动控制俄罗斯方块
+                let touchStartX = 0;
+                let touchStartY = 0;
+                const tetrisGame = document.getElementById('tetrisGame');
+                
+                tetrisGame?.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+                }, { passive: true });
+                
+                tetrisGame?.addEventListener('touchend', (e) => {
+                    if (!tetrisGame.classList.contains('visible')) return;
+                    
+                    const touchEndX = e.changedTouches[0].clientX;
+                    const touchEndY = e.changedTouches[0].clientY;
+                    const deltaX = touchEndX - touchStartX;
+                    const deltaY = touchEndY - touchStartY;
+                    
+                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                        if (Math.abs(deltaX) > 30) {
+                            if (deltaX > 0) {
+                                this.tetrisGame.movePiece(1);
+                                this.playSound(400, 50);
+                            } else {
+                                this.tetrisGame.movePiece(-1);
+                                this.playSound(400, 50);
+                            }
+                        }
+                    } else {
+                        if (Math.abs(deltaY) > 30) {
+                            if (deltaY > 0) {
+                                this.tetrisGame.dropPiece();
+                                this.playSound(300, 50);
+                            } else {
+                                this.tetrisGame.rotatePiece();
+                                this.playSound(600, 50);
+                            }
+                        }
+                    }
+                    
+                    this.tetrisGame.draw();
+                }, { passive: true });
             }
         }
 
-        // 启动微信版相册
+        // 启动世界级相册2.0
         document.addEventListener('DOMContentLoaded', () => {
-            new WeChatTrolliAlbum();
+            new WorldClassTrolliAlbum();
         });
     </script>
 </body>
