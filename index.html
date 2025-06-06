@@ -9,7 +9,7 @@
     <!-- 微信分享优化 -->
     <meta property="og:title" content="🍭 Trolli六一超萌嘉年华 2.0">
     <meta property="og:description" content="17个超甜蜜瞬间全记录，超炫酷交互体验">
-    <meta property="og:image" content="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.jpg">
+    <meta property="og:image" content="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.webp">
     
     <!-- 🚀 终极DNS和CDN预连接优化 -->
     <link rel="preconnect" href="https://fastly.jsdelivr.net" crossorigin>
@@ -18,12 +18,12 @@
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="//gcore.jsdelivr.net">
     
-    <!-- 🚀 关键图片预加载 - 前5张立即开始下载 -->
-    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_02.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_03.jpg" fetchpriority="high">
-    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_04.jpg">
-    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_05.jpg">
+    <!-- 🚀 关键图片预加载 - 修复为WebP格式 -->
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.webp" fetchpriority="high" crossorigin="anonymous">
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_02.webp" fetchpriority="high" crossorigin="anonymous">
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_03.webp" fetchpriority="high" crossorigin="anonymous">
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_04.webp" crossorigin="anonymous">
+    <link rel="preload" as="image" href="https://fastly.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_05.webp" crossorigin="anonymous">
     
     <!-- 世界顶级字体系统 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -937,7 +937,7 @@
                 this.visiblePhotoIndex = 0;
                 this.observer = null;
                 this.loadedImageCount = 0;
-                this.totalImages = 15;
+                this.totalImages = 15; // 实际存在15张WebP图片
                 this.imageCache = new Map();
                 this.preloadQueue = [];
                 this.fastCDNs = [
@@ -973,12 +973,15 @@
                 console.log('✅ 终极优化版相册已就绪！');
             }
 
-            // 🚀 预加载关键图片 - 立即开始
+            // 🚀 预加载关键图片 - 使用WebP格式
             preloadCriticalImages() {
+                // 使用实际的WebP格式图片
                 const criticalImages = [
-                    'photo_01.jpg', 'photo_02.jpg', 'photo_03.jpg', 
-                    'photo_04.jpg', 'photo_05.jpg'
+                    'photo_01.webp', 'photo_02.webp', 'photo_03.webp', 
+                    'photo_04.webp', 'photo_05.webp'
                 ];
+
+                console.log('🎯 开始预加载关键WebP图片...');
 
                 criticalImages.forEach((filename, index) => {
                     const img = new Image();
@@ -986,33 +989,36 @@
                     img.onload = () => {
                         this.imageCache.set(filename, img);
                         this.loadedImageCount++;
-                        console.log(`✅ 关键图片 ${index + 1}/5 预加载完成: ${filename}`);
+                        console.log(`✅ 关键WebP图片 ${index + 1}/5 预加载完成: ${filename}`);
                         
-                        if (this.loadedImageCount >= 3) {
+                        if (this.loadedImageCount >= 2) {
                             this.hideLoadingIndicator();
                         }
                     };
                     img.onerror = () => {
-                        console.warn(`❌ 关键图片预加载失败: ${filename}`);
+                        console.warn(`❌ 关键WebP图片预加载失败: ${filename}`);
                         this.tryAlternateCDN(filename);
                     };
                     img.src = this.preferredCDN + filename;
                 });
             }
 
-            // 🚀 CDN速度检测
+            // 🚀 CDN速度检测 - 使用WebP测试文件
             async detectFastestCDN() {
-                const testImage = 'photo_01.jpg';
-                const promises = this.fastCDNs.map(cdn => {
+                const testImage = 'photo_01.webp';
+                console.log('🏃‍♂️ 检测最快CDN...');
+                
+                const promises = this.fastCDNs.map((cdn, index) => {
                     return new Promise((resolve) => {
                         const startTime = performance.now();
                         const img = new Image();
+                        img.crossOrigin = 'anonymous';
                         img.onload = () => {
                             const loadTime = performance.now() - startTime;
-                            resolve({ cdn, loadTime });
+                            resolve({ cdn, loadTime, index });
                         };
                         img.onerror = () => {
-                            resolve({ cdn, loadTime: Infinity });
+                            resolve({ cdn, loadTime: Infinity, index });
                         };
                         img.src = cdn + testImage + '?t=' + Date.now();
                     });
@@ -1021,29 +1027,51 @@
                 try {
                     const results = await Promise.race([
                         Promise.all(promises),
-                        new Promise(resolve => setTimeout(() => resolve([]), 2000))
+                        new Promise(resolve => setTimeout(() => resolve([]), 3000))
                     ]);
 
                     if (results.length > 0) {
-                        const fastest = results.sort((a, b) => a.loadTime - b.loadTime)[0];
-                        if (fastest.loadTime < Infinity) {
+                        const fastest = results
+                            .filter(r => r.loadTime < Infinity)
+                            .sort((a, b) => a.loadTime - b.loadTime)[0];
+                        
+                        if (fastest) {
                             this.preferredCDN = fastest.cdn;
                             console.log(`🚀 检测到最快CDN: ${fastest.cdn} (${fastest.loadTime.toFixed(0)}ms)`);
+                        } else {
+                            console.warn('🚫 所有CDN检测都失败，使用默认CDN');
                         }
                     }
                 } catch (e) {
-                    console.log('CDN检测失败，使用默认CDN');
+                    console.log('❌ CDN检测异常，使用默认CDN:', e);
                 }
             }
 
             // 🚀 尝试备用CDN
             tryAlternateCDN(filename) {
+                console.log(`🔄 尝试备用CDN加载: ${filename}`);
                 for (let i = 1; i < this.fastCDNs.length; i++) {
                     const img = new Image();
+                    img.crossOrigin = 'anonymous';
                     img.onload = () => {
                         this.imageCache.set(filename, img);
                         this.loadedImageCount++;
-                        console.log(`✅ 备用CDN加载成功: ${filename}`);
+                        console.log(`✅ 备用CDN加载成功: ${filename} (CDN ${i + 1})`);
+                        
+                        if (this.loadedImageCount >= 2) {
+                            this.hideLoadingIndicator();
+                        }
+                    };
+                    img.onerror = () => {
+                        console.warn(`❌ 备用CDN ${i + 1} 也失败: ${filename}`);
+                        if (i === this.fastCDNs.length - 1) {
+                            console.error(`🚫 所有CDN都无法加载: ${filename}`);
+                            // 仍然算作一个加载完成，避免无限等待
+                            this.loadedImageCount++;
+                            if (this.loadedImageCount >= 2) {
+                                this.hideLoadingIndicator();
+                            }
+                        }
                     };
                     img.src = this.fastCDNs[i] + filename;
                     break; // 只尝试第一个备用CDN
@@ -1106,14 +1134,20 @@
                 }
             }
 
-            // 🚀 快速聚拢预览系统
+            // 🚀 快速聚拢预览系统 - 使用WebP格式
             createFastPhotoPreviewCluster() {
                 const cluster = document.getElementById('photoPreviewCluster');
                 
+                // 使用实际存在的WebP图片文件
+                const previewImages = [
+                    'photo_01.webp', 'photo_02.webp', 'photo_03.webp', 
+                    'photo_04.webp', 'photo_05.webp', 'photo_06.webp'
+                ];
+                
                 console.log('🎯 创建快速聚拢预览...');
 
-                // 创建6个预览照片（减少数量）
-                for (let i = 0; i < 6; i++) {
+                // 创建6个预览照片
+                previewImages.forEach((filename, i) => {
                     const preview = document.createElement('div');
                     preview.className = 'preview-photo';
                     
@@ -1131,9 +1165,8 @@
                     cluster.appendChild(preview);
                     
                     // 异步加载预览图片
-                    const filename = `photo_${String(i + 1).padStart(2, '0')}.jpg`;
                     this.loadPreviewImage(preview, filename);
-                }
+                });
 
                 console.log('🎨 聚拢预览布局完成！');
             }
@@ -1290,31 +1323,31 @@
                 }, 800);
             }
 
-            // 🚀 准备照片结构（不立即加载图片）
+            // 🚀 准备照片结构（使用WebP格式图片）
             preparePhotosStructure() {
                 const photoData = [
-                    { title: '🎈 活动开场秀', desc: '六一节开始啦！工作人员准备就绪，欢迎小朋友们的到来' },
-                    { title: '🍭 糖果奇幻世界', desc: 'Trolli软糖展示区，五彩缤纷的甜蜜天堂让人流连忘返' },
-                    { title: '🎪 欢乐互动时光', desc: '现场游戏互动热火朝天，小朋友们积极参与各种趣味活动' },
-                    { title: '🌈 纯真笑容绽放', desc: '孩子们最灿烂的笑容，定格最美好的童年瞬间' },
-                    { title: '🎨 创意手工乐园', desc: '手工制作区域人气爆棚，小艺术家们尽情发挥创意' },
-                    { title: '🎵 音乐律动狂欢', desc: '跟着动感音乐节拍摇摆，释放无限童年活力' },
-                    { title: '🏆 胜利荣耀时刻', desc: '游戏胜利的喜悦表情，满满的成就感溢于言表' },
-                    { title: '🤝 友谊桥梁搭建', desc: '活动中结识新伙伴，美好友谊从这里萌芽生长' },
-                    { title: '🎯 专注投入瞬间', desc: '认真参与游戏的专注神情，展现孩子们的认真态度' },
-                    { title: '🌟 闪耀小明星', desc: '舞台表演的闪亮时刻，每个孩子都是独一无二的明星' },
-                    { title: '🎪 魔法奇幻之旅', desc: '走进Trolli的魔法糖果世界，体验前所未有的甜蜜冒险' },
-                    { title: '💝 惊喜礼品狂欢', desc: '收到心仪礼物时的惊喜表情，满满的开心溢出屏幕' },
-                    { title: '📸 珍贵记忆典藏', desc: '用镜头定格这些珍贵的童年时光，留下永恒的美好回忆' },
-                    { title: '🎭 角色扮演秀场', desc: '小朋友们变身成各种可爱角色，展现无限想象力' },
-                    { title: '🍬 甜蜜分享时刻', desc: '和小伙伴一起分享美味糖果，快乐加倍甜蜜加倍' }
+                    { title: '🎈 活动开场秀', desc: '六一节开始啦！工作人员准备就绪，欢迎小朋友们的到来', file: 'photo_01.webp' },
+                    { title: '🍭 糖果奇幻世界', desc: 'Trolli软糖展示区，五彩缤纷的甜蜜天堂让人流连忘返', file: 'photo_02.webp' },
+                    { title: '🎪 欢乐互动时光', desc: '现场游戏互动热火朝天，小朋友们积极参与各种趣味活动', file: 'photo_03.webp' },
+                    { title: '🌈 纯真笑容绽放', desc: '孩子们最灿烂的笑容，定格最美好的童年瞬间', file: 'photo_04.webp' },
+                    { title: '🎨 创意手工乐园', desc: '手工制作区域人气爆棚，小艺术家们尽情发挥创意', file: 'photo_05.webp' },
+                    { title: '🎵 音乐律动狂欢', desc: '跟着动感音乐节拍摇摆，释放无限童年活力', file: 'photo_06.webp' },
+                    { title: '🏆 胜利荣耀时刻', desc: '游戏胜利的喜悦表情，满满的成就感溢于言表', file: 'photo_07.webp' },
+                    { title: '🤝 友谊桥梁搭建', desc: '活动中结识新伙伴，美好友谊从这里萌芽生长', file: 'photo_08.webp' },
+                    { title: '🎯 专注投入瞬间', desc: '认真参与游戏的专注神情，展现孩子们的认真态度', file: 'photo_09.webp' },
+                    { title: '🌟 闪耀小明星', desc: '舞台表演的闪亮时刻，每个孩子都是独一无二的明星', file: 'photo_10.webp' },
+                    { title: '🎪 魔法奇幻之旅', desc: '走进Trolli的魔法糖果世界，体验前所未有的甜蜜冒险', file: 'photo_11.webp' },
+                    { title: '💝 惊喜礼品狂欢', desc: '收到心仪礼物时的惊喜表情，满满的开心溢出屏幕', file: 'photo_12.webp' },
+                    { title: '📸 珍贵记忆典藏', desc: '用镜头定格这些珍贵的童年时光，留下永恒的美好回忆', file: 'photo_13.webp' },
+                    { title: '🎭 角色扮演秀场', desc: '小朋友们变身成各种可爱角色，展现无限想象力', file: 'photo_14.webp' },
+                    { title: '🍬 甜蜜分享时刻', desc: '和小伙伴一起分享美味糖果，快乐加倍甜蜜加倍', file: 'photo_15.webp' }
                 ];
 
                 this.createPhotoStructures(photoData);
-                console.log(`🎉 已创建 ${photoData.length} 个照片结构！`);
+                console.log(`🎉 已创建 ${photoData.length} 个WebP照片结构！`);
             }
 
-            // 🚀 创建照片结构（延迟加载策略）
+            // 🚀 创建照片结构（使用实际文件名）
             createPhotoStructures(photoData) {
                 const photosContainer = document.querySelector('.floating-photos');
                 
@@ -1322,8 +1355,9 @@
                     const photoElement = document.createElement('div');
                     photoElement.className = 'floating-photo vibrate-support';
                     photoElement.dataset.index = index;
+                    photoElement.dataset.filename = photo.file;
                     
-                    const filename = `photo_${String(index + 1).padStart(2, '0')}.jpg`;
+                    const filename = photo.file;
                     
                     // 前3张立即加载，其余延迟加载
                     if (index < 3 && this.imageCache.has(filename)) {
@@ -1373,7 +1407,7 @@
                         if (entry.isIntersecting) {
                             const photoElement = entry.target;
                             const index = parseInt(photoElement.dataset.index);
-                            const filename = `photo_${String(index + 1).padStart(2, '0')}.jpg`;
+                            const filename = photoElement.dataset.filename;
                             
                             if (!photoElement.classList.contains('photo-optimized')) {
                                 this.loadPhotoIntoElement(photoElement, filename, index);
