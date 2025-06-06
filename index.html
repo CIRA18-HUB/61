@@ -11,11 +11,6 @@
     <meta property="og:description" content="17个超甜蜜瞬间全记录，每一张照片都是珍贵回忆">
     <meta property="og:image" content="https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqNJRktLzZiaPGic4sMDHiangKhbwObQ1Oq9uScIiaRdPubVHcPW9hq8D1fw/640?wx_fmt=jpeg&from=appmsg">
     
-    <!-- 世界级字体系统 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
     <style>
         * {
             margin: 0;
@@ -53,27 +48,15 @@
             --shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
             --shadow-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
             --shadow-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-            
-            /* 世界级字体系统 */
-            --font-display: 'Poppins', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --font-chinese: 'Noto Sans SC', sans-serif;
-            
-            /* 完美缓动函数 */
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
-            --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
-            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         html {
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            font-family: var(--font-body);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             overflow-x: hidden;
             background: #000;
             position: relative;
@@ -102,6 +85,7 @@
             animation: cosmic-shift 20s ease infinite;
         }
 
+        /* 粒子场系统 - 纯CSS实现 */
         .particle-field {
             position: fixed;
             top: 0;
@@ -121,7 +105,7 @@
             animation: particle-float 12s linear infinite;
         }
 
-        /* 增强：超密集糖果和气球漂浮系统 */
+        /* 超密集糖果和气球漂浮系统 */
         .floating-candies {
             position: fixed;
             top: 0;
@@ -133,93 +117,49 @@
             overflow: hidden;
         }
 
-        .floating-candy {
+        .floating-candy, .floating-balloon, .floating-star {
             position: absolute;
             font-size: 3rem;
-            animation: candy-float 20s linear infinite;
             opacity: 0.8;
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+            cursor: pointer;
+            pointer-events: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-candy {
+            animation: candy-float 20s linear infinite;
         }
 
         .floating-balloon {
-            position: absolute;
             font-size: 3.5rem;
             animation: balloon-float 25s linear infinite;
             opacity: 0.7;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
         }
 
         .floating-star {
-            position: absolute;
             font-size: 2.5rem;
             animation: star-float 18s linear infinite;
             opacity: 0.6;
-            filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
         }
 
-        /* 棒棒糖Bling效果 */
-        .lollipop-sparkles {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            transform: translate(-50%, -50%);
+        .floating-candy:hover, .floating-balloon:hover, .floating-star:hover {
+            transform: scale(1.2);
+        }
+
+        /* 烟花爆炸效果 */
+        .firework {
+            position: fixed;
             pointer-events: none;
+            z-index: 1000;
         }
 
-        .sparkle {
+        .firework-particle {
             position: absolute;
             width: 8px;
             height: 8px;
-            background: linear-gradient(45deg, #FFD700, #FFF, #FFD700);
             border-radius: 50%;
-            animation: sparkle-twinkle 2s ease-in-out infinite;
-        }
-
-        .morphing-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -8;
-            pointer-events: none;
-        }
-
-        .morph-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(40px);
-            opacity: 0.3;
-            animation: blob-morph 25s ease-in-out infinite;
-        }
-
-        .blob-1 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--candy-pink), transparent);
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .blob-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--candy-cyan), transparent);
-            top: 60%;
-            right: 15%;
-            animation-delay: 8s;
-        }
-
-        .blob-3 {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, var(--candy-yellow), transparent);
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 16s;
+            animation: firework-explode 1.5s ease-out forwards;
         }
 
         /* 超级立体棒棒糖 - 增强版 */
@@ -233,7 +173,8 @@
             z-index: 999999;
             pointer-events: none;
             filter: drop-shadow(0 25px 50px rgba(0,0,0,0.3));
-            transition: all 0.3s ease;
+            /* 添加预设的移动轨迹 */
+            animation: lollipop-dance 8s ease-in-out infinite;
         }
 
         .lollipop-head {
@@ -285,15 +226,27 @@
                 var(--shadow-2);
         }
 
-        /* 漂浮相册容器 */
-        .floating-album {
-            position: relative;
-            z-index: 100;
-            min-height: 500vh;
-            padding: 2rem;
+        /* 棒棒糖彩虹轨迹 - 预设路径动画 */
+        .lollipop-trail {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 999998;
         }
 
-        /* 英雄区域 - 修复字体溢出 */
+        .trail-segment {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: trail-rainbow 2s ease-in-out infinite;
+        }
+
+        /* 英雄区域 */
         .hero-section {
             height: 100vh;
             display: flex;
@@ -319,7 +272,6 @@
                 12px 12px 0px var(--candy-yellow),
                 16px 16px 40px rgba(0,0,0,0.6);
             animation: title-bounce 4s ease-in-out infinite;
-            font-family: var(--font-display);
             letter-spacing: -0.02em;
             max-width: 90vw;
             word-wrap: break-word;
@@ -333,7 +285,6 @@
             text-shadow: 
                 3px 3px 0px var(--candy-purple),
                 6px 6px 20px rgba(0,0,0,0.4);
-            font-family: var(--font-display);
             max-width: 90vw;
             word-wrap: break-word;
         }
@@ -351,8 +302,6 @@
             box-shadow: var(--shadow-4);
             margin-bottom: 2rem;
             font-weight: 500;
-            font-family: var(--font-chinese);
-            backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
         }
 
@@ -374,10 +323,9 @@
             text-decoration: none;
             display: inline-block;
             box-shadow: var(--shadow-3);
-            transition: all 0.4s var(--ease-out-back);
+            transition: all 0.4s ease;
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-family: var(--font-display);
             max-width: 90vw;
             text-align: center;
         }
@@ -387,77 +335,98 @@
             box-shadow: var(--shadow-5);
         }
 
-        /* 增强的照片容器设计 */
+        /* 手机优化的照片容器设计 - 6D玻璃质感 */
         .floating-photos {
             position: relative;
-            height: 400vh;
+            min-height: 200vh;
             width: 100%;
             padding: 3rem 0;
+            display: none;
+        }
+
+        .floating-photos.visible {
+            display: block;
         }
 
         .floating-photo {
-            position: absolute;
-            width: 300px;
-            height: 400px;
+            position: relative;
+            width: 280px;
+            height: 350px;
+            margin: 0 auto 4rem;
             cursor: pointer;
-            transition: all 1.2s var(--ease-out-expo);
             filter: drop-shadow(0 15px 35px rgba(0,0,0,0.2));
             z-index: 50;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1.2s ease;
+            animation: photo6D 8s ease-in-out infinite;
+            transform-style: preserve-3d;
         }
 
-        /* 初始聚拢状态 */
-        .floating-photo.initial {
-            left: 50% !important;
-            top: 50% !important;
-            transform: translate(-50%, -50%) scale(0.2) rotate(0deg) !important;
-            opacity: 0.8;
-            z-index: 999 !important;
-        }
-
-        /* 散开状态 */
-        .floating-photo.spread {
+        .floating-photo.visible {
             opacity: 1;
-            transform: scale(1) !important;
-            animation: photo-float-enhanced 15s ease-in-out infinite;
+            transform: translateY(0);
         }
 
-        /* 网格布局强制样式 */
-        .floating-photo.spread.grid-position {
-            transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        .floating-photo:nth-child(2n) {
+            animation-delay: 0.8s;
         }
 
-        /* 增强的照片动画效果 */
-        .floating-photo.spread .photo-frame {
-            animation: frame-glow-pulse 8s ease-in-out infinite;
+        .floating-photo:nth-child(3n) {
+            animation-delay: 1.6s;
         }
 
-        .floating-photo.spread img {
-            animation: image-gentle-sway 12s ease-in-out infinite;
+        .floating-photo:nth-child(4n) {
+            animation-delay: 2.4s;
         }
 
-        /* 增强的相框设计 */
+        .floating-photo:hover {
+            transform: translateY(-25px) scale(1.15);
+            z-index: 1000;
+            filter: drop-shadow(0 40px 80px rgba(0,0,0,0.4));
+        }
+
+        /* 6D玻璃质感相框设计 */
         .photo-frame {
             width: 100%;
             height: 100%;
             position: relative;
             background: linear-gradient(145deg, 
-                rgba(255,255,255,0.98) 0%,
-                rgba(255,255,255,0.85) 50%,
-                rgba(255,255,255,0.98) 100%);
+                rgba(255,255,255,0.15) 0%,
+                rgba(255,255,255,0.05) 50%,
+                rgba(255,255,255,0.15) 100%);
             border-radius: 25px;
             padding: 20px;
-            box-shadow: 
-                0 20px 40px rgba(0,0,0,0.15),
-                0 5px 15px rgba(0,0,0,0.1),
-                inset 0 2px 0 rgba(255,255,255,0.8),
-                inset 0 -2px 0 rgba(0,0,0,0.05);
-            border: 3px solid rgba(255,255,255,0.6);
-            backdrop-filter: blur(25px);
             overflow: hidden;
             transform-style: preserve-3d;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.12),
+                inset 0 2px 0 rgba(255,255,255,0.2),
+                inset 0 -2px 0 rgba(0,0,0,0.1),
+                0 0 0 1px rgba(255,255,255,0.05);
         }
 
         .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,255,255,0.4), 
+                transparent);
+            transition: left 0.5s ease;
+            z-index: 1;
+        }
+
+        .floating-photo:hover .photo-frame::before {
+            left: 100%;
+        }
+
+        .photo-frame::after {
             content: '';
             position: absolute;
             top: -3px;
@@ -482,46 +451,30 @@
             transition: opacity 0.4s ease;
         }
 
-        .floating-photo:hover .photo-frame::before {
-            opacity: 1;
-        }
-
-        .floating-photo:hover {
-            transform: translateY(-25px) rotateY(12deg) rotateX(8deg) scale(1.1) !important;
-            z-index: 1000;
-            filter: drop-shadow(0 30px 60px rgba(0,0,0,0.3));
-            animation: hover-dance 0.6s ease-in-out infinite alternate;
-        }
-
-        .floating-photo:hover .photo-frame {
-            box-shadow: 
-                0 30px 60px rgba(0,0,0,0.25),
-                0 0 80px rgba(0,255,255,0.4),
-                inset 0 2px 0 rgba(255,255,255,0.9),
-                inset 0 -2px 0 rgba(0,0,0,0.1);
-            transform: rotateX(2deg);
-            animation: frame-pulse-hover 1s ease-in-out infinite;
-        }
-
-        .floating-photo:hover img {
-            transform: scale(1.05) rotateZ(1deg) !important;
-            box-shadow: 
-                0 15px 35px rgba(0,0,0,0.25),
-                inset 0 1px 0 rgba(255,255,255,0.3);
-            filter: contrast(1.2) saturate(1.3) brightness(1.1) !important;
-            animation: image-hover-shimmer 2s ease-in-out infinite;
+        .floating-photo:hover .photo-frame::after {
+            opacity: 0.8;
         }
 
         .floating-photo img {
             width: 100%;
-            height: 300px;
+            height: 240px;
             object-fit: cover;
             border-radius: 15px;
-            transition: all 0.6s var(--ease-out-expo);
-            box-shadow: 
-                0 10px 25px rgba(0,0,0,0.15),
-                inset 0 1px 0 rgba(255,255,255,0.2);
+            transition: all 0.6s ease;
             filter: contrast(1.1) saturate(1.2) brightness(1.05);
+            box-shadow: 
+                inset 0 1px 0 rgba(255,255,255,0.3),
+                inset 0 -1px 0 rgba(0,0,0,0.1),
+                0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .floating-photo:hover img {
+            transform: scale(1.05);
+            filter: contrast(1.3) saturate(1.4) brightness(1.15);
+            box-shadow: 
+                inset 0 2px 0 rgba(255,255,255,0.4),
+                inset 0 -2px 0 rgba(0,0,0,0.15),
+                0 15px 35px rgba(0,0,0,0.25);
         }
 
         .photo-info {
@@ -530,44 +483,23 @@
         }
 
         .photo-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--mana-blue);
             margin-bottom: 8px;
-            font-family: var(--font-display);
             line-height: 1.2;
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
 
         .photo-desc {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--mana-dark);
             line-height: 1.4;
             font-weight: 500;
-            font-family: var(--font-chinese);
             opacity: 0.85;
         }
 
-        /* 增强交互效果 */
-        .interaction-cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, var(--candy-cyan), var(--candy-purple));
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: all 0.1s ease;
-            opacity: 0;
-        }
-
-        .interaction-cursor.active {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(2);
-        }
-
-        /* 结尾文案区域 - 透明背景，小字体，动态效果 */
+        /* 结尾文案区域 */
         .ending-section {
             height: 60vh;
             display: flex;
@@ -585,7 +517,6 @@
             color: rgba(255,255,255,0.9);
             margin-bottom: 1rem;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            font-family: var(--font-chinese);
             line-height: 1.4;
             animation: float-text 6s ease-in-out infinite;
             letter-spacing: 0.5px;
@@ -595,7 +526,6 @@
             font-size: clamp(0.6rem, 1.5vw, 0.9rem);
             font-weight: 300;
             color: rgba(255,255,255,0.7);
-            font-family: var(--font-display);
             text-shadow: 0 1px 5px rgba(0,0,0,0.2);
             letter-spacing: 1px;
             animation: float-text 6s ease-in-out infinite 3s;
@@ -613,19 +543,18 @@
             display: none;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(20px);
         }
 
         .modal-content {
             position: relative;
             max-width: 90vw;
             max-height: 90vh;
-            transform: scale(0.8) rotateY(90deg);
-            transition: all 0.8s var(--ease-out-back);
+            transform: scale(0.8);
+            transition: all 0.8s ease;
         }
 
         .modal.show .modal-content {
-            transform: scale(1) rotateY(0deg);
+            transform: scale(1);
         }
 
         .modal-photo {
@@ -652,8 +581,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: var(--shadow-3);
-            transition: all 0.3s var(--ease-out-back);
-            font-family: var(--font-display);
+            transition: all 0.3s ease;
         }
 
         .modal-close:hover {
@@ -737,39 +665,52 @@
             }
         }
 
-        @keyframes sparkle-twinkle {
-            0%, 100% { 
-                opacity: 0;
-                transform: scale(0) rotate(0deg);
-            }
-            50% { 
-                opacity: 1;
-                transform: scale(1) rotate(180deg);
-            }
-        }
-
-        @keyframes blob-morph {
-            0%, 100% { 
-                transform: translateX(0px) translateY(0px) scale(1);
-                border-radius: 50%;
-            }
-            25% { 
-                transform: translateX(50px) translateY(-30px) scale(1.1);
-                border-radius: 60% 40% 30% 70%;
-            }
-            50% { 
-                transform: translateX(30px) translateY(50px) scale(0.9);
-                border-radius: 30% 60% 70% 40%;
-            }
-            75% { 
-                transform: translateX(-30px) translateY(20px) scale(1.05);
-                border-radius: 40% 50% 60% 50%;
-            }
-        }
-
         @keyframes mega-spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        @keyframes lollipop-dance {
+            0%, 100% { 
+                transform: translate(-50%, -50%) translateX(0px) translateY(0px);
+            }
+            25% { 
+                transform: translate(-50%, -50%) translateX(30px) translateY(-15px);
+            }
+            50% { 
+                transform: translate(-50%, -50%) translateX(0px) translateY(-30px);
+            }
+            75% { 
+                transform: translate(-50%, -50%) translateX(-30px) translateY(-15px);
+            }
+        }
+
+        @keyframes trail-rainbow {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+                background: var(--candy-red);
+            }
+            20% {
+                opacity: 0.8;
+                transform: scale(1);
+                background: var(--candy-orange);
+            }
+            40% {
+                background: var(--candy-yellow);
+            }
+            60% {
+                background: var(--candy-green);
+            }
+            80% {
+                background: var(--candy-blue);
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0);
+                background: var(--candy-purple);
+            }
         }
 
         @keyframes title-bounce {
@@ -780,55 +721,6 @@
         @keyframes gradient-flow {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
-        }
-
-        @keyframes photo-float-enhanced {
-            0%, 100% { 
-                transform: translateY(0px) rotateZ(0deg) scale(1);
-            }
-            25% { 
-                transform: translateY(-20px) rotateZ(1deg) scale(1.02);
-            }
-            50% { 
-                transform: translateY(-10px) rotateZ(0deg) scale(1);
-            }
-            75% { 
-                transform: translateY(-15px) rotateZ(-0.5deg) scale(1.01);
-            }
-        }
-
-        @keyframes frame-glow-pulse {
-            0%, 100% { 
-                box-shadow: 
-                    0 20px 40px rgba(0,0,0,0.15),
-                    0 5px 15px rgba(0,0,0,0.1),
-                    inset 0 2px 0 rgba(255,255,255,0.8),
-                    inset 0 -2px 0 rgba(0,0,0,0.05),
-                    0 0 0 rgba(255,255,255,0);
-            }
-            50% { 
-                box-shadow: 
-                    0 25px 50px rgba(0,0,0,0.2),
-                    0 8px 20px rgba(0,0,0,0.15),
-                    inset 0 2px 0 rgba(255,255,255,0.9),
-                    inset 0 -2px 0 rgba(0,0,0,0.05),
-                    0 0 20px rgba(255,255,255,0.3);
-            }
-        }
-
-        @keyframes image-gentle-sway {
-            0%, 100% { 
-                transform: scale(1) rotateZ(0deg);
-                filter: contrast(1.1) saturate(1.2) brightness(1.05);
-            }
-            33% { 
-                transform: scale(1.01) rotateZ(0.3deg);
-                filter: contrast(1.15) saturate(1.25) brightness(1.08);
-            }
-            66% { 
-                transform: scale(1) rotateZ(-0.2deg);
-                filter: contrast(1.12) saturate(1.22) brightness(1.06);
-            }
         }
 
         @keyframes frame-rainbow {
@@ -849,64 +741,51 @@
             }
         }
 
-        @keyframes hover-dance {
-            0% { transform: translateY(-25px) rotateY(12deg) rotateX(8deg) scale(1.1); }
-            100% { transform: translateY(-30px) rotateY(15deg) rotateX(10deg) scale(1.12); }
-        }
-
-        @keyframes frame-pulse-hover {
+        @keyframes photo6D {
             0%, 100% { 
-                box-shadow: 
-                    0 30px 60px rgba(0,0,0,0.25),
-                    0 0 80px rgba(0,255,255,0.4),
-                    inset 0 2px 0 rgba(255,255,255,0.9),
-                    inset 0 -2px 0 rgba(0,0,0,0.1);
+                transform: translateY(0px) translateX(0px) scale(1);
+            }
+            16.66% { 
+                transform: translateY(-8px) translateX(3px) scale(1.02);
+            }
+            33.33% { 
+                transform: translateY(-5px) translateX(-2px) scale(1.01);
             }
             50% { 
-                box-shadow: 
-                    0 35px 70px rgba(0,0,0,0.3),
-                    0 0 100px rgba(255,255,0,0.6),
-                    inset 0 3px 0 rgba(255,255,255,0.95),
-                    inset 0 -3px 0 rgba(0,0,0,0.15);
+                transform: translateY(-12px) translateX(0px) scale(1.03);
+            }
+            66.66% { 
+                transform: translateY(-6px) translateX(4px) scale(1.015);
+            }
+            83.33% { 
+                transform: translateY(-3px) translateX(-1px) scale(1.005);
             }
         }
 
-        @keyframes image-hover-shimmer {
-            0%, 100% { 
-                filter: contrast(1.2) saturate(1.3) brightness(1.1) hue-rotate(0deg);
+        @keyframes firework-explode {
+            0% {
+                opacity: 1;
+                transform: scale(0);
             }
-            33% { 
-                filter: contrast(1.25) saturate(1.35) brightness(1.15) hue-rotate(5deg);
+            15% {
+                transform: scale(1);
             }
-            66% { 
-                filter: contrast(1.22) saturate(1.32) brightness(1.12) hue-rotate(-3deg);
+            100% {
+                opacity: 0;
+                transform: scale(0);
             }
         }
 
         /* 响应式优化 */
-        @media (max-width: 768px) {
-            .floating-photo {
-                width: 260px;
-                height: 340px;
-            }
-            
-            .floating-photo img {
-                height: 220px;
-            }
-            
-            .hero-description {
-                padding: 2rem;
-            }
-        }
-
         @media (max-width: 480px) {
             .floating-photo {
-                width: 220px;
-                height: 290px;
+                width: 250px;
+                height: 320px;
+                margin-bottom: 3rem;
             }
             
             .floating-photo img {
-                height: 180px;
+                height: 200px;
             }
             
             .hero-description {
@@ -917,6 +796,14 @@
             .cta-button {
                 padding: 1rem 2rem;
                 font-size: 1rem;
+            }
+
+            .modal-close {
+                top: -60px;
+                right: -60px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -929,23 +816,15 @@
     
     <!-- 超密集糖果和气球漂浮系统 -->
     <div class="floating-candies" id="floatingCandies"></div>
-    
-    <div class="morphing-shapes">
-        <div class="morph-blob blob-1"></div>
-        <div class="morph-blob blob-2"></div>
-        <div class="morph-blob blob-3"></div>
-    </div>
 
     <!-- 超级立体棒棒糖 -->
     <div class="super-lollipop" id="superLollipop">
-        <div class="lollipop-head">
-            <div class="lollipop-sparkles" id="lollipopSparkles"></div>
-        </div>
+        <div class="lollipop-head"></div>
         <div class="lollipop-stick"></div>
     </div>
 
-    <!-- 交互光标 -->
-    <div class="interaction-cursor" id="cursor"></div>
+    <!-- 棒棒糖彩虹轨迹 -->
+    <div class="lollipop-trail" id="lollipopTrail"></div>
 
     <!-- 漂浮相册 -->
     <div class="floating-album">
@@ -959,7 +838,7 @@
                 🎪 每一张照片都是珍贵回忆<br>
                 🌈 让我们一起重温那些快乐时光！
             </div>
-            <a href="#photos" class="cta-button">🎉 开始回忆之旅</a>
+            <button class="cta-button" id="startJourney">🎉 开始回忆之旅</button>
         </section>
 
         <!-- 漂浮照片区域 -->
@@ -983,37 +862,30 @@
     </div>
 
     <script>
-        class WorldClassTrolliAlbum {
+        class WeChatTrolliAlbum {
             constructor() {
                 this.photos = [];
-                this.particles = [];
-                this.candies = [];
-                this.balloons = [];
-                this.sparkles = [];
-                this.mouse = { x: 0, y: 0 };
-                this.isSpread = false;
+                this.isJourneyStarted = false;
+                this.visiblePhotoIndex = 0;
                 this.init();
             }
 
-            async init() {
-                console.log('🍭 启动世界级Trolli相册...');
+            init() {
+                console.log('🍭 启动微信版Trolli相册...');
                 
                 this.createParticleSystem();
-                this.createSuperDenseCandyBalloonSystem();
-                this.createLollipopSparkles();
-                await this.loadPhotos();
-                console.log(`📚 已加载 ${this.photos.length} 张照片`);
-                this.initInteractionEffects();
+                this.createCandyBalloonSystem();
+                this.createTrailSystem();
+                this.loadPhotos();
                 this.bindEvents();
-                this.initScrollEffects();
                 
-                console.log('✅ 世界级相册已就绪！照片将在3秒后自动散开或等待用户交互');
+                console.log('✅ 微信版相册已就绪！');
             }
 
             createParticleSystem() {
                 const particleField = document.getElementById('particleField');
                 
-                for (let i = 0; i < 80; i++) {
+                for (let i = 0; i < 60; i++) {
                     const particle = document.createElement('div');
                     particle.className = 'particle';
                     particle.style.left = Math.random() * 100 + '%';
@@ -1023,157 +895,142 @@
                 }
             }
 
-            createSuperDenseCandyBalloonSystem() {
+            createCandyBalloonSystem() {
                 const candiesContainer = document.getElementById('floatingCandies');
-                const candyEmojis = ['🍬', '🍭', '🧁', '🍰', '🎂', '🍩', '🍪', '🍫', '🍨', '🧊'];
+                const candyEmojis = ['🍬', '🍭', '🧁', '🍰', '🎂', '🍩', '🍪', '🍫'];
                 const balloonEmojis = ['🎈', '🎀', '🎊', '🎉', '✨', '🎆', '💫', '⭐'];
                 const starEmojis = ['🌟', '💖', '💝', '🦄', '🌙', '☁️'];
                 
-                // 创建超密集漂浮糖果
-                for (let i = 0; i < 40; i++) {
+                // 创建糖果
+                for (let i = 0; i < 25; i++) {
                     const candy = document.createElement('div');
                     candy.className = 'floating-candy';
                     candy.textContent = candyEmojis[Math.floor(Math.random() * candyEmojis.length)];
                     candy.style.left = Math.random() * 100 + '%';
                     candy.style.animationDelay = Math.random() * 20 + 's';
                     candy.style.animationDuration = (15 + Math.random() * 10) + 's';
+                    candy.addEventListener('click', (e) => this.createFirework(e.pageX, e.pageY));
                     candiesContainer.appendChild(candy);
                 }
                 
-                // 创建超密集漂浮气球
-                for (let i = 0; i < 30; i++) {
+                // 创建气球
+                for (let i = 0; i < 20; i++) {
                     const balloon = document.createElement('div');
                     balloon.className = 'floating-balloon';
                     balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
                     balloon.style.left = Math.random() * 100 + '%';
                     balloon.style.animationDelay = Math.random() * 25 + 's';
                     balloon.style.animationDuration = (20 + Math.random() * 10) + 's';
+                    balloon.addEventListener('click', (e) => this.createFirework(e.pageX, e.pageY));
                     candiesContainer.appendChild(balloon);
                 }
 
-                // 创建星星漂浮
-                for (let i = 0; i < 20; i++) {
+                // 创建星星
+                for (let i = 0; i < 15; i++) {
                     const star = document.createElement('div');
                     star.className = 'floating-star';
                     star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
                     star.style.left = Math.random() * 100 + '%';
                     star.style.animationDelay = Math.random() * 18 + 's';
                     star.style.animationDuration = (15 + Math.random() * 8) + 's';
+                    star.addEventListener('click', (e) => this.createFirework(e.pageX, e.pageY));
                     candiesContainer.appendChild(star);
                 }
             }
 
-            createLollipopSparkles() {
-                const sparklesContainer = document.getElementById('lollipopSparkles');
+            createTrailSystem() {
+                const trailContainer = document.getElementById('lollipopTrail');
                 
-                for (let i = 0; i < 15; i++) {
-                    const sparkle = document.createElement('div');
-                    sparkle.className = 'sparkle';
+                // 创建20个轨迹点，分布在棒棒糖运动路径上
+                for (let i = 0; i < 20; i++) {
+                    const segment = document.createElement('div');
+                    segment.className = 'trail-segment';
                     
-                    const angle = (i / 15) * 360;
-                    const radius = 80 + Math.random() * 50;
-                    const x = Math.cos(angle * Math.PI / 180) * radius;
-                    const y = Math.sin(angle * Math.PI / 180) * radius;
+                    // 计算轨迹点位置（跟随棒棒糖舞蹈路径）
+                    const angle = (i / 20) * 360;
+                    const radius = 40;
+                    const x = 50 + Math.cos(angle * Math.PI / 180) * radius / window.innerWidth * 100;
+                    const y = 25 + Math.sin(angle * Math.PI / 180) * radius / window.innerHeight * 100;
                     
-                    sparkle.style.left = `calc(50% + ${x}px)`;
-                    sparkle.style.top = `calc(50% + ${y}px)`;
-                    sparkle.style.animationDelay = Math.random() * 2 + 's';
+                    segment.style.left = x + '%';
+                    segment.style.top = y + '%';
+                    segment.style.animationDelay = (i * 0.1) + 's';
                     
-                    sparklesContainer.appendChild(sparkle);
-                    this.sparkles.push(sparkle);
+                    trailContainer.appendChild(segment);
                 }
             }
 
-            initInteractionEffects() {
-                const cursor = document.getElementById('cursor');
+            createFirework(x, y) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
                 
-                // 页面加载3秒后自动触发散开动画
+                const colors = [
+                    '#FF1744', '#FF6EC7', '#FF6D00', '#FFD600', 
+                    '#76FF03', '#00E676', '#00E5FF', '#2979FF', 
+                    '#7C4DFF', '#E91E63', '#9C27B0', '#FFC107'
+                ];
+                
+                // 创建30个烟花粒子
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'firework-particle';
+                    
+                    const angle = (i / 30) * 360;
+                    const velocity = 80 + Math.random() * 60;
+                    const endX = Math.cos(angle * Math.PI / 180) * velocity;
+                    const endY = Math.sin(angle * Math.PI / 180) * velocity;
+                    
+                    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.left = '0px';
+                    particle.style.top = '0px';
+                    particle.style.setProperty('--end-x', endX + 'px');
+                    particle.style.setProperty('--end-y', endY + 'px');
+                    
+                    // 添加粒子运动
+                    particle.style.animation = `firework-explode 1.5s ease-out forwards`;
+                    particle.style.transform = `translate(${endX}px, ${endY}px)`;
+                    
+                    firework.appendChild(particle);
+                }
+                
+                document.body.appendChild(firework);
+                
+                // 1.5秒后清除烟花
                 setTimeout(() => {
-                    if (!this.isSpread) {
-                        console.log('🎯 自动触发照片散开...');
-                        this.triggerPhotoSpread();
-                    }
-                }, 3000);
+                    document.body.removeChild(firework);
+                }, 1500);
+            }
+
+            startJourney() {
+                console.log('🎬 开始回忆之旅...');
+                this.isJourneyStarted = true;
                 
-                document.addEventListener('mousemove', (e) => {
-                    this.mouse.x = e.clientX;
-                    this.mouse.y = e.clientY;
-                    
-                    cursor.style.left = e.clientX + 'px';
-                    cursor.style.top = e.clientY + 'px';
-                    
-                    // 触发照片散开
-                    this.triggerPhotoSpread();
-                });
-
-                document.addEventListener('mouseenter', () => {
-                    cursor.classList.add('active');
-                });
-
-                document.addEventListener('mouseleave', () => {
-                    cursor.classList.remove('active');
-                });
-
-                // 增强棒棒糖鼠标跟随
-                const lollipop = document.getElementById('superLollipop');
-                document.addEventListener('mousemove', (e) => {
-                    const mouseX = (e.clientX / window.innerWidth - 0.5) * 40;
-                    const mouseY = (e.clientY / window.innerHeight - 0.5) * 40;
-                    
-                    lollipop.style.transform = `
-                        translate(calc(-50% + ${mouseX}px), calc(-25% + ${mouseY}px))
-                        rotateY(${mouseX * 0.8}deg)
-                        rotateX(${mouseY * 0.5}deg)
-                    `;
-                });
-
-                // 滚动触发
-                window.addEventListener('scroll', () => {
-                    this.triggerPhotoSpread();
-                });
-
-                // 点击触发
-                document.addEventListener('click', () => {
-                    this.triggerPhotoSpread();
-                });
-
-                // 触摸触发（移动端）
-                document.addEventListener('touchstart', () => {
-                    this.triggerPhotoSpread();
-                });
-            }
-
-            triggerPhotoSpread() {
-                if (!this.isSpread && this.photos.length > 0) {
-                    this.isSpread = true;
-                    console.log('🎬 开始照片散开动画...');
-                    
-                    this.photos.forEach((photo, index) => {
-                        setTimeout(() => {
-                            photo.classList.remove('initial');
-                            photo.classList.add('spread', 'grid-position');
-                            
-                            // 设置最终位置
-                            const finalTop = photo.dataset.finalTop;
-                            const finalLeft = photo.dataset.finalLeft;
-                            
-                            photo.style.top = finalTop;
-                            photo.style.left = finalLeft;
-                            photo.style.transform = 'scale(1)';
-                            
-                            // 应用个性化动画参数
-                            const delay = photo.style.getPropertyValue('--animation-delay') || '0s';
-                            const duration = photo.style.getPropertyValue('--animation-duration') || '15s';
-                            photo.style.animationDelay = delay;
-                            photo.style.animationDuration = duration;
-                            
-                            console.log(`📸 照片 ${index + 1} 散开到位置: ${finalLeft}, ${finalTop} (延迟: ${delay}, 持续: ${duration})`);
-                        }, index * 100); // 更快的散开节奏
+                const photosSection = document.getElementById('photos');
+                photosSection.classList.add('visible');
+                
+                setTimeout(() => {
+                    photosSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
-                }
+                }, 500);
+
+                setTimeout(() => {
+                    this.showPhotosSequentially();
+                }, 1000);
             }
 
-            async loadPhotos() {
+            showPhotosSequentially() {
+                this.photos.forEach((photo, index) => {
+                    setTimeout(() => {
+                        photo.classList.add('visible');
+                    }, index * 400);
+                });
+            }
+
+            loadPhotos() {
                 const photoUrls = [
                     'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqNJRktLzZiaPGic4sMDHiangKhbwObQ1Oq9uScIiaRdPubVHcPW9hq8D1fw/640?wx_fmt=jpeg&from=appmsg',
                     'https://mmbiz.qpic.cn/sz_mmbiz_jpg/VHBuVWE4En0meFe3rzln1oKicT3vwiaXQqxGgkmQBBIDkQiaVHs0ksI9oPicPUvomZYkWIwFaf2yPiaicMGsibSicD4gIw/640?wx_fmt=jpeg&from=appmsg',
@@ -1214,45 +1071,17 @@
                     { title: '🚀 想象力无限爆棚', desc: '孩子们展现出天马行空的创造力，未来可期' }
                 ];
 
-                this.createMasterPhotos(photoData, photoUrls);
+                this.createPhotos(photoData, photoUrls);
             }
 
-            generateOptimizedLayout(count) {
-                const positions = [];
-                const containerWidth = window.innerWidth;
-                const columns = 3; // 固定每行3张
-                
-                for (let i = 0; i < count; i++) {
-                    const row = Math.floor(i / columns);
-                    const col = i % columns;
-                    
-                    // 规整网格布局，每行3张，完全无重叠
-                    const leftSpacing = 100 / columns;
-                    const left = leftSpacing * col + leftSpacing / 2 - 12;
-                    const top = row * 20 + 8; // 调整行间距
-                    
-                    positions.push({
-                        top: `${Math.min(top, 80)}%`,
-                        left: `${Math.max(8, Math.min(left, 85))}%`,
-                        zIndex: 50 + i
-                    });
-                }
-                
-                return positions;
-            }
-
-            createMasterPhotos(photoData, photoUrls) {
+            createPhotos(photoData, photoUrls) {
                 const photosContainer = document.querySelector('.floating-photos');
-                const positions = this.generateOptimizedLayout(photoData.length);
                 
                 photoData.forEach((photo, index) => {
                     if (index >= photoUrls.length) return;
                     
                     const photoElement = document.createElement('div');
-                    photoElement.className = 'floating-photo initial';
-                    photoElement.dataset.finalTop = positions[index].top;
-                    photoElement.dataset.finalLeft = positions[index].left;
-                    photoElement.style.zIndex = positions[index].zIndex;
+                    photoElement.className = 'floating-photo';
                     
                     photoElement.innerHTML = `
                         <div class="photo-frame">
@@ -1264,73 +1093,12 @@
                         </div>
                     `;
                     
-                    // 添加随机3D效果
-                    const randomDelay = Math.random() * 5;
-                    const randomDuration = 12 + Math.random() * 8;
-                    photoElement.style.setProperty('--animation-delay', `${randomDelay}s`);
-                    photoElement.style.setProperty('--animation-duration', `${randomDuration}s`);
-                    
                     photoElement.addEventListener('click', () => {
                         this.openModal(photoUrls[index], photo.title);
                     });
                     
                     photosContainer.appendChild(photoElement);
                     this.photos.push(photoElement);
-                });
-            }
-
-            initScrollEffects() {
-                let ticking = false;
-                
-                window.addEventListener('scroll', () => {
-                    if (!ticking) {
-                        requestAnimationFrame(() => {
-                            const scrolled = window.pageYOffset;
-                            const lollipop = document.getElementById('superLollipop');
-                            
-                            // 增强棒棒糖滚动效果
-                            const rotation = scrolled * 0.8;
-                            const float = Math.sin(scrolled * 0.01) * 25;
-                            const scale = 1 + Math.sin(scrolled * 0.005) * 0.1;
-                            
-                            const baseTransform = lollipop.style.transform.split('rotateY')[0] || 'translate(-50%, -50%)';
-                            lollipop.style.transform = baseTransform + ` 
-                                rotate(${rotation}deg) 
-                                translateY(${float}px) 
-                                scale(${scale})
-                            `;
-                            
-                            // 更新闪烁效果
-                            this.sparkles.forEach((sparkle, index) => {
-                                const sparkleRotation = rotation * (1 + index * 0.1);
-                                sparkle.style.transform = `rotate(${sparkleRotation}deg)`;
-                            });
-                            
-                            // 增强照片视差效果
-                            if (this.isSpread) {
-                                this.photos.forEach((photo, index) => {
-                                    const speed = 0.02 + (index % 3) * 0.01;
-                                    const yPos = -(scrolled * speed);
-                                    const rotation = Math.sin(scrolled * 0.005 + index) * 2;
-                                    const scale = 1 + Math.sin(scrolled * 0.003 + index) * 0.05;
-                                    
-                                    // 获取现有transform或设置基础值
-                                    const baseTransform = photo.style.transform || 'scale(1)';
-                                    const newTransform = `${baseTransform} 
-                                        translateY(${yPos}px) 
-                                        rotateZ(${rotation}deg) 
-                                        scale(${scale})
-                                    `;
-                                    
-                                    photo.style.transform = newTransform;
-                                });
-                            }
-                            
-                            ticking = false;
-                        });
-                        
-                        ticking = true;
-                    }
                 });
             }
 
@@ -1359,8 +1127,13 @@
             }
 
             bindEvents() {
+                const startButton = document.getElementById('startJourney');
                 const modalClose = document.getElementById('modalClose');
                 const modal = document.getElementById('modal');
+                
+                startButton?.addEventListener('click', () => {
+                    this.startJourney();
+                });
                 
                 modalClose?.addEventListener('click', () => {
                     this.closeModal();
@@ -1377,26 +1150,12 @@
                         this.closeModal();
                     }
                 });
-                
-                // 平滑滚动
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const target = document.querySelector(this.getAttribute('href'));
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    });
-                });
             }
         }
 
-        // 启动世界级相册
+        // 启动微信版相册
         document.addEventListener('DOMContentLoaded', () => {
-            new WorldClassTrolliAlbum();
+            new WeChatTrolliAlbum();
         });
     </script>
 </body>
