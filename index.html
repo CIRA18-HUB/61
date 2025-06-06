@@ -11,23 +11,6 @@
     <meta property="og:description" content="17个超甜蜜瞬间全记录，超炫酷交互体验">
     <meta property="og:image" content="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_01.jpg">
     
-    <!-- 超级图片预加载优化 -->
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_01.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_02.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_03.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_04.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_05.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_06.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_07.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_08.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_09.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_10.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_11.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_12.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_13.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_14.jpg" as="image" type="image/jpeg" importance="high">
-    <link rel="preload" href="https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_16.jpg" as="image" type="image/jpeg" importance="high">
-    
     <!-- DNS预解析优化 -->
     <link rel="dns-prefetch" href="//raw.githubusercontent.com">
     <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
@@ -345,11 +328,6 @@
             pointer-events: none;
             z-index: 999998;
             transition: all 0.5s ease;
-        }
-
-        /* 魔法变色按钮 - 隐藏 */
-        .theme-switcher {
-            display: none;
         }
 
         /* 音效按钮 */
@@ -688,7 +666,7 @@
             letter-spacing: 4px;
         }
 
-        /* 照片预览聚拢系统 */
+        /* 照片预览聚拢系统 - 极速显示优化 */
         .photo-preview-cluster {
             position: fixed;
             left: 50%;
@@ -707,8 +685,12 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow-2);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .preview-photo.loaded {
             opacity: 0.8;
-            transition: all 2s var(--ease-out-expo);
         }
 
         .preview-photo img {
@@ -717,7 +699,7 @@
             object-fit: cover;
         }
 
-        /* 手机优化的照片容器设计 - 6D玻璃质感 + AR效果 */
+        /* 手机优化的照片容器设计 - 6D玻璃质感 + AR效果 + 延迟加载 */
         .floating-photos {
             position: relative;
             min-height: 200vh;
@@ -875,6 +857,26 @@
             opacity: 0.8;
         }
 
+        /* 图片占位符系统 */
+        .photo-placeholder {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading-shimmer 1.5s infinite;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 2rem;
+        }
+
+        @keyframes loading-shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
         .floating-photo img {
             width: 100%;
             height: 240px;
@@ -888,6 +890,14 @@
                 inset 0 1px 0 rgba(255,255,255,0.3),
                 inset 0 -1px 0 rgba(0,0,0,0.1),
                 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .floating-photo img.loading {
+            opacity: 0;
+        }
+
+        .floating-photo img.loaded {
+            opacity: 1;
         }
 
         .floating-photo:hover img {
@@ -1263,7 +1273,8 @@
                 margin-bottom: 3rem;
             }
             
-            .floating-photo img {
+            .floating-photo img,
+            .photo-placeholder {
                 height: 200px;
             }
             
@@ -1832,6 +1843,7 @@
                 this.audioEnabled = true;
                 this.lollipopClickCount = 0;
                 this.collectedPhotos = new Set();
+                this.observer = null; // Intersection Observer for lazy loading
                 this.achievements = {
                     firstClick: false,
                     photoCollector: false,
@@ -1852,12 +1864,12 @@
                 
                 this.createParticleSystem();
                 this.createSuperDenseCandyBalloonSystem();
-                await this.loadPhotos();
-                this.createPhotoPreviewCluster();
+                this.createPhotoPreviewCluster(); // 立即创建聚拢预览
+                this.initIntersectionObserver(); // 初始化延迟加载观察器
+                this.loadPhotos(); // 异步加载正式照片
                 this.initTetrisGame();
                 this.initBackgroundTetris();
                 this.initSoundEffects();
-                console.log(`📚 已加载 ${this.photos.length} 张照片`);
                 this.initInteractionEffects();
                 this.bindEvents();
                 
@@ -1922,6 +1934,7 @@
                 }
             }
 
+            // 🚀 极速聚拢预览系统 - 立即显示
             createPhotoPreviewCluster() {
                 const cluster = document.getElementById('photoPreviewCluster');
                 const photoUrls = [
@@ -1935,8 +1948,10 @@
                     'https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_08.jpg'
                 ];
 
-                // 围绕棒棒糖创建8个预览照片
-                for (let i = 0; i < 8; i++) {
+                console.log('🎯 开始加载聚拢预览图片...');
+
+                // 围绕棒棒糖创建8个预览照片 - 优先加载策略
+                photoUrls.forEach((url, i) => {
                     const preview = document.createElement('div');
                     preview.className = 'preview-photo';
                     
@@ -1949,10 +1964,72 @@
                     preview.style.top = `calc(50% + ${y}px)`;
                     preview.style.transform = 'translate(-50%, -50%) rotate(' + (angle + 45) + 'deg)';
                     
-                    preview.innerHTML = `<img src="${photoUrls[i]}" alt="预览图 ${i + 1}" loading="lazy">`;
+                    // 极速图片加载 - 不延迟，立即开始
+                    const img = new Image();
+                    img.onload = () => {
+                        preview.classList.add('loaded');
+                        console.log(`🎉 聚拢预览图 ${i + 1}/8 加载完成`);
+                    };
+                    img.onerror = () => {
+                        console.warn(`⚠️ 聚拢预览图 ${i + 1} 加载失败`);
+                        // 失败时显示占位符
+                        img.src = 'data:image/svg+xml;base64,' + btoa(`
+                            <svg width="60" height="75" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="60" height="75" fill="#f0f0f0"/>
+                                <text x="30" y="40" text-anchor="middle" fill="#999" font-size="20">🖼️</text>
+                            </svg>
+                        `);
+                        preview.classList.add('loaded');
+                    };
                     
+                    // 立即加载，高优先级
+                    img.src = url;
+                    img.alt = `预览图 ${i + 1}`;
+                    img.loading = 'eager'; // 立即加载
+                    img.decoding = 'async'; // 异步解码
+                    
+                    preview.appendChild(img);
                     cluster.appendChild(preview);
-                }
+                });
+            }
+
+            // 🚀 延迟加载观察器 - 只有进入视窗才加载
+            initIntersectionObserver() {
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            const placeholder = img.parentElement.querySelector('.photo-placeholder');
+                            
+                            if (img.dataset.src && !img.classList.contains('loaded')) {
+                                console.log(`📸 开始延迟加载: ${img.dataset.index}`);
+                                img.src = img.dataset.src;
+                                img.classList.add('loading');
+                                
+                                img.onload = () => {
+                                    img.classList.remove('loading');
+                                    img.classList.add('loaded');
+                                    if (placeholder) {
+                                        placeholder.remove();
+                                    }
+                                    console.log(`✅ 延迟加载完成: ${img.dataset.index}`);
+                                };
+                                
+                                img.onerror = () => {
+                                    console.warn(`❌ 延迟加载失败: ${img.dataset.src}`);
+                                    if (placeholder) {
+                                        placeholder.innerHTML = '❌';
+                                    }
+                                };
+                                
+                                this.observer.unobserve(img);
+                            }
+                        }
+                    });
+                }, {
+                    rootMargin: '200px 0px', // 提前200px开始加载
+                    threshold: 0.1
+                });
             }
 
             initTetrisGame() {
@@ -2042,7 +2119,7 @@
                     }
                 });
 
-                // 长按变色效果 - 移除自动主题切换
+                // 长按变色效果
                 let longPressTimer;
                 document.addEventListener('touchstart', (e) => {
                     longPressTimer = setTimeout(() => {
@@ -2339,7 +2416,10 @@
                 }
             }
 
+            // 🚀 异步加载正式照片 - 延迟加载策略
             async loadPhotos() {
+                console.log('📚 开始异步加载正式照片...');
+                
                 const photoUrls = [
                     'https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_01.jpg',
                     'https://raw.githubusercontent.com/CIRA18-HUB/61/main/photo_02.jpg',
@@ -2376,76 +2456,11 @@
                     { title: '🍬 甜蜜分享时刻', desc: '和小伙伴一起分享美味糖果，快乐加倍甜蜜加倍' }
                 ];
 
-                // 超级加速图片预加载系统
-                console.log('🚀 启动超级图片加速加载...');
-                await this.preloadAllImages(photoUrls);
-                console.log('✅ 所有图片预加载完成！');
-
                 this.createMasterPhotos(photoData, photoUrls);
+                console.log(`📝 已创建 ${photoData.length} 个照片容器，等待延迟加载`);
             }
 
-            // 超级图片预加载器 - 并行加载 + 缓存优化
-            async preloadAllImages(urls) {
-                return new Promise((resolve) => {
-                    let loadedCount = 0;
-                    const totalCount = urls.length;
-                    const preloadedImages = [];
-                    
-                    // 批量并行预加载
-                    const loadPromises = urls.map((url, index) => {
-                        return new Promise((resolveImg) => {
-                            const img = new Image();
-                            
-                            // 设置缓存优化
-                            img.crossOrigin = 'anonymous';
-                            
-                            img.onload = () => {
-                                loadedCount++;
-                                preloadedImages[index] = img;
-                                console.log(`📸 图片 ${index + 1}/${totalCount} 加载完成`);
-                                
-                                // 添加到缓存
-                                this.imageCache = this.imageCache || new Map();
-                                this.imageCache.set(url, img);
-                                
-                                resolveImg(img);
-                                
-                                // 所有图片加载完成
-                                if (loadedCount === totalCount) {
-                                    console.log('🎉 所有图片预加载完成！');
-                                    resolve(preloadedImages);
-                                }
-                            };
-                            
-                            img.onerror = () => {
-                                console.warn(`⚠️ 图片 ${url} 加载失败`);
-                                loadedCount++;
-                                resolveImg(null);
-                                
-                                if (loadedCount === totalCount) {
-                                    resolve(preloadedImages);
-                                }
-                            };
-                            
-                            // 关键优化：设置图片加载优先级
-                            img.loading = 'eager';
-                            img.decoding = 'async';
-                            
-                            // 开始加载
-                            img.src = url;
-                        });
-                    });
-                    
-                    // 防止无限等待
-                    setTimeout(() => {
-                        if (loadedCount < totalCount) {
-                            console.log('⏰ 预加载超时，继续执行...');
-                            resolve(preloadedImages);
-                        }
-                    }, 10000); // 10秒超时
-                });
-            }
-
+            // 🚀 优化的照片创建系统 - 先占位符后延迟加载
             createMasterPhotos(photoData, photoUrls) {
                 const photosContainer = document.querySelector('.floating-photos');
                 
@@ -2456,24 +2471,14 @@
                     photoElement.className = 'floating-photo vibrate-support';
                     photoElement.dataset.index = index;
                     
-                    // 优化：使用预加载的图片或快速加载设置
-                    const imgElement = document.createElement('img');
-                    
-                    // 检查是否有缓存的图片
-                    if (this.imageCache && this.imageCache.has(photoUrls[index])) {
-                        const cachedImg = this.imageCache.get(photoUrls[index]);
-                        imgElement.src = cachedImg.src;
-                        imgElement.alt = photo.title;
-                    } else {
-                        imgElement.src = photoUrls[index];
-                        imgElement.alt = photo.title;
-                        imgElement.loading = 'eager'; // 急切加载
-                        imgElement.decoding = 'async'; // 异步解码
-                    }
-                    
+                    // 创建占位符 + 延迟加载图片
                     photoElement.innerHTML = `
                         <div class="photo-frame">
-                            ${imgElement.outerHTML}
+                            <div class="photo-placeholder">🖼️</div>
+                            <img data-src="${photoUrls[index]}" 
+                                 data-index="${index + 1}" 
+                                 alt="${photo.title}" 
+                                 class="loading">
                             <div class="photo-info">
                                 <div class="photo-title">${photo.title}</div>
                                 <div class="photo-desc">${photo.desc}</div>
@@ -2481,10 +2486,19 @@
                         </div>
                     `;
                     
+                    // 为延迟加载设置观察器
+                    const img = photoElement.querySelector('img');
+                    this.observer.observe(img);
+                    
                     photoElement.addEventListener('click', () => {
-                        this.openModal(photoUrls[index], photo.title);
-                        this.collectPhoto(index);
-                        this.triggerVibration();
+                        // 如果图片已加载，显示模态框；否则提示加载中
+                        if (img.classList.contains('loaded')) {
+                            this.openModal(img.src, photo.title);
+                            this.collectPhoto(index);
+                            this.triggerVibration();
+                        } else {
+                            console.log('图片加载中，请稍候...');
+                        }
                     });
                     
                     photosContainer.appendChild(photoElement);
