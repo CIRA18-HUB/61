@@ -134,26 +134,6 @@
             transition: all 2s ease;
         }
 
-        /* 背景俄罗斯方块游戏 */
-        .background-tetris {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -5;
-            opacity: 0.1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .background-tetris canvas {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(2px);
-        }
-
         .particle-field {
             position: fixed;
             top: 0;
@@ -398,145 +378,6 @@
 
         .candy-counter.visible {
             transform: scale(1);
-        }
-
-        /* 俄罗斯方块游戏系统 */
-        .tetris-trigger {
-            position: fixed;
-            bottom: 60px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--candy-purple), var(--candy-blue));
-            border-radius: 12px;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: var(--shadow-3);
-            transition: all 0.3s var(--ease-out-back);
-            z-index: 10000;
-            animation: tetris-bounce 2s ease-in-out infinite;
-        }
-
-        .tetris-trigger.visible {
-            display: flex;
-        }
-
-        .tetris-trigger:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: var(--shadow-5);
-        }
-
-        .tetris-icon {
-            font-size: 1.3rem;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .tetris-game {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 65vw;
-            max-width: 400px;
-            height: 70vh;
-            max-height: 600px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            box-shadow: var(--shadow-5);
-            z-index: 100001;
-            opacity: 0;
-            transition: all 0.5s var(--ease-out-back);
-            border: 3px solid rgba(255,255,255,0.8);
-        }
-
-        .tetris-game.visible {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 1;
-        }
-
-        .tetris-header {
-            padding: 20px;
-            border-bottom: 2px solid rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, var(--candy-purple), var(--candy-blue));
-            color: white;
-            border-radius: 17px 17px 0 0;
-        }
-
-        .tetris-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            font-family: var(--font-title);
-        }
-
-        .tetris-close {
-            width: 30px;
-            height: 30px;
-            background: rgba(255,255,255,0.2);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tetris-close:hover {
-            background: rgba(255,255,255,0.3);
-            transform: rotate(90deg);
-        }
-
-        .tetris-content {
-            height: calc(100% - 80px);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tetris-board {
-            flex: 1;
-            margin: 20px;
-            background: rgba(0,0,0,0.8);
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tetris-controls {
-            padding: 20px;
-            display: flex;
-            justify-content: space-around;
-            background: rgba(0,0,0,0.05);
-            border-radius: 0 0 17px 17px;
-        }
-
-        .tetris-btn {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(45deg, var(--candy-pink), var(--candy-orange));
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: var(--shadow-2);
-            transition: all 0.2s ease;
-            font-weight: bold;
-            font-family: var(--font-mono);
-        }
-
-        .tetris-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-3);
-        }
-
-        .tetris-btn:active {
-            transform: translateY(0);
         }
 
         /* 漂浮相册容器 */
@@ -1151,15 +992,6 @@
             }
         }
 
-        @keyframes tetris-bounce {
-            0%, 100% { 
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% { 
-                transform: translateY(-5px) rotate(2deg);
-            }
-        }
-
         @keyframes ar-breathe {
             0%, 100% {
                 transform: scale(1);
@@ -1264,27 +1096,11 @@
                 font-size: 1.5rem;
             }
 
-            .tetris-trigger {
+            .audio-toggle {
                 bottom: 60px;
                 right: 15px;
                 width: 45px;
                 height: 45px;
-            }
-
-            .audio-toggle {
-                bottom: 120px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-            }
-
-            .tetris-icon, .theme-icon {
-                font-size: 1.2rem;
-            }
-
-            .tetris-game {
-                width: 90vw;
-                height: 80vh;
             }
         }
 
@@ -1309,11 +1125,6 @@
 <body class="locked">
     <!-- 世界级背景系统 -->
     <div class="cosmic-background" id="cosmicBackground"></div>
-    
-    <!-- 背景俄罗斯方块游戏 -->
-    <div class="background-tetris" id="backgroundTetris">
-        <canvas id="backgroundTetrisCanvas"></canvas>
-    </div>
     
     <div class="particle-field" id="particleField"></div>
     
@@ -1359,35 +1170,12 @@
         <div class="audio-icon">🔊</div>
     </div>
 
-    <div class="tetris-trigger" id="tetrisTrigger">
-        <div class="tetris-icon">🧩</div>
-    </div>
-
     <!-- 成就系统 -->
     <div class="achievement-popup" id="achievementPopup"></div>
 
     <!-- 收集计数器 -->
     <div class="candy-counter" id="candyCounter">
         🍬 收集糖果: <span id="candyCount">0</span>
-    </div>
-
-    <!-- 俄罗斯方块游戏窗口 -->
-    <div class="tetris-game" id="tetrisGame">
-        <div class="tetris-header">
-            <div class="tetris-title">🍭 甜蜜方块</div>
-            <button class="tetris-close" id="tetrisClose">×</button>
-        </div>
-        <div class="tetris-content">
-            <div class="tetris-board">
-                <canvas id="tetrisCanvas" width="300" height="600"></canvas>
-            </div>
-            <div class="tetris-controls">
-                <button class="tetris-btn" id="tetrisLeft">←</button>
-                <button class="tetris-btn" id="tetrisRotate">↻</button>
-                <button class="tetris-btn" id="tetrisRight">→</button>
-                <button class="tetris-btn" id="tetrisDown">↓</button>
-            </div>
-        </div>
     </div>
 
     <!-- 漂浮相册 -->
@@ -1589,393 +1377,6 @@
     </div>
 
     <script>
-        class BackgroundTetrisGame {
-            constructor(canvas) {
-                this.canvas = canvas;
-                this.ctx = canvas.getContext('2d');
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = window.innerHeight;
-                
-                this.BOARD_WIDTH = Math.floor(this.canvas.width / 30);
-                this.BOARD_HEIGHT = Math.floor(this.canvas.height / 30);
-                this.CELL_SIZE = 30;
-                
-                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
-                this.currentPiece = null;
-                this.currentX = 0;
-                this.currentY = 0;
-                this.gameRunning = true;
-                this.gameLoop = null;
-                this.dropSpeed = 2000;
-                
-                this.colors = [
-                    'transparent', 
-                    'rgba(255, 23, 68, 0.3)', 
-                    'rgba(255, 109, 0, 0.3)', 
-                    'rgba(255, 214, 0, 0.3)',
-                    'rgba(118, 255, 3, 0.3)', 
-                    'rgba(0, 229, 255, 0.3)', 
-                    'rgba(41, 121, 255, 0.3)', 
-                    'rgba(124, 77, 255, 0.3)'
-                ];
-                
-                this.pieces = [
-                    [[[1,1,1,1]]],
-                    [[[2,2],[2,2]]],
-                    [[[0,3,0],[3,3,3]]],
-                    [[[0,4,4],[4,4,0]]],
-                    [[[5,5,0],[0,5,5]]],
-                    [[[6,0,0],[6,6,6]]],
-                    [[[0,0,7],[7,7,7]]]
-                ];
-                
-                this.init();
-            }
-            
-            init() {
-                this.spawnPiece();
-                this.start();
-                
-                window.addEventListener('resize', () => {
-                    this.canvas.width = window.innerWidth;
-                    this.canvas.height = window.innerHeight;
-                    this.BOARD_WIDTH = Math.floor(this.canvas.width / 30);
-                    this.BOARD_HEIGHT = Math.floor(this.canvas.height / 30);
-                    this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
-                });
-            }
-            
-            spawnPiece() {
-                const pieceIndex = Math.floor(Math.random() * this.pieces.length);
-                this.currentPiece = this.pieces[pieceIndex][0];
-                this.currentX = Math.floor(this.BOARD_WIDTH / 2) - Math.floor(this.currentPiece[0].length / 2);
-                this.currentY = 0;
-            }
-            
-            collision(piece, x, y) {
-                for (let py = 0; py < piece.length; py++) {
-                    for (let px = 0; px < piece[py].length; px++) {
-                        if (piece[py][px] !== 0) {
-                            const newX = x + px;
-                            const newY = y + py;
-                            
-                            if (newX < 0 || newX >= this.BOARD_WIDTH || newY >= this.BOARD_HEIGHT) {
-                                return true;
-                            }
-                            
-                            if (newY >= 0 && this.board[newY][newX] !== 0) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-            
-            placePiece() {
-                for (let py = 0; py < this.currentPiece.length; py++) {
-                    for (let px = 0; px < this.currentPiece[py].length; px++) {
-                        if (this.currentPiece[py][px] !== 0) {
-                            const y = this.currentY + py;
-                            const x = this.currentX + px;
-                            if (y >= 0 && y < this.BOARD_HEIGHT && x >= 0 && x < this.BOARD_WIDTH) {
-                                this.board[y][x] = this.currentPiece[py][px];
-                            }
-                        }
-                    }
-                }
-                
-                this.clearLines();
-                this.spawnPiece();
-            }
-            
-            clearLines() {
-                for (let y = this.BOARD_HEIGHT - 1; y >= 0; y--) {
-                    if (this.board[y].every(cell => cell !== 0)) {
-                        this.board.splice(y, 1);
-                        this.board.unshift(Array(this.BOARD_WIDTH).fill(0));
-                        y++;
-                    }
-                }
-            }
-            
-            dropPiece() {
-                if (!this.collision(this.currentPiece, this.currentX, this.currentY + 1)) {
-                    this.currentY++;
-                } else {
-                    this.placePiece();
-                }
-            }
-            
-            draw() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                for (let y = 0; y < this.BOARD_HEIGHT; y++) {
-                    for (let x = 0; x < this.BOARD_WIDTH; x++) {
-                        if (this.board[y][x] !== 0) {
-                            this.ctx.fillStyle = this.colors[this.board[y][x]];
-                            this.ctx.fillRect(
-                                x * this.CELL_SIZE,
-                                y * this.CELL_SIZE,
-                                this.CELL_SIZE - 1,
-                                this.CELL_SIZE - 1
-                            );
-                        }
-                    }
-                }
-                
-                if (this.currentPiece) {
-                    for (let py = 0; py < this.currentPiece.length; py++) {
-                        for (let px = 0; px < this.currentPiece[py].length; px++) {
-                            if (this.currentPiece[py][px] !== 0) {
-                                const x = this.currentX + px;
-                                const y = this.currentY + py;
-                                if (y >= 0 && x >= 0 && x < this.BOARD_WIDTH && y < this.BOARD_HEIGHT) {
-                                    this.ctx.fillStyle = this.colors[this.currentPiece[py][px]];
-                                    this.ctx.fillRect(
-                                        x * this.CELL_SIZE,
-                                        y * this.CELL_SIZE,
-                                        this.CELL_SIZE - 1,
-                                        this.CELL_SIZE - 1
-                                    );
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            start() {
-                if (this.gameRunning) {
-                    this.gameLoop = setInterval(() => {
-                        this.dropPiece();
-                        this.draw();
-                    }, this.dropSpeed);
-                }
-            }
-            
-            stop() {
-                this.gameRunning = false;
-                if (this.gameLoop) {
-                    clearInterval(this.gameLoop);
-                }
-            }
-        }
-
-        class TetrisGame {
-            constructor(canvas) {
-                this.canvas = canvas;
-                this.ctx = canvas.getContext('2d');
-                this.canvas.width = 300;
-                this.canvas.height = 600;
-                
-                this.BOARD_WIDTH = 10;
-                this.BOARD_HEIGHT = 20;
-                this.CELL_SIZE = this.canvas.width / this.BOARD_WIDTH;
-                
-                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
-                this.currentPiece = null;
-                this.currentX = 0;
-                this.currentY = 0;
-                this.gameRunning = false;
-                this.gameLoop = null;
-                
-                this.colors = [
-                    '#000000', '#FF1744', '#FF6D00', '#FFD600',
-                    '#76FF03', '#00E5FF', '#2979FF', '#7C4DFF'
-                ];
-                
-                this.pieces = [
-                    [[[1,1,1,1]]],
-                    [[[2,2],[2,2]]],
-                    [[[0,3,0],[3,3,3]], [[3,0],[3,3],[3,0]], [[3,3,3],[0,3,0]], [[0,3],[3,3],[0,3]]],
-                    [[[0,4,4],[4,4,0]], [[4,0],[4,4],[0,4]]],
-                    [[[5,5,0],[0,5,5]], [[0,5],[5,5],[5,0]]],
-                    [[[6,0,0],[6,6,6]], [[6,6],[6,0],[6,0]], [[6,6,6],[0,0,6]], [[0,6],[0,6],[6,6]]],
-                    [[[0,0,7],[7,7,7]], [[7,0],[7,0],[7,7]], [[7,7,7],[7,0,0]], [[7,7],[0,7],[0,7]]]
-                ];
-                
-                this.init();
-            }
-            
-            init() {
-                this.spawnPiece();
-                this.draw();
-            }
-            
-            spawnPiece() {
-                const pieceIndex = Math.floor(Math.random() * this.pieces.length);
-                const rotationIndex = Math.floor(Math.random() * this.pieces[pieceIndex].length);
-                this.currentPiece = this.pieces[pieceIndex][rotationIndex];
-                this.currentX = Math.floor(this.BOARD_WIDTH / 2) - Math.floor(this.currentPiece[0].length / 2);
-                this.currentY = 0;
-                
-                if (this.collision(this.currentPiece, this.currentX, this.currentY)) {
-                    this.gameOver();
-                }
-            }
-            
-            collision(piece, x, y) {
-                for (let py = 0; py < piece.length; py++) {
-                    for (let px = 0; px < piece[py].length; px++) {
-                        if (piece[py][px] !== 0) {
-                            const newX = x + px;
-                            const newY = y + py;
-                            
-                            if (newX < 0 || newX >= this.BOARD_WIDTH || newY >= this.BOARD_HEIGHT) {
-                                return true;
-                            }
-                            
-                            if (newY >= 0 && this.board[newY][newX] !== 0) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-            
-            placePiece() {
-                for (let py = 0; py < this.currentPiece.length; py++) {
-                    for (let px = 0; px < this.currentPiece[py].length; px++) {
-                        if (this.currentPiece[py][px] !== 0) {
-                            const y = this.currentY + py;
-                            const x = this.currentX + px;
-                            if (y >= 0) {
-                                this.board[y][x] = this.currentPiece[py][px];
-                            }
-                        }
-                    }
-                }
-                
-                this.clearLines();
-                this.spawnPiece();
-            }
-            
-            clearLines() {
-                for (let y = this.BOARD_HEIGHT - 1; y >= 0; y--) {
-                    if (this.board[y].every(cell => cell !== 0)) {
-                        this.board.splice(y, 1);
-                        this.board.unshift(Array(this.BOARD_WIDTH).fill(0));
-                        y++;
-                    }
-                }
-            }
-            
-            rotatePiece() {
-                const rotated = this.currentPiece[0].map((_, index) =>
-                    this.currentPiece.map(row => row[index]).reverse()
-                );
-                
-                if (!this.collision(rotated, this.currentX, this.currentY)) {
-                    this.currentPiece = rotated;
-                }
-            }
-            
-            movePiece(dx) {
-                if (!this.collision(this.currentPiece, this.currentX + dx, this.currentY)) {
-                    this.currentX += dx;
-                }
-            }
-            
-            dropPiece() {
-                if (!this.collision(this.currentPiece, this.currentX, this.currentY + 1)) {
-                    this.currentY++;
-                } else {
-                    this.placePiece();
-                }
-            }
-            
-            draw() {
-                this.ctx.fillStyle = '#000';
-                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-                
-                this.ctx.strokeStyle = '#333';
-                this.ctx.lineWidth = 1;
-                for (let x = 0; x <= this.BOARD_WIDTH; x++) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(x * this.CELL_SIZE, 0);
-                    this.ctx.lineTo(x * this.CELL_SIZE, this.canvas.height);
-                    this.ctx.stroke();
-                }
-                for (let y = 0; y <= this.BOARD_HEIGHT; y++) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(0, y * this.CELL_SIZE);
-                    this.ctx.lineTo(this.canvas.width, y * this.CELL_SIZE);
-                    this.ctx.stroke();
-                }
-                
-                for (let y = 0; y < this.BOARD_HEIGHT; y++) {
-                    for (let x = 0; x < this.BOARD_WIDTH; x++) {
-                        if (this.board[y][x] !== 0) {
-                            this.ctx.fillStyle = this.colors[this.board[y][x]];
-                            this.ctx.fillRect(
-                                x * this.CELL_SIZE + 1,
-                                y * this.CELL_SIZE + 1,
-                                this.CELL_SIZE - 2,
-                                this.CELL_SIZE - 2
-                            );
-                        }
-                    }
-                }
-                
-                if (this.currentPiece) {
-                    for (let py = 0; py < this.currentPiece.length; py++) {
-                        for (let px = 0; px < this.currentPiece[py].length; px++) {
-                            if (this.currentPiece[py][px] !== 0) {
-                                const x = this.currentX + px;
-                                const y = this.currentY + py;
-                                if (y >= 0) {
-                                    this.ctx.fillStyle = this.colors[this.currentPiece[py][px]];
-                                    this.ctx.fillRect(
-                                        x * this.CELL_SIZE + 1,
-                                        y * this.CELL_SIZE + 1,
-                                        this.CELL_SIZE - 2,
-                                        this.CELL_SIZE - 2
-                                    );
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            gameOver() {
-                this.gameRunning = false;
-                if (this.gameLoop) {
-                    clearInterval(this.gameLoop);
-                }
-                setTimeout(() => {
-                    alert('游戏结束！获得糖果奖励！🍬');
-                    window.trolliAlbum.addCandy(5);
-                }, 100);
-                this.reset();
-            }
-            
-            reset() {
-                this.board = Array(this.BOARD_HEIGHT).fill().map(() => Array(this.BOARD_WIDTH).fill(0));
-                this.spawnPiece();
-                this.draw();
-            }
-            
-            start() {
-                if (this.gameRunning) return;
-                
-                this.gameRunning = true;
-                this.gameLoop = setInterval(() => {
-                    this.dropPiece();
-                    this.draw();
-                }, 500);
-            }
-            
-            stop() {
-                this.gameRunning = false;
-                if (this.gameLoop) {
-                    clearInterval(this.gameLoop);
-                }
-            }
-        }
-
         class WorldClassTrolliAlbum {
             constructor() {
                 this.photos = [];
@@ -1988,8 +1389,6 @@
                 this.isJourneyStarted = false;
                 this.visiblePhotoIndex = 0;
                 this.lastScrollY = 0;
-                this.tetrisGame = null;
-                this.backgroundTetris = null;
                 this.candyCount = 0;
                 this.clickCombo = 0;
                 this.comboTimeout = null;
@@ -2001,7 +1400,6 @@
                     photoCollector: false,
                     comboMaster: false,
                     themeExplorer: false,
-                    gamePlayer: false,
                     secretFinder: false
                 };
                 
@@ -2012,24 +1410,22 @@
             }
 
             init() {
-                console.log('🍭 启动世界级Trolli相册2.0...');
+                console.log('🍭 启动优化版Trolli相册2.0...');
                 
                 this.createParticleSystem();
                 this.createSuperDenseCandyBalloonSystem();
                 this.initPhotoEvents(); // 🚀 直接初始化照片事件，不需要动态创建
-                this.initTetrisGame();
-                this.initBackgroundTetris();
                 this.initSoundEffects();
                 this.initInteractionEffects();
                 this.bindEvents();
                 
-                console.log('✅ 世界级相册2.0已就绪！所有图片已直接放置在HTML中！');
+                console.log('✅ 优化版相册2.0已就绪！加载速度显著提升！');
             }
 
             createParticleSystem() {
                 const particleField = document.getElementById('particleField');
                 
-                for (let i = 0; i < 80; i++) {
+                for (let i = 0; i < 60; i++) { // 减少粒子数量
                     const particle = document.createElement('div');
                     particle.className = 'particle';
                     particle.style.left = Math.random() * 100 + '%';
@@ -2045,8 +1441,8 @@
                 const balloonEmojis = ['🎈', '🎀', '🎊', '🎉', '✨', '🎆', '💫', '⭐'];
                 const starEmojis = ['🌟', '💖', '💝', '🦄', '🌙', '☁️'];
                 
-                // 创建超密集漂浮糖果
-                for (let i = 0; i < 40; i++) {
+                // 创建密集漂浮糖果
+                for (let i = 0; i < 30; i++) { // 减少数量
                     const candy = document.createElement('div');
                     candy.className = 'floating-candy vibrate-support';
                     candy.textContent = candyEmojis[Math.floor(Math.random() * candyEmojis.length)];
@@ -2061,8 +1457,8 @@
                     candiesContainer.appendChild(candy);
                 }
                 
-                // 创建超密集漂浮气球
-                for (let i = 0; i < 30; i++) {
+                // 创建密集漂浮气球
+                for (let i = 0; i < 20; i++) { // 减少数量
                     const balloon = document.createElement('div');
                     balloon.className = 'floating-balloon';
                     balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
@@ -2073,7 +1469,7 @@
                 }
 
                 // 创建星星漂浮
-                for (let i = 0; i < 20; i++) {
+                for (let i = 0; i < 15; i++) { // 减少数量
                     const star = document.createElement('div');
                     star.className = 'floating-star';
                     star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
@@ -2105,16 +1501,6 @@
                 });
 
                 console.log(`🎉 所有 ${this.photos.length} 张照片事件绑定完成！`);
-            }
-
-            initTetrisGame() {
-                const canvas = document.getElementById('tetrisCanvas');
-                this.tetrisGame = new TetrisGame(canvas);
-            }
-
-            initBackgroundTetris() {
-                const canvas = document.getElementById('backgroundTetrisCanvas');
-                this.backgroundTetris = new BackgroundTetrisGame(canvas);
             }
 
             initSoundEffects() {
@@ -2209,13 +1595,13 @@
 
                 const candyTypes = ['🍬', '🍭', '🍰', '🎉', '✨', '💫', '⭐', '🌟'];
                 
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i < 8; i++) { // 减少爆炸粒子数量
                     const particle = document.createElement('div');
                     particle.className = 'candy-particle';
                     particle.textContent = candyTypes[Math.floor(Math.random() * candyTypes.length)];
                     
-                    const angle = (i / 12) * 360 * Math.PI / 180;
-                    const velocity = 100 + Math.random() * 100;
+                    const angle = (i / 8) * 360 * Math.PI / 180;
+                    const velocity = 80 + Math.random() * 60; // 减少粒子速度
                     const dx = Math.cos(angle) * velocity;
                     const dy = Math.sin(angle) * velocity;
                     
@@ -2278,7 +1664,7 @@
 
                 const candyTypes = ['🍬', '🍭', '🧁', '🍰', '🍩', '🍪', '🍫'];
                 
-                for (let i = 0; i < 50; i++) {
+                for (let i = 0; i < 30; i++) { // 减少糖果雨数量
                     const rainDrop = document.createElement('div');
                     rainDrop.className = 'rain-drop';
                     rainDrop.textContent = candyTypes[Math.floor(Math.random() * candyTypes.length)];
@@ -2320,15 +1706,15 @@
                 const lollipopCenterX = rect.left + rect.width / 2;
                 const lollipopCenterY = rect.top + rect.height / 2;
                 
-                const deltaX = (x - lollipopCenterX) * 0.1;
-                const deltaY = (y - lollipopCenterY) * 0.1;
+                const deltaX = (x - lollipopCenterX) * 0.08; // 减少移动幅度
+                const deltaY = (y - lollipopCenterY) * 0.08;
                 
-                lollipop.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${1 + Math.abs(deltaX + deltaY) * 0.001})`;
+                lollipop.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${1 + Math.abs(deltaX + deltaY) * 0.0008})`;
                 
                 this.lollipopPosition.x = lollipopCenterX + deltaX;
                 this.lollipopPosition.y = lollipopCenterY + deltaY;
 
-                if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+                if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) { // 减少轨迹点生成
                     this.addTrailPoint(this.lollipopPosition.x, this.lollipopPosition.y);
                 }
             }
@@ -2349,7 +1735,7 @@
                     timestamp: Date.now()
                 });
 
-                if (this.trailPoints.length > 15) {
+                if (this.trailPoints.length > 10) { // 减少轨迹点数量
                     const oldest = this.trailPoints.shift();
                     oldest.element.remove();
                 }
@@ -2388,8 +1774,8 @@
                     const photos = document.querySelectorAll('.floating-photo.visible');
                     photos.forEach((photo, index) => {
                         const factor = (index % 2 === 0 ? 1 : -1);
-                        const translateX = gamma * 0.5 * factor;
-                        const translateY = beta * 0.3 * factor;
+                        const translateX = gamma * 0.3 * factor; // 减少移动幅度
+                        const translateY = beta * 0.2 * factor;
                         
                         photo.style.transform += ` translate(${translateX}px, ${translateY}px)`;
                     });
@@ -2421,9 +1807,7 @@
                 
                 document.body.classList.remove('locked');
                 
-                const tetrisTrigger = document.getElementById('tetrisTrigger');
                 const candyCounter = document.getElementById('candyCounter');
-                tetrisTrigger.classList.add('visible');
                 candyCounter.classList.add('visible');
                 
                 const cluster = document.getElementById('photoPreviewCluster');
@@ -2446,22 +1830,6 @@
                 setTimeout(() => {
                     this.checkPhotoVisibility();
                 }, 1000);
-            }
-
-            showTetrisGame() {
-                const tetrisGame = document.getElementById('tetrisGame');
-                tetrisGame.classList.add('visible');
-                this.tetrisGame.start();
-                
-                if (!this.achievements.gamePlayer) {
-                    this.unlockAchievement('gamePlayer', '🎮 游戏玩家！', '开始了俄罗斯方块游戏！');
-                }
-            }
-
-            hideTetrisGame() {
-                const tetrisGame = document.getElementById('tetrisGame');
-                tetrisGame.classList.remove('visible');
-                this.tetrisGame.stop();
             }
 
             toggleAudio() {
@@ -2526,15 +1894,8 @@
                 const startButton = document.getElementById('startJourney');
                 const modalClose = document.getElementById('modalClose');
                 const modal = document.getElementById('modal');
-                const tetrisTrigger = document.getElementById('tetrisTrigger');
-                const tetrisClose = document.getElementById('tetrisClose');
                 const audioToggle = document.getElementById('audioToggle');
                 const superLollipop = document.getElementById('superLollipop');
-                
-                const tetrisLeft = document.getElementById('tetrisLeft');
-                const tetrisRight = document.getElementById('tetrisRight');
-                const tetrisRotate = document.getElementById('tetrisRotate');
-                const tetrisDown = document.getElementById('tetrisDown');
                 
                 startButton?.addEventListener('click', () => {
                     this.startJourney();
@@ -2548,14 +1909,6 @@
                     if (e.target === modal) {
                         this.closeModal();
                     }
-                });
-                
-                tetrisTrigger?.addEventListener('click', () => {
-                    this.showTetrisGame();
-                });
-                
-                tetrisClose?.addEventListener('click', () => {
-                    this.hideTetrisGame();
                 });
                 
                 audioToggle?.addEventListener('click', () => {
@@ -2575,70 +1928,14 @@
                     this.triggerVibration([50]);
                 });
                 
-                tetrisLeft?.addEventListener('click', () => {
-                    this.tetrisGame.movePiece(-1);
-                    this.tetrisGame.draw();
-                    this.playSound(400, 50);
-                });
-                
-                tetrisRight?.addEventListener('click', () => {
-                    this.tetrisGame.movePiece(1);
-                    this.tetrisGame.draw();
-                    this.playSound(400, 50);
-                });
-                
-                tetrisRotate?.addEventListener('click', () => {
-                    this.tetrisGame.rotatePiece();
-                    this.tetrisGame.draw();
-                    this.playSound(600, 50);
-                });
-                
-                tetrisDown?.addEventListener('click', () => {
-                    this.tetrisGame.dropPiece();
-                    this.tetrisGame.draw();
-                    this.playSound(300, 50);
-                });
-                
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') {
                         this.closeModal();
-                        if (document.getElementById('tetrisGame').classList.contains('visible')) {
-                            this.hideTetrisGame();
-                        }
                     }
                     
                     if (e.key === 'r' && e.ctrlKey) {
                         e.preventDefault();
                         this.createCandyRain();
-                    }
-                    
-                    if (document.getElementById('tetrisGame').classList.contains('visible')) {
-                        switch(e.key) {
-                            case 'ArrowLeft':
-                                e.preventDefault();
-                                this.tetrisGame.movePiece(-1);
-                                this.tetrisGame.draw();
-                                this.playSound(400, 50);
-                                break;
-                            case 'ArrowRight':
-                                e.preventDefault();
-                                this.tetrisGame.movePiece(1);
-                                this.tetrisGame.draw();
-                                this.playSound(400, 50);
-                                break;
-                            case 'ArrowUp':
-                                e.preventDefault();
-                                this.tetrisGame.rotatePiece();
-                                this.tetrisGame.draw();
-                                this.playSound(600, 50);
-                                break;
-                            case 'ArrowDown':
-                                e.preventDefault();
-                                this.tetrisGame.dropPiece();
-                                this.tetrisGame.draw();
-                                this.playSound(300, 50);
-                                break;
-                        }
                     }
                 });
                 
@@ -2669,52 +1966,10 @@
                         lastZ = z;
                     }
                 });
-                
-                let touchStartX = 0;
-                let touchStartY = 0;
-                const tetrisGame = document.getElementById('tetrisGame');
-                
-                tetrisGame?.addEventListener('touchstart', (e) => {
-                    touchStartX = e.touches[0].clientX;
-                    touchStartY = e.touches[0].clientY;
-                }, { passive: true });
-                
-                tetrisGame?.addEventListener('touchend', (e) => {
-                    if (!tetrisGame.classList.contains('visible')) return;
-                    
-                    const touchEndX = e.changedTouches[0].clientX;
-                    const touchEndY = e.changedTouches[0].clientY;
-                    const deltaX = touchEndX - touchStartX;
-                    const deltaY = touchEndY - touchStartY;
-                    
-                    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                        if (Math.abs(deltaX) > 30) {
-                            if (deltaX > 0) {
-                                this.tetrisGame.movePiece(1);
-                                this.playSound(400, 50);
-                            } else {
-                                this.tetrisGame.movePiece(-1);
-                                this.playSound(400, 50);
-                            }
-                        }
-                    } else {
-                        if (Math.abs(deltaY) > 30) {
-                            if (deltaY > 0) {
-                                this.tetrisGame.dropPiece();
-                                this.playSound(300, 50);
-                            } else {
-                                this.tetrisGame.rotatePiece();
-                                this.playSound(600, 50);
-                            }
-                        }
-                    }
-                    
-                    this.tetrisGame.draw();
-                }, { passive: true });
             }
         }
 
-        // 启动世界级相册2.0
+        // 启动优化版相册2.0
         document.addEventListener('DOMContentLoaded', () => {
             new WorldClassTrolliAlbum();
         });
