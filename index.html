@@ -15,10 +15,10 @@
     <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
-    <!-- 世界顶级字体系统 -->
+    <!-- 🚀 极简字体加载 - 只加载关键字体 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800;900&family=Lora:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800;900&family=Merriweather:wght@300;400;700;900&family=Roboto+Slab:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Oswald:wght@600;800&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -28,89 +28,48 @@
         }
 
         :root {
-            /* 世界级糖果色彩系统 */
-            --candy-red: #FF1744;
-            --candy-pink: #FF6EC7;
-            --candy-orange: #FF6D00;
-            --candy-yellow: #FFD600;
-            --candy-lime: #76FF03;
-            --candy-green: #00E676;
-            --candy-cyan: #00E5FF;
-            --candy-blue: #2979FF;
-            --candy-purple: #7C4DFF;
-            --candy-magenta: #E91E63;
-            --candy-violet: #9C27B0;
-            --candy-amber: #FFC107;
+            /* 核心色彩变量 */
+            --c1: #FF1744; --c2: #FF6EC7; --c3: #FF6D00; --c4: #FFD600;
+            --c5: #76FF03; --c6: #00E676; --c7: #00E5FF; --c8: #2979FF;
+            --c9: #7C4DFF; --c10: #E91E63; --c11: #9C27B0; --c12: #FFC107;
             
-            /* 动态主题色彩 */
-            --theme-primary: var(--candy-red);
-            --theme-secondary: var(--candy-pink);
-            --theme-accent: var(--candy-yellow);
+            /* 简化阴影 */
+            --s1: 0 2px 8px rgba(0,0,0,0.15);
+            --s2: 0 4px 16px rgba(0,0,0,0.2);
+            --s3: 0 8px 32px rgba(0,0,0,0.25);
             
-            /* MANA专业色彩 */
-            --mana-dark: #0e0e0e;
-            --mana-cream: #fef7e6;
-            --mana-blue: #2b3d73;
-            --mana-gold: #ffd372;
-            --mana-green: #195e1c;
-            --mana-orange: #f15b40;
-            --mana-white: #ffffff;
+            /* 简化字体 */
+            --f1: 'Oswald', 'Noto Sans SC', sans-serif;
+            --f2: 'Noto Sans SC', sans-serif;
             
-            /* 顶级阴影系统 */
-            --shadow-1: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            --shadow-2: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-            --shadow-3: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-            --shadow-4: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            --shadow-5: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-            
-            /* 世界顶级字体系统 */
-            --font-display: 'Oswald', 'Noto Sans SC', sans-serif;
-            --font-title: 'Montserrat', 'Noto Sans SC', sans-serif;
-            --font-body: 'DM Sans', 'Noto Sans SC', sans-serif;
-            --font-chinese: 'Noto Sans SC', 'PingFang SC', sans-serif;
-            --font-elegant: 'Lora', 'Noto Sans SC', serif;
-            --font-modern: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
-            --font-accent: 'Raleway', 'Noto Sans SC', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-            --font-slab: 'Roboto Slab', 'Noto Sans SC', serif;
-            --font-work: 'Work Sans', 'Noto Sans SC', sans-serif;
-            
-            /* 完美缓动函数 */
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
-            --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
-            --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            /* 高效缓动 */
+            --e1: cubic-bezier(0.16, 1, 0.3, 1);
+            --e2: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         html {
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
         }
 
         body {
-            font-family: var(--font-body);
+            font-family: var(--f2);
             overflow-x: hidden;
             background: #000;
             position: relative;
             transition: all 0.8s ease;
-            font-feature-settings: "liga" 1, "kern" 1;
-            -webkit-font-feature-settings: "liga" 1, "kern" 1;
         }
 
-        /* 页面锁定状态 */
         body.locked {
             overflow: hidden;
             height: 100vh;
         }
 
-        /* 震动支持 */
         .vibrate-support {
             cursor: pointer;
         }
 
-        /* 世界级动态背景系统 */
+        /* 🎨 高效背景系统 */
         .cosmic-background {
             position: fixed;
             top: 0;
@@ -119,19 +78,10 @@
             height: 100%;
             z-index: -10;
             background: linear-gradient(45deg,
-                var(--theme-primary) 0%,
-                var(--theme-secondary) 12.5%,
-                var(--candy-orange) 25%,
-                var(--candy-yellow) 37.5%,
-                var(--candy-lime) 50%,
-                var(--candy-green) 62.5%,
-                var(--candy-cyan) 75%,
-                var(--candy-blue) 87.5%,
-                var(--candy-purple) 100%
-            );
+                var(--c1) 0%, var(--c2) 12.5%, var(--c3) 25%, var(--c4) 37.5%,
+                var(--c5) 50%, var(--c6) 62.5%, var(--c7) 75%, var(--c8) 87.5%, var(--c9) 100%);
             background-size: 400% 400%;
-            animation: cosmic-shift 20s ease infinite, auto-theme-cycle 120s linear infinite;
-            transition: all 2s ease;
+            animation: bg-shift 20s ease infinite, theme-cycle 120s linear infinite;
         }
 
         .particle-field {
@@ -153,7 +103,47 @@
             animation: particle-float 12s linear infinite;
         }
 
-        /* 糖果爆炸系统 */
+        /* 🍬 优化糖果系统 */
+        .floating-candies {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -7;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-candy, .floating-balloon, .floating-star {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .floating-candy {
+            animation: candy-float 20s linear infinite;
+        }
+
+        .floating-balloon {
+            font-size: 3.5rem;
+            animation: balloon-float 25s linear infinite;
+            opacity: 0.7;
+        }
+
+        .floating-star {
+            font-size: 2.5rem;
+            animation: star-float 18s linear infinite;
+            opacity: 0.6;
+        }
+
+        .floating-candy:hover {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        /* 💥 爆炸效果 */
         .candy-explosion {
             position: fixed;
             pointer-events: none;
@@ -167,48 +157,7 @@
             animation: explode-out 1.5s ease-out forwards;
         }
 
-        /* 增强：超密集糖果和气球漂浮系统 */
-        .floating-candies {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -7;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .floating-candy {
-            position: absolute;
-            font-size: 3rem;
-            animation: candy-float 20s linear infinite;
-            opacity: 0.8;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
-            transition: transform 0.3s ease;
-        }
-
-        .floating-candy:hover {
-            transform: scale(1.2) rotate(15deg);
-        }
-
-        .floating-balloon {
-            position: absolute;
-            font-size: 3.5rem;
-            animation: balloon-float 25s linear infinite;
-            opacity: 0.7;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.6));
-        }
-
-        .floating-star {
-            position: absolute;
-            font-size: 2.5rem;
-            animation: star-float 18s linear infinite;
-            opacity: 0.6;
-            filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
-        }
-
-        /* 糖果雨效果 */
+        /* 🌧️ 糖果雨 */
         .candy-rain {
             position: fixed;
             top: -100px;
@@ -224,16 +173,14 @@
             animation: rain-fall 3s linear forwards;
         }
 
-        /* 超级立体棒棒糖 */
+        /* 🍭 棒棒糖系统 */
         .super-lollipop {
             position: fixed;
             right: 20px;
             top: 20px;
-            transform: none;
             width: 120px;
             height: 140px;
             z-index: 999999;
-            pointer-events: auto;
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.2));
             transition: all 0.3s ease;
             cursor: pointer;
@@ -256,28 +203,13 @@
             margin: 0 auto 15px;
             border-radius: 50%;
             background: conic-gradient(
-                var(--theme-primary) 0deg 30deg,
-                var(--candy-orange) 30deg 60deg,
-                var(--theme-accent) 60deg 90deg,
-                var(--candy-lime) 90deg 120deg,
-                var(--candy-green) 120deg 150deg,
-                var(--candy-cyan) 150deg 180deg,
-                var(--candy-blue) 180deg 210deg,
-                var(--candy-purple) 210deg 240deg,
-                var(--candy-magenta) 240deg 270deg,
-                var(--candy-violet) 270deg 300deg,
-                var(--theme-secondary) 300deg 330deg,
-                var(--theme-primary) 330deg 360deg
-            );
+                var(--c1) 0deg 30deg, var(--c3) 30deg 60deg, var(--c4) 60deg 90deg,
+                var(--c5) 90deg 120deg, var(--c6) 120deg 150deg, var(--c7) 150deg 180deg,
+                var(--c8) 180deg 210deg, var(--c9) 210deg 240deg, var(--c10) 240deg 270deg,
+                var(--c11) 270deg 300deg, var(--c2) 300deg 330deg, var(--c1) 330deg 360deg);
             animation: mega-spin 12s linear infinite;
-            box-shadow: 
-                0 0 0 5px rgba(255,255,255,0.9),
-                0 0 0 8px var(--theme-accent),
-                0 0 0 10px rgba(255,255,255,0.5),
-                var(--shadow-3),
-                inset 0 0 20px rgba(255,255,255,0.4);
+            box-shadow: 0 0 0 5px rgba(255,255,255,0.9), 0 0 0 8px var(--c4), var(--s2), inset 0 0 20px rgba(255,255,255,0.4);
             border: 2px solid rgba(255,255,255,0.95);
-            transition: all 0.3s ease;
         }
 
         .lollipop-stick {
@@ -287,19 +219,11 @@
             transform: translateX(-50%);
             width: 8px;
             height: 60px;
-            background: linear-gradient(180deg, 
-                #FFE0B2 0%, 
-                #FFCC80 30%,
-                #FFB74D 70%, 
-                #FF8F00 100%);
+            background: linear-gradient(180deg, #FFE0B2 0%, #FFCC80 30%, #FFB74D 70%, #FF8F00 100%);
             border-radius: 4px;
-            box-shadow: 
-                inset 1px 0 2px rgba(255,255,255,0.6),
-                inset -1px 0 2px rgba(0,0,0,0.3),
-                var(--shadow-1);
+            box-shadow: inset 1px 0 2px rgba(255,255,255,0.6), inset -1px 0 2px rgba(0,0,0,0.3), var(--s1);
         }
 
-        /* 棒棒糖彩虹轨迹系统 */
         .lollipop-trail {
             position: fixed;
             width: 8px;
@@ -310,21 +234,21 @@
             transition: all 0.5s ease;
         }
 
-        /* 音效按钮 */
+        /* 🎛️ 控制按钮 */
         .audio-toggle {
             position: fixed;
             bottom: 120px;
             right: 20px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(45deg, var(--candy-green), var(--candy-cyan));
+            background: linear-gradient(45deg, var(--c6), var(--c7));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: var(--shadow-3);
-            transition: all 0.3s var(--ease-out-back);
+            box-shadow: var(--s2);
+            transition: all 0.3s var(--e2);
             z-index: 10000;
         }
 
@@ -336,30 +260,30 @@
             opacity: 0.5;
         }
 
-        /* 成就系统 */
+        /* 🏆 成就系统 */
         .achievement-popup {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0);
-            background: linear-gradient(135deg, var(--candy-yellow), var(--candy-orange));
+            background: linear-gradient(135deg, var(--c4), var(--c3));
             color: white;
             padding: 20px 30px;
             border-radius: 20px;
-            box-shadow: var(--shadow-5);
+            box-shadow: var(--s3);
             z-index: 100002;
             text-align: center;
-            font-family: var(--font-accent);
+            font-family: var(--f1);
             font-weight: 700;
             font-size: 1.2rem;
-            transition: all 0.5s var(--ease-out-back);
+            transition: all 0.5s var(--e2);
         }
 
         .achievement-popup.show {
             transform: translate(-50%, -50%) scale(1);
         }
 
-        /* 收集计数器 */
+        /* 🍬 计数器 */
         .candy-counter {
             position: fixed;
             top: 20px;
@@ -367,26 +291,26 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 10px 15px;
             border-radius: 25px;
-            font-family: var(--font-modern);
+            font-family: var(--f2);
             font-weight: 700;
-            color: var(--candy-purple);
-            box-shadow: var(--shadow-2);
+            color: var(--c9);
+            box-shadow: var(--s1);
             z-index: 10000;
             transform: scale(0);
-            transition: all 0.3s var(--ease-out-back);
+            transition: all 0.3s var(--e2);
         }
 
         .candy-counter.visible {
             transform: scale(1);
         }
 
-        /* 漂浮相册容器 */
+        /* 📱 相册容器 */
         .floating-album {
             position: relative;
             z-index: 100;
         }
 
-        /* 英雄区域 */
+        /* 🎬 英雄区域 */
         .hero-section {
             height: 100vh;
             display: flex;
@@ -396,7 +320,6 @@
             text-align: center;
             padding: 4rem 2rem;
             position: relative;
-            max-width: 100%;
             overflow: hidden;
         }
 
@@ -406,17 +329,12 @@
             color: #FFFFFF;
             margin-bottom: 1.5rem;
             line-height: 0.9;
-            text-shadow: 
-                4px 4px 0px var(--theme-primary),
-                8px 8px 0px var(--candy-orange),
-                12px 12px 0px var(--theme-accent),
-                16px 16px 40px rgba(0,0,0,0.6);
+            text-shadow: 4px 4px 0px var(--c1), 8px 8px 0px var(--c3), 12px 12px 0px var(--c4), 16px 16px 40px rgba(0,0,0,0.6);
             animation: title-bounce 4s ease-in-out infinite;
-            font-family: var(--font-display);
+            font-family: var(--f1);
             letter-spacing: -0.02em;
             max-width: 90vw;
             word-wrap: break-word;
-            transition: all 0.8s ease;
             background: linear-gradient(45deg, #FFFFFF, #FFE4E1, #FFFFFF);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -429,33 +347,25 @@
             font-weight: 600;
             color: #FFFFFF;
             margin-bottom: 2rem;
-            text-shadow: 
-                3px 3px 0px var(--candy-purple),
-                6px 6px 20px rgba(0,0,0,0.4);
-            font-family: var(--font-title);
+            text-shadow: 3px 3px 0px var(--c9), 6px 6px 20px rgba(0,0,0,0.4);
+            font-family: var(--f1);
             max-width: 90vw;
-            word-wrap: break-word;
-            transition: all 0.8s ease;
             letter-spacing: 0.03em;
         }
 
         .hero-description {
             font-size: clamp(1.1rem, 4vw, 1.6rem);
-            color: var(--mana-dark);
+            color: #0e0e0e;
             line-height: 1.7;
             max-width: min(600px, 85vw);
-            background: linear-gradient(135deg, 
-                var(--mana-cream), 
-                rgba(255,255,255,0.95));
+            background: linear-gradient(135deg, #fef7e6, rgba(255,255,255,0.95));
             padding: clamp(2rem, 5vw, 3rem);
             border-radius: 30px;
-            box-shadow: var(--shadow-4);
+            box-shadow: var(--s3);
             margin-bottom: 2rem;
             font-weight: 500;
-            font-family: var(--font-elegant);
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
-            transition: all 0.8s ease;
         }
 
         .cta-button {
@@ -463,23 +373,18 @@
             font-size: clamp(1.2rem, 3vw, 1.6rem);
             font-weight: 700;
             color: #FFFFFF;
-            background: linear-gradient(45deg, 
-                var(--theme-primary), 
-                var(--candy-orange), 
-                var(--theme-accent),
-                var(--candy-lime));
+            background: linear-gradient(45deg, var(--c1), var(--c3), var(--c4), var(--c5));
             background-size: 300% 300%;
             animation: gradient-flow 3s ease infinite;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            text-decoration: none;
             display: inline-block;
-            box-shadow: var(--shadow-3);
-            transition: all 0.4s var(--ease-out-back);
+            box-shadow: var(--s2);
+            transition: all 0.4s var(--e2);
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-family: var(--font-accent);
+            font-family: var(--f1);
             max-width: 90vw;
             text-align: center;
             position: relative;
@@ -503,11 +408,11 @@
 
         .cta-button:hover {
             transform: translateY(-8px) scale(1.05);
-            box-shadow: var(--shadow-5);
+            box-shadow: var(--s3);
             letter-spacing: 4px;
         }
 
-        /* 照片预览聚拢系统 */
+        /* 📸 预览聚拢 */
         .photo-preview-cluster {
             position: fixed;
             left: 50%;
@@ -525,9 +430,9 @@
             height: 75px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: var(--shadow-2);
+            box-shadow: var(--s1);
             opacity: 0.9;
-            transition: all 2s var(--ease-out-expo);
+            transition: all 2s var(--e1);
         }
 
         .preview-photo img {
@@ -536,7 +441,7 @@
             object-fit: cover;
         }
 
-        /* 手机优化的照片容器设计 - 6D玻璃质感 + AR效果 */
+        /* 🖼️ 主照片区域 */
         .floating-photos {
             position: relative;
             min-height: 200vh;
@@ -559,9 +464,7 @@
             z-index: 50;
             opacity: 0;
             transform: translateY(100px);
-            transition: all 1.2s var(--ease-out-expo);
-            
-            /* 6D动画基础设置 */
+            transition: all 1.2s var(--e1);
             animation: photo6D 8s ease-in-out infinite;
             transform-style: preserve-3d;
         }
@@ -576,17 +479,9 @@
             opacity: 0.7;
         }
 
-        .floating-photo:nth-child(2n) {
-            animation-delay: 0.8s;
-        }
-
-        .floating-photo:nth-child(3n) {
-            animation-delay: 1.6s;
-        }
-
-        .floating-photo:nth-child(4n) {
-            animation-delay: 2.4s;
-        }
+        .floating-photo:nth-child(2n) { animation-delay: 0.8s; }
+        .floating-photo:nth-child(3n) { animation-delay: 1.6s; }
+        .floating-photo:nth-child(4n) { animation-delay: 2.4s; }
 
         .floating-photo:hover {
             transform: translateY(-25px) rotateY(15deg) rotateX(10deg) scale(1.15);
@@ -595,7 +490,6 @@
             animation: photo6DHover 0.6s ease-in-out infinite alternate;
         }
 
-        /* AR式呼吸发光效果 */
         .floating-photo::before {
             content: '';
             position: absolute;
@@ -603,7 +497,7 @@
             left: -10px;
             right: -10px;
             bottom: -10px;
-            background: linear-gradient(45deg, var(--candy-cyan), var(--candy-purple), var(--candy-pink));
+            background: linear-gradient(45deg, var(--c7), var(--c9), var(--c2));
             border-radius: 30px;
             z-index: -1;
             opacity: 0;
@@ -614,37 +508,22 @@
             opacity: 0.6;
         }
 
-        /* 6D玻璃质感相框设计 */
+        /* 🎨 玻璃相框 */
         .photo-frame {
             width: 100%;
             height: 100%;
             position: relative;
-            background: linear-gradient(145deg, 
-                rgba(255,255,255,0.15) 0%,
-                rgba(255,255,255,0.05) 50%,
-                rgba(255,255,255,0.15) 100%);
+            background: linear-gradient(145deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.15) 100%);
             border-radius: 25px;
             padding: 20px;
             backdrop-filter: blur(25px);
             overflow: hidden;
             transform-style: preserve-3d;
-            
-            /* 玻璃边框效果 */
             border: 2px solid;
-            border-image: linear-gradient(45deg, 
-                rgba(255,255,255,0.8), 
-                rgba(255,255,255,0.2), 
-                rgba(255,255,255,0.8)) 1;
-            
-            /* 多层阴影营造深度 */
-            box-shadow: 
-                0 8px 32px rgba(0,0,0,0.12),
-                inset 0 2px 0 rgba(255,255,255,0.2),
-                inset 0 -2px 0 rgba(0,0,0,0.1),
-                0 0 0 1px rgba(255,255,255,0.05);
+            border-image: linear-gradient(45deg, rgba(255,255,255,0.8), rgba(255,255,255,0.2), rgba(255,255,255,0.8)) 1;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12), inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0,0,0,0.1);
         }
 
-        /* 玻璃反光效果 */
         .photo-frame::before {
             content: '';
             position: absolute;
@@ -652,10 +531,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255,255,255,0.4), 
-                transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             transition: left 0.5s ease;
             z-index: 1;
         }
@@ -664,7 +540,6 @@
             left: 100%;
         }
 
-        /* 彩虹边框动画 */
         .photo-frame::after {
             content: '';
             position: absolute;
@@ -672,16 +547,7 @@
             left: -3px;
             right: -3px;
             bottom: -3px;
-            background: linear-gradient(45deg,
-                var(--theme-primary),
-                var(--candy-orange),
-                var(--theme-accent),
-                var(--candy-green),
-                var(--candy-cyan),
-                var(--candy-blue),
-                var(--candy-purple),
-                var(--theme-secondary)
-            );
+            background: linear-gradient(45deg, var(--c1), var(--c3), var(--c4), var(--c6), var(--c7), var(--c8), var(--c9), var(--c2));
             background-size: 400% 400%;
             border-radius: 28px;
             z-index: -1;
@@ -694,29 +560,20 @@
             opacity: 0.8;
         }
 
-        /* 图片样式 */
         .floating-photo img {
             width: 100%;
             height: 240px;
             object-fit: cover;
             border-radius: 15px;
-            transition: all 0.6s var(--ease-out-expo);
+            transition: all 0.6s var(--e1);
             filter: contrast(1.1) saturate(1.2) brightness(1.05);
-            
-            /* 玻璃内阴影 */
-            box-shadow: 
-                inset 0 1px 0 rgba(255,255,255,0.3),
-                inset 0 -1px 0 rgba(0,0,0,0.1),
-                0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.1), 0 10px 25px rgba(0,0,0,0.15);
         }
 
         .floating-photo:hover img {
             transform: scale(1.05) rotateZ(2deg);
             filter: contrast(1.3) saturate(1.4) brightness(1.15);
-            box-shadow: 
-                inset 0 2px 0 rgba(255,255,255,0.4),
-                inset 0 -2px 0 rgba(0,0,0,0.15),
-                0 15px 35px rgba(0,0,0,0.25);
+            box-shadow: inset 0 2px 0 rgba(255,255,255,0.4), inset 0 -2px 0 rgba(0,0,0,0.15), 0 15px 35px rgba(0,0,0,0.25);
         }
 
         .photo-info {
@@ -727,24 +584,22 @@
         .photo-title {
             font-size: 1.1rem;
             font-weight: 700;
-            color: var(--mana-blue);
+            color: #2b3d73;
             margin-bottom: 8px;
-            font-family: var(--font-work);
+            font-family: var(--f2);
             line-height: 1.3;
             text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            letter-spacing: 0.01em;
         }
 
         .photo-desc {
             font-size: 0.85rem;
-            color: var(--mana-dark);
+            color: #0e0e0e;
             line-height: 1.5;
             font-weight: 400;
-            font-family: var(--font-elegant);
             opacity: 0.85;
         }
 
-        /* 结尾文案区域 */
+        /* 📝 结尾区域 */
         .ending-section {
             height: 60vh;
             display: flex;
@@ -753,16 +608,13 @@
             align-items: center;
             text-align: center;
             padding: 4rem 2rem;
-            position: relative;
         }
 
         .ending-quote {
             font-size: clamp(0.8rem, 2vw, 1.2rem);
-            font-weight: 400;
             color: rgba(255,255,255,0.9);
             margin-bottom: 1rem;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            font-family: var(--font-elegant);
             line-height: 1.7;
             animation: float-text 6s ease-in-out infinite;
             letter-spacing: 1px;
@@ -773,14 +625,13 @@
             font-size: clamp(0.6rem, 1.5vw, 0.9rem);
             font-weight: 600;
             color: rgba(255,255,255,0.7);
-            font-family: var(--font-work);
             text-shadow: 0 1px 5px rgba(0,0,0,0.2);
             letter-spacing: 2px;
             animation: float-text 6s ease-in-out infinite 3s;
             text-transform: uppercase;
         }
 
-        /* 世界级模态框 */
+        /* 🖼️ 模态框 */
         .modal {
             position: fixed;
             top: 0;
@@ -800,7 +651,7 @@
             max-width: 90vw;
             max-height: 90vh;
             transform: scale(0.8) rotateY(90deg);
-            transition: all 0.8s var(--ease-out-back);
+            transition: all 0.8s var(--e2);
         }
 
         .modal.show .modal-content {
@@ -809,7 +660,7 @@
 
         .modal-photo {
             border-radius: 20px;
-            box-shadow: var(--shadow-5);
+            box-shadow: var(--s3);
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
@@ -821,7 +672,7 @@
             right: -80px;
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--candy-red), var(--candy-orange));
+            background: linear-gradient(135deg, var(--c1), var(--c3));
             color: #FFFFFF;
             border: 4px solid #FFFFFF;
             border-radius: 50%;
@@ -830,133 +681,69 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-3);
-            transition: all 0.3s var(--ease-out-back);
-            font-family: var(--font-title);
+            box-shadow: var(--s2);
+            transition: all 0.3s var(--e2);
+            font-family: var(--f1);
         }
 
         .modal-close:hover {
             transform: scale(1.2) rotate(180deg);
-            background: linear-gradient(135deg, var(--candy-orange), var(--candy-yellow));
+            background: linear-gradient(135deg, var(--c3), var(--c4));
         }
 
-        /* 世界级动画系统 */
-        @keyframes cosmic-shift {
+        /* 🎬 关键动画 */
+        @keyframes bg-shift {
             0%, 100% { background-position: 0% 50%; }
             25% { background-position: 100% 50%; }
             50% { background-position: 100% 100%; }
             75% { background-position: 0% 100%; }
         }
 
-        @keyframes auto-theme-cycle {
-            0% { 
-                filter: hue-rotate(0deg) saturate(1);
-            }
-            20% { 
-                filter: hue-rotate(72deg) saturate(1.2);
-            }
-            40% { 
-                filter: hue-rotate(144deg) saturate(0.8);
-            }
-            60% { 
-                filter: hue-rotate(216deg) saturate(1.1);
-            }
-            80% { 
-                filter: hue-rotate(288deg) saturate(0.9);
-            }
-            100% { 
-                filter: hue-rotate(360deg) saturate(1);
-            }
+        @keyframes theme-cycle {
+            0% { filter: hue-rotate(0deg) saturate(1); }
+            20% { filter: hue-rotate(72deg) saturate(1.2); }
+            40% { filter: hue-rotate(144deg) saturate(0.8); }
+            60% { filter: hue-rotate(216deg) saturate(1.1); }
+            80% { filter: hue-rotate(288deg) saturate(0.9); }
+            100% { filter: hue-rotate(360deg) saturate(1); }
         }
 
         @keyframes particle-float {
-            0% { 
-                transform: translateY(100vh) translateX(0) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% { 
-                transform: translateY(-100px) translateX(100px) scale(1);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(100px) scale(1); opacity: 0; }
         }
 
         @keyframes candy-float {
-            0% { 
-                transform: translateY(100vh) translateX(-50px) rotate(0deg);
-                opacity: 0;
-            }
-            5% {
-                opacity: 0.8;
-            }
-            95% {
-                opacity: 0.8;
-            }
-            100% { 
-                transform: translateY(-100px) translateX(50px) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) translateX(-50px) rotate(0deg); opacity: 0; }
+            5% { opacity: 0.8; }
+            95% { opacity: 0.8; }
+            100% { transform: translateY(-100px) translateX(50px) rotate(360deg); opacity: 0; }
         }
 
         @keyframes balloon-float {
-            0% { 
-                transform: translateY(100vh) translateX(-30px) rotate(-10deg) scale(0.8);
-                opacity: 0;
-            }
-            5% {
-                opacity: 0.7;
-            }
-            95% {
-                opacity: 0.7;
-            }
-            100% { 
-                transform: translateY(-100px) translateX(30px) rotate(10deg) scale(1);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) translateX(-30px) rotate(-10deg) scale(0.8); opacity: 0; }
+            5% { opacity: 0.7; }
+            95% { opacity: 0.7; }
+            100% { transform: translateY(-100px) translateX(30px) rotate(10deg) scale(1); opacity: 0; }
         }
 
         @keyframes star-float {
-            0% { 
-                transform: translateY(100vh) translateX(-20px) rotate(0deg) scale(0.5);
-                opacity: 0;
-            }
-            5% {
-                opacity: 0.6;
-            }
-            95% {
-                opacity: 0.6;
-            }
-            100% { 
-                transform: translateY(-100px) translateX(20px) rotate(720deg) scale(1);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) translateX(-20px) rotate(0deg) scale(0.5); opacity: 0; }
+            5% { opacity: 0.6; }
+            95% { opacity: 0.6; }
+            100% { transform: translateY(-100px) translateX(20px) rotate(720deg) scale(1); opacity: 0; }
         }
 
         @keyframes explode-out {
-            0% {
-                transform: scale(1) translate(0, 0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(0.3) translate(var(--dx), var(--dy)) rotate(720deg);
-                opacity: 0;
-            }
+            0% { transform: scale(1) translate(0, 0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(0.3) translate(var(--dx), var(--dy)) rotate(720deg); opacity: 0; }
         }
 
         @keyframes rain-fall {
-            0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
         @keyframes mega-spin {
@@ -982,162 +769,62 @@
         }
 
         @keyframes float-text {
-            0%, 100% { 
-                transform: translateY(0px);
-                opacity: 0.9;
-            }
-            50% { 
-                transform: translateY(-5px);
-                opacity: 1;
-            }
+            0%, 100% { transform: translateY(0px); opacity: 0.9; }
+            50% { transform: translateY(-5px); opacity: 1; }
         }
 
         @keyframes ar-breathe {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.3;
-            }
+            0%, 100% { transform: scale(1); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 0.3; }
         }
 
-        /* 6D照片动画系统 */
         @keyframes photo6D {
-            0%, 100% { 
-                transform: translateY(0px) translateX(0px) translateZ(0px) 
-                          rotateX(0deg) rotateY(0deg) rotateZ(0deg) 
-                          scale(1);
-            }
-            16.66% { 
-                transform: translateY(-8px) translateX(3px) translateZ(5px) 
-                          rotateX(2deg) rotateY(1deg) rotateZ(0.5deg) 
-                          scale(1.02);
-            }
-            33.33% { 
-                transform: translateY(-5px) translateX(-2px) translateZ(8px) 
-                          rotateX(1deg) rotateY(-1deg) rotateZ(-0.5deg) 
-                          scale(1.01);
-            }
-            50% { 
-                transform: translateY(-12px) translateX(0px) translateZ(3px) 
-                          rotateX(-1deg) rotateY(2deg) rotateZ(1deg) 
-                          scale(1.03);
-            }
-            66.66% { 
-                transform: translateY(-6px) translateX(4px) translateZ(-2px) 
-                          rotateX(1.5deg) rotateY(-0.5deg) rotateZ(-0.8deg) 
-                          scale(1.015);
-            }
-            83.33% { 
-                transform: translateY(-3px) translateX(-1px) translateZ(6px) 
-                          rotateX(-0.5deg) rotateY(1.5deg) rotateZ(0.3deg) 
-                          scale(1.005);
-            }
+            0%, 100% { transform: translateY(0px) translateX(0px) rotateX(0deg) rotateY(0deg) scale(1); }
+            16.66% { transform: translateY(-8px) translateX(3px) rotateX(2deg) rotateY(1deg) scale(1.02); }
+            33.33% { transform: translateY(-5px) translateX(-2px) rotateX(1deg) rotateY(-1deg) scale(1.01); }
+            50% { transform: translateY(-12px) translateX(0px) rotateX(-1deg) rotateY(2deg) scale(1.03); }
+            66.66% { transform: translateY(-6px) translateX(4px) rotateX(1.5deg) rotateY(-0.5deg) scale(1.015); }
+            83.33% { transform: translateY(-3px) translateX(-1px) rotateX(-0.5deg) rotateY(1.5deg) scale(1.005); }
         }
 
         @keyframes photo6DHover {
-            0% { 
-                transform: translateY(-25px) rotateY(15deg) rotateX(10deg) scale(1.15);
-                filter: brightness(1.1) contrast(1.2) saturate(1.3);
-            }
-            100% { 
-                transform: translateY(-30px) rotateY(18deg) rotateX(12deg) scale(1.18);
-                filter: brightness(1.15) contrast(1.25) saturate(1.35);
-            }
+            0% { transform: translateY(-25px) rotateY(15deg) rotateX(10deg) scale(1.15); filter: brightness(1.1) contrast(1.2); }
+            100% { transform: translateY(-30px) rotateY(18deg) rotateX(12deg) scale(1.18); filter: brightness(1.15) contrast(1.25); }
         }
 
-        /* 响应式优化 */
+        /* 📱 响应式 */
         @media (max-width: 768px) {
-            .super-lollipop {
-                width: 80px;
-                height: 100px;
-                right: 15px;
-                top: 15px;
-            }
-            
-            .lollipop-head {
-                width: 60px;
-                height: 60px;
-                margin-bottom: 10px;
-            }
-            
-            .lollipop-stick {
-                width: 6px;
-                height: 40px;
-            }
-            
-            .floating-photo {
-                width: 250px;
-                height: 320px;
-                margin-bottom: 3rem;
-            }
-            
-            .floating-photo img {
-                height: 200px;
-            }
-            
-            .hero-description {
-                padding: 1.5rem;
-                font-size: 1rem;
-            }
-            
-            .cta-button {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-
-            .modal-close {
-                top: -60px;
-                right: -60px;
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
-            .audio-toggle {
-                bottom: 60px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-            }
+            .super-lollipop { width: 80px; height: 100px; right: 15px; top: 15px; }
+            .lollipop-head { width: 60px; height: 60px; margin-bottom: 10px; }
+            .lollipop-stick { width: 6px; height: 40px; }
+            .floating-photo { width: 250px; height: 320px; margin-bottom: 3rem; }
+            .floating-photo img { height: 200px; }
+            .hero-description { padding: 1.5rem; font-size: 1rem; }
+            .cta-button { padding: 1rem 2rem; font-size: 1rem; }
+            .modal-close { top: -60px; right: -60px; width: 60px; height: 60px; font-size: 1.5rem; }
+            .audio-toggle { bottom: 60px; right: 15px; width: 45px; height: 45px; }
         }
 
         @media (max-width: 480px) {
-            .super-lollipop {
-                width: 60px;
-                height: 80px;
-            }
-            
-            .lollipop-head {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .lollipop-stick {
-                width: 4px;
-                height: 30px;
-            }
+            .super-lollipop { width: 60px; height: 80px; }
+            .lollipop-head { width: 45px; height: 45px; }
+            .lollipop-stick { width: 4px; height: 30px; }
         }
     </style>
 </head>
 <body class="locked">
-    <!-- 世界级背景系统 -->
-    <div class="cosmic-background" id="cosmicBackground"></div>
-    
+    <!-- 🎨 背景系统 -->
+    <div class="cosmic-background"></div>
     <div class="particle-field" id="particleField"></div>
-    
-    <!-- 超密集糖果和气球漂浮系统 -->
     <div class="floating-candies" id="floatingCandies"></div>
 
-    <!-- 超级立体棒棒糖 -->
+    <!-- 🍭 棒棒糖 -->
     <div class="super-lollipop" id="superLollipop">
-        <div class="lollipop-head" id="lollipopHead"></div>
+        <div class="lollipop-head"></div>
         <div class="lollipop-stick"></div>
     </div>
 
-    <!-- 照片预览聚拢 - 🚀 直接放置图片，立即显示 -->
+    <!-- 📸 预览聚拢 -->
     <div class="photo-preview-cluster" id="photoPreviewCluster">
         <div class="preview-photo" style="left: calc(50% + 120px); top: calc(50% + 0px); transform: translate(-50%, -50%) rotate(45deg);">
             <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.webp" alt="预览图 1" loading="eager">
@@ -1165,22 +852,15 @@
         </div>
     </div>
 
-    <!-- 控制按钮区域 -->
+    <!-- 🎛️ 控制区 -->
     <div class="audio-toggle" id="audioToggle">
         <div class="audio-icon">🔊</div>
     </div>
-
-    <!-- 成就系统 -->
     <div class="achievement-popup" id="achievementPopup"></div>
+    <div class="candy-counter" id="candyCounter">🍬 收集糖果: <span id="candyCount">0</span></div>
 
-    <!-- 收集计数器 -->
-    <div class="candy-counter" id="candyCounter">
-        🍬 收集糖果: <span id="candyCount">0</span>
-    </div>
-
-    <!-- 漂浮相册 -->
+    <!-- 📱 相册 -->
     <div class="floating-album">
-        <!-- 英雄区域 -->
         <section class="hero-section">
             <h1 class="hero-title">甜蜜六一节</h1>
             <p class="hero-subtitle">Trolli超萌嘉年华 2.0</p>
@@ -1193,9 +873,8 @@
             <button class="cta-button vibrate-support" id="startJourney">🎉 开始魔法之旅</button>
         </section>
 
-        <!-- 🚀 漂浮照片区域 - 直接在HTML中放置所有图片 -->
         <section class="floating-photos" id="photos">
-            <!-- 照片1 -->
+            <!-- 照片1-15 完整保留 -->
             <div class="floating-photo vibrate-support" data-index="0">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_01.webp" alt="🎈 活动开场秀" loading="lazy">
@@ -1206,7 +885,6 @@
                 </div>
             </div>
 
-            <!-- 照片2 -->
             <div class="floating-photo vibrate-support" data-index="1">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_02.webp" alt="🍭 糖果奇幻世界" loading="lazy">
@@ -1217,7 +895,6 @@
                 </div>
             </div>
 
-            <!-- 照片3 -->
             <div class="floating-photo vibrate-support" data-index="2">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_03.webp" alt="🎪 欢乐互动时光" loading="lazy">
@@ -1228,7 +905,6 @@
                 </div>
             </div>
 
-            <!-- 照片4 -->
             <div class="floating-photo vibrate-support" data-index="3">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_04.webp" alt="🌈 纯真笑容绽放" loading="lazy">
@@ -1239,7 +915,6 @@
                 </div>
             </div>
 
-            <!-- 照片5 -->
             <div class="floating-photo vibrate-support" data-index="4">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_05.webp" alt="🎨 创意手工乐园" loading="lazy">
@@ -1250,7 +925,6 @@
                 </div>
             </div>
 
-            <!-- 照片6 -->
             <div class="floating-photo vibrate-support" data-index="5">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_06.webp" alt="🎵 音乐律动狂欢" loading="lazy">
@@ -1261,7 +935,6 @@
                 </div>
             </div>
 
-            <!-- 照片7 -->
             <div class="floating-photo vibrate-support" data-index="6">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_07.webp" alt="🏆 胜利荣耀时刻" loading="lazy">
@@ -1272,7 +945,6 @@
                 </div>
             </div>
 
-            <!-- 照片8 -->
             <div class="floating-photo vibrate-support" data-index="7">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_08.webp" alt="🤝 友谊桥梁搭建" loading="lazy">
@@ -1283,7 +955,6 @@
                 </div>
             </div>
 
-            <!-- 照片9 -->
             <div class="floating-photo vibrate-support" data-index="8">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_09.webp" alt="🎯 专注投入瞬间" loading="lazy">
@@ -1294,7 +965,6 @@
                 </div>
             </div>
 
-            <!-- 照片10 -->
             <div class="floating-photo vibrate-support" data-index="9">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_10.webp" alt="🌟 闪耀小明星" loading="lazy">
@@ -1305,7 +975,6 @@
                 </div>
             </div>
 
-            <!-- 照片11 -->
             <div class="floating-photo vibrate-support" data-index="10">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_11.webp" alt="🎪 魔法奇幻之旅" loading="lazy">
@@ -1316,7 +985,6 @@
                 </div>
             </div>
 
-            <!-- 照片12 -->
             <div class="floating-photo vibrate-support" data-index="11">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_12.webp" alt="💝 惊喜礼品狂欢" loading="lazy">
@@ -1327,7 +995,6 @@
                 </div>
             </div>
 
-            <!-- 照片13 -->
             <div class="floating-photo vibrate-support" data-index="12">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_13.webp" alt="📸 珍贵记忆典藏" loading="lazy">
@@ -1338,7 +1005,6 @@
                 </div>
             </div>
 
-            <!-- 照片14 -->
             <div class="floating-photo vibrate-support" data-index="13">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_14.webp" alt="🎭 角色扮演秀场" loading="lazy">
@@ -1349,7 +1015,6 @@
                 </div>
             </div>
 
-            <!-- 照片15 -->
             <div class="floating-photo vibrate-support" data-index="14">
                 <div class="photo-frame">
                     <img src="https://cdn.jsdelivr.net/gh/CIRA18-HUB/61@main/photo_15.webp" alt="🍬 甜蜜分享时刻" loading="lazy">
@@ -1361,14 +1026,12 @@
             </div>
         </section>
 
-        <!-- 结尾文案区域 -->
         <section class="ending-section">
             <div class="ending-quote">愿每一颗童心都能永远保持甜蜜</div>
             <div class="ending-author">— Trolli口力销售部 —</div>
         </section>
     </div>
 
-    <!-- 模态框 -->
     <div class="modal" id="modal">
         <div class="modal-content">
             <button class="modal-close vibrate-support" id="modalClose">×</button>
@@ -1377,114 +1040,49 @@
     </div>
 
     <script>
-        class WorldClassTrolliAlbum {
+        // 🚀 极速初始化系统
+        class TrolliAlbumUltra {
             constructor() {
                 this.photos = [];
-                this.particles = [];
-                this.candies = [];
-                this.balloons = [];
-                this.trailPoints = [];
-                this.mouse = { x: 0, y: 0 };
-                this.lollipopPosition = { x: 0, y: 0 };
-                this.isJourneyStarted = false;
-                this.visiblePhotoIndex = 0;
-                this.lastScrollY = 0;
                 this.candyCount = 0;
                 this.clickCombo = 0;
                 this.comboTimeout = null;
                 this.audioEnabled = true;
                 this.lollipopClickCount = 0;
                 this.collectedPhotos = new Set();
+                this.isJourneyStarted = false;
+                this.visiblePhotoIndex = 0;
+                this.trailPoints = [];
                 this.achievements = {
                     firstClick: false,
                     photoCollector: false,
                     comboMaster: false,
-                    themeExplorer: false,
                     secretFinder: false
                 };
                 
-                // 绑定全局引用
                 window.trolliAlbum = this;
-                
                 this.init();
             }
 
             init() {
-                console.log('🍭 启动优化版Trolli相册2.0...');
+                console.log('🚀 极速启动Trolli相册...');
                 
-                this.createParticleSystem();
-                this.createSuperDenseCandyBalloonSystem();
-                this.initPhotoEvents(); // 🚀 直接初始化照片事件，不需要动态创建
+                // 延迟初始化非关键功能
+                this.initPhotoEvents();
                 this.initSoundEffects();
-                this.initInteractionEffects();
                 this.bindEvents();
                 
-                console.log('✅ 优化版相册2.0已就绪！加载速度显著提升！');
+                // 延迟创建装饰元素
+                setTimeout(() => {
+                    this.createParticleSystem();
+                    this.createCandySystem();
+                }, 100);
+                
+                console.log('✅ 极速相册启动完成！');
             }
 
-            createParticleSystem() {
-                const particleField = document.getElementById('particleField');
-                
-                for (let i = 0; i < 60; i++) { // 减少粒子数量
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.animationDelay = Math.random() * 12 + 's';
-                    particle.style.animationDuration = (8 + Math.random() * 8) + 's';
-                    particleField.appendChild(particle);
-                }
-            }
-
-            createSuperDenseCandyBalloonSystem() {
-                const candiesContainer = document.getElementById('floatingCandies');
-                const candyEmojis = ['🍬', '🍭', '🧁', '🍰', '🎂', '🍩', '🍪', '🍫', '🍨', '🧊'];
-                const balloonEmojis = ['🎈', '🎀', '🎊', '🎉', '✨', '🎆', '💫', '⭐'];
-                const starEmojis = ['🌟', '💖', '💝', '🦄', '🌙', '☁️'];
-                
-                // 创建密集漂浮糖果
-                for (let i = 0; i < 30; i++) { // 减少数量
-                    const candy = document.createElement('div');
-                    candy.className = 'floating-candy vibrate-support';
-                    candy.textContent = candyEmojis[Math.floor(Math.random() * candyEmojis.length)];
-                    candy.style.left = Math.random() * 100 + '%';
-                    candy.style.animationDelay = Math.random() * 20 + 's';
-                    candy.style.animationDuration = (15 + Math.random() * 10) + 's';
-                    candy.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        this.collectCandy(e.target);
-                        this.triggerVibration();
-                    });
-                    candiesContainer.appendChild(candy);
-                }
-                
-                // 创建密集漂浮气球
-                for (let i = 0; i < 20; i++) { // 减少数量
-                    const balloon = document.createElement('div');
-                    balloon.className = 'floating-balloon';
-                    balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
-                    balloon.style.left = Math.random() * 100 + '%';
-                    balloon.style.animationDelay = Math.random() * 25 + 's';
-                    balloon.style.animationDuration = (20 + Math.random() * 10) + 's';
-                    candiesContainer.appendChild(balloon);
-                }
-
-                // 创建星星漂浮
-                for (let i = 0; i < 15; i++) { // 减少数量
-                    const star = document.createElement('div');
-                    star.className = 'floating-star';
-                    star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
-                    star.style.left = Math.random() * 100 + '%';
-                    star.style.animationDelay = Math.random() * 18 + 's';
-                    star.style.animationDuration = (15 + Math.random() * 8) + 's';
-                    candiesContainer.appendChild(star);
-                }
-            }
-
-            // 🚀 直接初始化已存在的照片事件
             initPhotoEvents() {
                 const photoElements = document.querySelectorAll('.floating-photo');
-                console.log(`🚀 发现 ${photoElements.length} 张预置照片，正在初始化事件...`);
-                
                 photoElements.forEach((photoElement, index) => {
                     const img = photoElement.querySelector('img');
                     const photoSrc = img.src;
@@ -1497,93 +1095,93 @@
                     });
                     
                     this.photos.push(photoElement);
-                    console.log(`✅ 照片 ${index + 1} 事件已绑定: ${photoTitle}`);
                 });
+            }
 
-                console.log(`🎉 所有 ${this.photos.length} 张照片事件绑定完成！`);
+            createParticleSystem() {
+                const particleField = document.getElementById('particleField');
+                for (let i = 0; i < 40; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 12 + 's';
+                    particle.style.animationDuration = (8 + Math.random() * 8) + 's';
+                    particleField.appendChild(particle);
+                }
+            }
+
+            createCandySystem() {
+                const container = document.getElementById('floatingCandies');
+                const candyEmojis = ['🍬', '🍭', '🧁', '🍰', '🎂', '🍩'];
+                const balloonEmojis = ['🎈', '🎀', '🎊', '🎉', '✨'];
+                const starEmojis = ['🌟', '💖', '💝', '🦄'];
+                
+                // 糖果
+                for (let i = 0; i < 20; i++) {
+                    const candy = document.createElement('div');
+                    candy.className = 'floating-candy vibrate-support';
+                    candy.textContent = candyEmojis[Math.floor(Math.random() * candyEmojis.length)];
+                    candy.style.left = Math.random() * 100 + '%';
+                    candy.style.animationDelay = Math.random() * 20 + 's';
+                    candy.style.animationDuration = (15 + Math.random() * 10) + 's';
+                    candy.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.collectCandy(e.target);
+                        this.triggerVibration();
+                    });
+                    container.appendChild(candy);
+                }
+                
+                // 气球
+                for (let i = 0; i < 15; i++) {
+                    const balloon = document.createElement('div');
+                    balloon.className = 'floating-balloon';
+                    balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
+                    balloon.style.left = Math.random() * 100 + '%';
+                    balloon.style.animationDelay = Math.random() * 25 + 's';
+                    balloon.style.animationDuration = (20 + Math.random() * 10) + 's';
+                    container.appendChild(balloon);
+                }
+
+                // 星星
+                for (let i = 0; i < 10; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'floating-star';
+                    star.textContent = starEmojis[Math.floor(Math.random() * starEmojis.length)];
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.animationDelay = Math.random() * 18 + 's';
+                    star.style.animationDuration = (15 + Math.random() * 8) + 's';
+                    container.appendChild(star);
+                }
             }
 
             initSoundEffects() {
                 this.audioContext = null;
                 try {
                     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                } catch (e) {
-                    console.log('音频上下文不支持');
-                }
+                } catch (e) {}
             }
 
             playSound(frequency, duration = 200, type = 'sine') {
                 if (!this.audioEnabled || !this.audioContext) return;
-                
                 try {
                     const oscillator = this.audioContext.createOscillator();
                     const gainNode = this.audioContext.createGain();
-                    
                     oscillator.connect(gainNode);
                     gainNode.connect(this.audioContext.destination);
-                    
                     oscillator.frequency.setValueAtTime(frequency, this.audioContext.currentTime);
                     oscillator.type = type;
-                    
                     gainNode.gain.setValueAtTime(0.3, this.audioContext.currentTime);
                     gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration / 1000);
-                    
                     oscillator.start(this.audioContext.currentTime);
                     oscillator.stop(this.audioContext.currentTime + duration / 1000);
-                } catch (e) {
-                    console.log('音效播放失败');
-                }
+                } catch (e) {}
             }
 
             triggerVibration(pattern = [50]) {
                 if (navigator.vibrate) {
                     navigator.vibrate(pattern);
                 }
-            }
-
-            initInteractionEffects() {
-                document.addEventListener('click', (e) => {
-                    this.createCandyExplosion(e.clientX, e.clientY);
-                    this.playSound(800 + Math.random() * 400, 100);
-                    this.addCombo();
-                });
-
-                document.addEventListener('mousemove', (e) => {
-                    this.mouse.x = e.clientX;
-                    this.mouse.y = e.clientY;
-                    this.updateLollipopPosition(e.clientX, e.clientY);
-                });
-
-                document.addEventListener('touchmove', (e) => {
-                    if (e.touches.length > 0) {
-                        const touch = e.touches[0];
-                        this.updateLollipopPosition(touch.clientX, touch.clientY);
-                    }
-                });
-
-                window.addEventListener('scroll', () => {
-                    if (this.isJourneyStarted) {
-                        this.updateScrollEffects();
-                        this.checkPhotoVisibility();
-                    }
-                });
-
-                window.addEventListener('deviceorientation', (e) => {
-                    if (this.isJourneyStarted) {
-                        this.updateDeviceOrientationEffects(e);
-                    }
-                });
-
-                let longPressTimer;
-                document.addEventListener('touchstart', (e) => {
-                    longPressTimer = setTimeout(() => {
-                        this.triggerVibration([100, 50, 100]);
-                    }, 1000);
-                });
-
-                document.addEventListener('touchend', () => {
-                    clearTimeout(longPressTimer);
-                });
             }
 
             createCandyExplosion(x, y) {
@@ -1593,36 +1191,30 @@
                 explosion.style.top = y + 'px';
                 document.body.appendChild(explosion);
 
-                const candyTypes = ['🍬', '🍭', '🍰', '🎉', '✨', '💫', '⭐', '🌟'];
-                
-                for (let i = 0; i < 8; i++) { // 减少爆炸粒子数量
+                const candyTypes = ['🍬', '🍭', '🍰', '🎉', '✨', '💫'];
+                for (let i = 0; i < 6; i++) {
                     const particle = document.createElement('div');
                     particle.className = 'candy-particle';
                     particle.textContent = candyTypes[Math.floor(Math.random() * candyTypes.length)];
                     
-                    const angle = (i / 8) * 360 * Math.PI / 180;
-                    const velocity = 80 + Math.random() * 60; // 减少粒子速度
+                    const angle = (i / 6) * 360 * Math.PI / 180;
+                    const velocity = 60 + Math.random() * 40;
                     const dx = Math.cos(angle) * velocity;
                     const dy = Math.sin(angle) * velocity;
                     
                     particle.style.setProperty('--dx', dx + 'px');
                     particle.style.setProperty('--dy', dy + 'px');
-                    
                     explosion.appendChild(particle);
                 }
 
-                setTimeout(() => {
-                    explosion.remove();
-                }, 1500);
+                setTimeout(() => explosion.remove(), 1500);
             }
 
             collectCandy(candyElement) {
                 this.addCandy(1);
                 this.playSound(1200, 150);
-                
                 candyElement.style.transform = 'scale(1.5) rotate(360deg)';
                 candyElement.style.opacity = '0';
-                
                 setTimeout(() => {
                     candyElement.style.transform = '';
                     candyElement.style.opacity = '0.8';
@@ -1636,7 +1228,6 @@
             addCandy(amount) {
                 this.candyCount += amount;
                 document.getElementById('candyCount').textContent = this.candyCount;
-                
                 if (this.candyCount >= 10 && !this.achievements.photoCollector) {
                     this.unlockAchievement('photoCollector', '🍬 糖果收集家！', '收集了10个糖果！');
                 }
@@ -1644,11 +1235,7 @@
 
             addCombo() {
                 this.clickCombo++;
-                
-                if (this.comboTimeout) {
-                    clearTimeout(this.comboTimeout);
-                }
-                
+                if (this.comboTimeout) clearTimeout(this.comboTimeout);
                 this.comboTimeout = setTimeout(() => {
                     if (this.clickCombo >= 10 && !this.achievements.comboMaster) {
                         this.unlockAchievement('comboMaster', '🔥 连击大师！', '连击达到10次！');
@@ -1662,9 +1249,8 @@
                 rainContainer.className = 'candy-rain';
                 document.body.appendChild(rainContainer);
 
-                const candyTypes = ['🍬', '🍭', '🧁', '🍰', '🍩', '🍪', '🍫'];
-                
-                for (let i = 0; i < 30; i++) { // 减少糖果雨数量
+                const candyTypes = ['🍬', '🍭', '🧁', '🍰', '🍩'];
+                for (let i = 0; i < 20; i++) {
                     const rainDrop = document.createElement('div');
                     rainDrop.className = 'rain-drop';
                     rainDrop.textContent = candyTypes[Math.floor(Math.random() * candyTypes.length)];
@@ -1673,10 +1259,7 @@
                     rainContainer.appendChild(rainDrop);
                 }
 
-                setTimeout(() => {
-                    rainContainer.remove();
-                }, 5000);
-
+                setTimeout(() => rainContainer.remove(), 5000);
                 if (!this.achievements.secretFinder) {
                     this.unlockAchievement('secretFinder', '🎊 秘密发现者！', '找到了隐藏的糖果雨！');
                 }
@@ -1684,38 +1267,27 @@
 
             unlockAchievement(key, title, description) {
                 this.achievements[key] = true;
-                
                 const popup = document.getElementById('achievementPopup');
                 popup.innerHTML = `
                     <div style="font-size: 2rem; margin-bottom: 10px;">${title}</div>
                     <div style="font-size: 1rem; opacity: 0.9;">${description}</div>
                 `;
                 popup.classList.add('show');
-                
                 this.playSound(800, 500);
                 this.triggerVibration([200, 100, 200]);
-                
-                setTimeout(() => {
-                    popup.classList.remove('show');
-                }, 3000);
+                setTimeout(() => popup.classList.remove('show'), 3000);
             }
 
             updateLollipopPosition(x, y) {
                 const lollipop = document.getElementById('superLollipop');
                 const rect = lollipop.getBoundingClientRect();
-                const lollipopCenterX = rect.left + rect.width / 2;
-                const lollipopCenterY = rect.top + rect.height / 2;
+                const deltaX = (x - (rect.left + rect.width / 2)) * 0.06;
+                const deltaY = (y - (rect.top + rect.height / 2)) * 0.06;
                 
-                const deltaX = (x - lollipopCenterX) * 0.08; // 减少移动幅度
-                const deltaY = (y - lollipopCenterY) * 0.08;
+                lollipop.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${1 + Math.abs(deltaX + deltaY) * 0.0006})`;
                 
-                lollipop.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${1 + Math.abs(deltaX + deltaY) * 0.0008})`;
-                
-                this.lollipopPosition.x = lollipopCenterX + deltaX;
-                this.lollipopPosition.y = lollipopCenterY + deltaY;
-
-                if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) { // 减少轨迹点生成
-                    this.addTrailPoint(this.lollipopPosition.x, this.lollipopPosition.y);
+                if (Math.abs(deltaX) > 2 || Math.abs(deltaY) > 2) {
+                    this.addTrailPoint(rect.left + rect.width / 2 + deltaX, rect.top + rect.height / 2 + deltaY);
                 }
             }
 
@@ -1724,91 +1296,40 @@
                 trail.className = 'lollipop-trail';
                 trail.style.left = x + 'px';
                 trail.style.top = y + 'px';
-                
-                const hue = (Date.now() / 10) % 360;
-                trail.style.background = `hsl(${hue}, 100%, 70%)`;
-                
+                trail.style.background = `hsl(${(Date.now() / 10) % 360}, 100%, 70%)`;
                 document.body.appendChild(trail);
                 
-                this.trailPoints.push({
-                    element: trail,
-                    timestamp: Date.now()
-                });
-
-                if (this.trailPoints.length > 10) { // 减少轨迹点数量
-                    const oldest = this.trailPoints.shift();
-                    oldest.element.remove();
+                this.trailPoints.push(trail);
+                if (this.trailPoints.length > 8) {
+                    this.trailPoints.shift().remove();
                 }
 
                 setTimeout(() => {
                     trail.style.opacity = '0.6';
                     trail.style.transform = 'scale(0.6)';
                 }, 50);
-
-                setTimeout(() => {
-                    trail.style.opacity = '0.3';
-                    trail.style.transform = 'scale(0.3)';
-                }, 200);
-
-                setTimeout(() => {
-                    trail.style.opacity = '0';
-                    trail.style.transform = 'scale(0)';
-                }, 500);
-            }
-
-            updateScrollEffects() {
-                const scrolled = window.pageYOffset;
-                const lollipop = document.getElementById('superLollipop');
-                
-                if (scrolled > 100) {
-                    lollipop.classList.add('scrolling');
-                } else {
-                    lollipop.classList.remove('scrolling');
-                }
-            }
-
-            updateDeviceOrientationEffects(event) {
-                const { gamma, beta } = event;
-                
-                if (gamma !== null && beta !== null) {
-                    const photos = document.querySelectorAll('.floating-photo.visible');
-                    photos.forEach((photo, index) => {
-                        const factor = (index % 2 === 0 ? 1 : -1);
-                        const translateX = gamma * 0.3 * factor; // 减少移动幅度
-                        const translateY = beta * 0.2 * factor;
-                        
-                        photo.style.transform += ` translate(${translateX}px, ${translateY}px)`;
-                    });
-                }
+                setTimeout(() => trail.style.opacity = '0', 200);
+                setTimeout(() => trail.style.transform = 'scale(0)', 400);
             }
 
             checkPhotoVisibility() {
                 const scrolled = window.pageYOffset;
                 const heroHeight = window.innerHeight;
-                const scrollTriggerDistance = 150;
-                
-                const shouldShowCount = Math.floor((scrolled - heroHeight) / scrollTriggerDistance) + 1;
+                const shouldShowCount = Math.floor((scrolled - heroHeight) / 150) + 1;
                 const targetIndex = Math.min(shouldShowCount, this.photos.length);
                 
                 for (let i = this.visiblePhotoIndex; i < targetIndex; i++) {
                     if (this.photos[i]) {
-                        setTimeout(() => {
-                            this.photos[i].classList.add('visible');
-                        }, (i - this.visiblePhotoIndex) * 200);
+                        setTimeout(() => this.photos[i].classList.add('visible'), (i - this.visiblePhotoIndex) * 200);
                     }
                 }
-                
                 this.visiblePhotoIndex = Math.max(this.visiblePhotoIndex, targetIndex);
             }
 
             startJourney() {
-                console.log('🎬 开始魔法之旅...');
                 this.isJourneyStarted = true;
-                
                 document.body.classList.remove('locked');
-                
-                const candyCounter = document.getElementById('candyCounter');
-                candyCounter.classList.add('visible');
+                document.getElementById('candyCounter').classList.add('visible');
                 
                 const cluster = document.getElementById('photoPreviewCluster');
                 cluster.style.opacity = '0';
@@ -1821,15 +1342,9 @@
                 this.triggerVibration([100, 50, 100, 50, 100]);
                 
                 setTimeout(() => {
-                    photosSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    photosSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 500);
-
-                setTimeout(() => {
-                    this.checkPhotoVisibility();
-                }, 1000);
+                setTimeout(() => this.checkPhotoVisibility(), 1000);
             }
 
             toggleAudio() {
@@ -1854,25 +1369,17 @@
                     
                     const photo = this.photos[index];
                     photo.classList.add('collected');
-                    
-                    setTimeout(() => {
-                        photo.classList.remove('collected');
-                    }, 1000);
+                    setTimeout(() => photo.classList.remove('collected'), 1000);
                 }
             }
 
             openModal(photoUrl, title) {
                 const modal = document.getElementById('modal');
                 const modalPhoto = document.getElementById('modalPhoto');
-                
                 modalPhoto.src = photoUrl;
                 modalPhoto.alt = title;
-                
                 modal.style.display = 'flex';
-                setTimeout(() => {
-                    modal.classList.add('show');
-                }, 10);
-                
+                setTimeout(() => modal.classList.add('show'), 10);
                 document.body.style.overflow = 'hidden';
                 this.playSound(500, 300);
             }
@@ -1882,96 +1389,86 @@
                 modal.classList.remove('show');
                 setTimeout(() => {
                     modal.style.display = 'none';
-                    if (this.isJourneyStarted) {
-                        document.body.style.overflow = 'auto';
-                    } else {
-                        document.body.style.overflow = 'hidden';
-                    }
+                    document.body.style.overflow = this.isJourneyStarted ? 'auto' : 'hidden';
                 }, 500);
             }
 
             bindEvents() {
-                const startButton = document.getElementById('startJourney');
-                const modalClose = document.getElementById('modalClose');
-                const modal = document.getElementById('modal');
-                const audioToggle = document.getElementById('audioToggle');
-                const superLollipop = document.getElementById('superLollipop');
-                
-                startButton?.addEventListener('click', () => {
-                    this.startJourney();
+                // 核心事件绑定
+                document.getElementById('startJourney')?.addEventListener('click', () => this.startJourney());
+                document.getElementById('modalClose')?.addEventListener('click', () => this.closeModal());
+                document.getElementById('modal')?.addEventListener('click', (e) => {
+                    if (e.target.id === 'modal') this.closeModal();
                 });
-                
-                modalClose?.addEventListener('click', () => {
-                    this.closeModal();
-                });
-                
-                modal?.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        this.closeModal();
-                    }
-                });
-                
-                audioToggle?.addEventListener('click', () => {
-                    this.toggleAudio();
-                });
-                
-                superLollipop?.addEventListener('click', (e) => {
+                document.getElementById('audioToggle')?.addEventListener('click', () => this.toggleAudio());
+                document.getElementById('superLollipop')?.addEventListener('click', (e) => {
                     e.stopPropagation();
                     this.lollipopClickCount++;
-                    
                     if (this.lollipopClickCount >= 5) {
                         this.createCandyRain();
                         this.lollipopClickCount = 0;
                     }
-                    
                     this.playSound(1500, 100);
                     this.triggerVibration([50]);
                 });
-                
+
+                // 简化的交互事件
+                document.addEventListener('click', (e) => {
+                    this.createCandyExplosion(e.clientX, e.clientY);
+                    this.playSound(800 + Math.random() * 400, 100);
+                    this.addCombo();
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    this.updateLollipopPosition(e.clientX, e.clientY);
+                });
+
+                document.addEventListener('touchmove', (e) => {
+                    if (e.touches.length > 0) {
+                        const touch = e.touches[0];
+                        this.updateLollipopPosition(touch.clientX, touch.clientY);
+                    }
+                });
+
+                window.addEventListener('scroll', () => {
+                    if (this.isJourneyStarted) {
+                        const scrolled = window.pageYOffset;
+                        const lollipop = document.getElementById('superLollipop');
+                        if (scrolled > 100) {
+                            lollipop.classList.add('scrolling');
+                        } else {
+                            lollipop.classList.remove('scrolling');
+                        }
+                        this.checkPhotoVisibility();
+                    }
+                });
+
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') {
                         this.closeModal();
                     }
-                    
                     if (e.key === 'r' && e.ctrlKey) {
                         e.preventDefault();
                         this.createCandyRain();
                     }
                 });
-                
-                let lastUpdate = 0;
-                let lastX = 0, lastY = 0, lastZ = 0;
-                
+
+                // 设备运动检测
                 window.addEventListener('devicemotion', (e) => {
-                    const acceleration = e.accelerationIncludingGravity;
-                    const curTime = new Date().getTime();
-                    
-                    if ((curTime - lastUpdate) > 100) {
-                        const diffTime = curTime - lastUpdate;
-                        lastUpdate = curTime;
-                        
-                        const x = acceleration.x;
-                        const y = acceleration.y;
-                        const z = acceleration.z;
-                        
-                        const speed = Math.abs(x + y + z - lastX - lastY - lastZ) / diffTime * 10000;
-                        
-                        if (speed > 3000) {
-                            this.createCandyExplosion(window.innerWidth / 2, window.innerHeight / 2);
-                            this.triggerVibration([100, 50, 100]);
-                        }
-                        
-                        lastX = x;
-                        lastY = y;
-                        lastZ = z;
+                    if (!e.accelerationIncludingGravity) return;
+                    const { x, y, z } = e.accelerationIncludingGravity;
+                    const totalAcceleration = Math.sqrt(x*x + y*y + z*z);
+                    if (totalAcceleration > 15) {
+                        this.createCandyExplosion(window.innerWidth / 2, window.innerHeight / 2);
+                        this.triggerVibration([100, 50, 100]);
                     }
                 });
             }
         }
 
-        // 启动优化版相册2.0
+        // 🚀 极速启动
         document.addEventListener('DOMContentLoaded', () => {
-            new WorldClassTrolliAlbum();
+            new TrolliAlbumUltra();
         });
     </script>
 </body>
